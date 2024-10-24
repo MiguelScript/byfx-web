@@ -1,0 +1,11 @@
+.btn-default {
+	@apply bg-[#F2F2F21A];
+}
+
+.btn-dark {
+	@apply bg-[#1B1B1B];
+}
+
+.btn-cotizar {
+	background-image: url("/assets/img/btn-background.svg");
+}
