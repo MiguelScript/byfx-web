@@ -9,7 +9,9 @@ export default function layout({
 	return (
 		<div className="app-bg px-8 w-full h-full flex flex-col">
 			<Navbar />
-			<main className="flex flex-col grow">{children}</main>
+			<main className="flex flex-col grow">
+				{children}
+			</main>
 		</div>
 	);
 }

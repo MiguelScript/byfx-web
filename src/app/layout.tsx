@@ -31,9 +31,6 @@ export default function RootLayout({
 				className={`antialiased h-screen bg-[#1B1B1B] text-[#F3F3F3] font-sans mb-4`}
 			>
 				{children}
-				<div className="py-4">
-
-				</div>
 			</body>
 		</html>
 	);
