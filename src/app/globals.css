@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-	--background: #ffffff;
-	--foreground: #171717;
-}
-
 @layer utilities {
 	.text-balance {
 		text-wrap: balance;
@@ -18,4 +13,11 @@
 }
 
 
-@import '../styles/buttons.css'
+@import '../styles/buttons.css';
+
+
+@layer base {
+  :root {
+		--radius: 0.5rem;
+	}
+}

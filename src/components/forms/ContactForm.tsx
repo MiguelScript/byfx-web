@@ -24,7 +24,7 @@ const initialValues: ContactFormProps = {
 	proyectDescription: "",
 };
 
-export const ContactForm = () => {
+export const ContactForm = ({ whatsapp }: { whatsapp: string }) => {
 	const sendForm = (values: ContactFormProps) => {
 		console.log(values);
 	};
@@ -47,7 +47,9 @@ export const ContactForm = () => {
 
 	return (
 		<div className="px-8  py-8">
-			<h3 className="text-center mb-4 font-mono text-2xl tracking-[0.25em]">Contacto</h3>
+			<h3 className="text-center mb-4 font-mono text-2xl tracking-[0.25em]">
+				Contacto
+			</h3>
 			<form onSubmit={handleSubmit}>
 				<div className="grid grid-cols-1 xl:grid-cols-2 gap-x-4 ">
 					<InputText
@@ -118,10 +120,12 @@ export const ContactForm = () => {
 				</div>
 				<div className="flex gap-4 justify-center font-mono tracking-[0.25em]">
 					<Button>
-						<p className="text-[#ACFF6A]">enviar</p>
+						<p className="text-[#ACFF6A]">Enviar</p>
 					</Button>
 					<Button variant="dark">
-						<p className="text-[#ACFF6A]">ir a whatsapp</p>
+						<a href={whatsapp} className="text-[#ACFF6A]">
+							Ir a whatsapp
+						</a>
 					</Button>
 				</div>
 			</form>

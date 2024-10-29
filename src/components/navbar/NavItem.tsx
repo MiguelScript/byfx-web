@@ -16,15 +16,8 @@ export const NavItem = ({
 	currentPathPosition: number;
 	position: number;
 }) => {
-	const [animation, setAnimation] = useState('')
+	const [animation, setAnimation] = useState("");
 	const getAnimation = (currentPathPosition: number, position: number) => {
-		console.log(
-			currentPathPosition < position,
-			currentPathPosition < position
-				? "animate__slideInLeft"
-				: "animate__slideInRight"
-		);
-
 		if (currentPathPosition === position) {
 			return "";
 		}
@@ -38,8 +31,6 @@ export const NavItem = ({
 		<div
 			className="min-h-[50px] flex flex-col"
 			onClick={() => {
-				console.log(currentPathPosition);
-				console.log(position);
 				setAnimation(getAnimation(currentPathPosition, position));
 				onClick();
 			}}

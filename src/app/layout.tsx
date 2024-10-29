@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Navbar } from "@/components/navbar/Navbar";
 import { Bebas_Neue, Montserrat } from "next/font/google";
-import 'animate.css';
 
 const bebas_neue = Bebas_Neue({
 	subsets: ["latin"],
@@ -32,10 +30,7 @@ export default function RootLayout({
 			<body
 				className={`antialiased h-screen w-screen overflow-hidden bg-[#1B1B1B] text-[#F3F3F3] font-sans`}
 			>
-				<div className="app-bg px-8 w-full h-full flex flex-col">
-					<Navbar />
-					<main className="flex flex-col grow">{children}</main>
-				</div>
+				{children}
 			</body>
 		</html>
 	);

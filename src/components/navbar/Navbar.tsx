@@ -6,6 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { navbarData } from "@/constants/NavbarData";
 import Link from "next/link";
+import { NavbarMobile } from "./NavbarMobile";
 
 export const Navbar = () => {
 	const pathname = usePathname();
@@ -23,7 +24,7 @@ export const Navbar = () => {
 					alt="logo"
 				></Image>
 			</div>
-			<div className="flex items-center font-mono tracking-[.25em]">
+			<div className="hidden lg:flex items-center font-mono tracking-[.25em]">
 				<div className="flex gap-x-16 items-center">
 					{navbarData.map((item, idx) => (
 						<NavItem
@@ -49,6 +50,7 @@ export const Navbar = () => {
 					</button>
 				</div>
 			</div>
+			<NavbarMobile />
 		</nav>
 	);
 };
