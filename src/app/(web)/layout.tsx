@@ -1,5 +1,5 @@
 import { Navbar } from "@/components/navbar/Navbar";
-// import "animate.css";
+import "animate.css";
 
 export default function layout({
 	children,

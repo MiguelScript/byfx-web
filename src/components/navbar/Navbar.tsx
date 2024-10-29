@@ -15,7 +15,7 @@ export const Navbar = () => {
 	);
 
 	return (
-		<nav className="flex px-4 xl:px-16 xl:pt-10 pb-4">
+		<nav className="flex px-4 xl:px-16 xl:pt-10 pb-4 pt-4 lg:pt-0">
 			<div className="grow">
 				<Image
 					src="/assets/img/logo-byfx.png"
@@ -26,7 +26,7 @@ export const Navbar = () => {
 			</div>
 			<div className="hidden lg:flex items-center font-mono tracking-[.25em]">
 				<div className="flex gap-x-16 items-center">
-					{navbarData.map((item, idx) => (
+					{navbarData.filter((item) => item.navWeb === true).map((item, idx) => (
 						<NavItem
 							key={idx}
 							position={idx}

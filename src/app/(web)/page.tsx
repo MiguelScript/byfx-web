@@ -9,7 +9,7 @@ export default async function Home() {
 
 	return (
 		<div className="flex flex-col grow xl:px-48">
-			<div className="2xl:pt-8 font-mono grow flex flex-col tracking-[0.10em] text-4xl xl:text-7xl xl:leading-[60px] 2xl:text-8xl 2xl:leading-[100px] max-w-xl">
+			<div className="2xl:pt-8 font-mono grow flex flex-col tracking-[0.10em] text-5xl xl:text-7xl xl:leading-[60px] 2xl:text-8xl 2xl:leading-[100px] max-w-xl">
 				<div className="flex flex-col justify-center grow">
 					<h1 className=" text-[#ACFF6A]">{highlight[0]}</h1>
 					<h1 className="">{highlight[1]}</h1>

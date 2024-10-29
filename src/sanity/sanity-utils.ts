@@ -32,14 +32,11 @@ export async function getHomeTexts(): Promise<home[]> {
 }
 
 export async function getServices(): Promise<service[]> {
-	return client.fetch(groq`*[_type == "cta"] | order(priority asc){
+	return client.fetch(groq`*[_type == "services"] | order(position asc){
         _id,
-        title,
-        subtitle,
-        highlight,
-        highlight2,
-        btnPrimary,
-        btnSecondary,
-        btnHeader,
+        name,
+        description,
+        position,
+       "image": image.asset->url,
     }`);
 }
