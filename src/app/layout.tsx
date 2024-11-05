@@ -28,7 +28,7 @@ export default function RootLayout({
 			className={`${montserrat.variable} ${bebas_neue.variable} `}
 		>
 			<body
-				className={`antialiased h-screen bg-[#1B1B1B] text-[#F3F3F3] font-sans mb-4`}
+				className={`antialiased h-screen bg-[#1B1B1B] text-[#F3F3F3] font-sans`}
 			>
 				{children}
 			</body>

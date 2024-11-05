@@ -26,28 +26,30 @@ export const Navbar = () => {
 			</div>
 			<div className="hidden lg:flex items-center font-mono tracking-[.25em]">
 				<div className="flex gap-x-16 items-center">
-					{navbarData.filter((item) => item.navWeb === true).map((item, idx) => (
-						<NavItem
-							key={idx}
-							position={idx}
-							path={item.path}
-							name={item.name}
-							isActive={pathname === item.path}
-							onClick={() => setCurrentPathPosition(idx)}
-							currentPathPosition={currentPathPosition}
-						/>
-					))}
+					{navbarData
+						.filter((item) => item.navWeb === true)
+						.map((item, idx) => (
+							<NavItem
+								key={idx}
+								position={idx}
+								path={item.path}
+								name={item.name}
+								isActive={pathname === item.path}
+								onClick={() => setCurrentPathPosition(idx)}
+								currentPathPosition={currentPathPosition}
+							/>
+						))}
 				</div>
 				<div className="ml-32 min-h-[40px]">
-					<button className="rounded-[20px] px-8 py-2   btn-cotizar">
-						<Link
-							href={"contact"}
-							className=""
-							onClick={() => setCurrentPathPosition(3)}
-						>
+					<Link
+						href={"contact"}
+						className=""
+						onClick={() => setCurrentPathPosition(3)}
+					>
+						<button className="rounded-[20px] px-8 py-2   btn-cotizar">
 							<p className="text-2xl">Cotizar</p>
-						</Link>
-					</button>
+						</button>
+					</Link>
 				</div>
 			</div>
 			<NavbarMobile />

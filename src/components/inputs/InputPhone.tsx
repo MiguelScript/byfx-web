@@ -1,17 +1,18 @@
-import React, { ChangeEventHandler, FocusEventHandler } from "react";
+import React, { FocusEventHandler } from "react";
 import { LabelInputForm } from "./LabelInputForm";
 import { FormikTouched } from "formik";
+import { PhoneInput } from "react-international-phone";
+import "react-international-phone/style.css";
 
 type InputTextProps = {
 	id?: string;
 	text?: string;
-	type?: string;
 	name: string;
 	containerExtraClass?: string;
 	extraClass?: string;
 	helperText?: string;
 	placeholder?: string;
-	onChange: ChangeEventHandler;
+	onChange: (e: any) => void;
 	// onChange: ChangeEvent<any>;
 	value: string;
 	error?: any;
@@ -22,27 +23,25 @@ type InputTextProps = {
 	requiredText?: boolean;
 };
 
-export const InputText = ({
+export const InputPhone = ({
 	text,
 	id,
-	type,
 	name,
 	placeholder,
 	onChange,
 	value,
 	containerExtraClass,
-	extraClass,
+	// extraClass,
 	touched,
 	error,
-	onBlur,
+	// onBlur,
 	requiredText,
 	helperText,
-	...rest
 }: InputTextProps) => {
 	return (
 		<>
 			<div className={`my-1 dark:text-white ${containerExtraClass}`}>
-				<div className="flex items-center">
+				<div className="flex items-center mb-2">
 					{text && (
 						<LabelInputForm
 							label={text}
@@ -54,16 +53,11 @@ export const InputText = ({
 						<span className="ml-1 font-medium text-red-500">*</span>
 					)}
 				</div>
-				<input
-					name={name}
-					id={id}
-					type={type}
-					placeholder={placeholder}
-					onChange={onChange}
+				<PhoneInput
+					defaultCountry="us"
 					value={value}
-					className={`w-full p-2 dark:border-none mb-0 rounded-[10px] mt-2  dark:bg-dark-input bg-[#1B1B1B66] disabled:bg-gray-900 disabled:cursor-not-allowed ${extraClass}`}
-					onBlur={onBlur}
-					{...rest}
+					onChange={(phone) => onChange(phone)}
+					placeholder={placeholder}
 				/>
 				<div className="flex flex-col">
 					{helperText && (

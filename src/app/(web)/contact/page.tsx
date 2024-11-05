@@ -10,9 +10,12 @@ export default async function Contact() {
 	return (
 		<section className="grow flex flex-col">
 			<div className="grow flex items-center justify-center">
-				<CardGeneral extraClass="w-full lg:max-w-3xl xl:max-w-4xl rounded-[20px]">
-					<ContactForm whatsapp={whatsappLink} />
-				</CardGeneral>
+				<div className="relative w-full lg:max-w-3xl xl:max-w-3xl ">
+					<CardGeneral extraClass="!bg-[#f2f2f21c] w-full w-full rounded-[20px]">
+						<ContactForm whatsapp={whatsappLink} />
+					</CardGeneral>
+					<div className="card-bg-1 absolute -z-10 top-0 w-full h-full rounded-[20px]"></div>
+				</div>
 			</div>
 			<div className="pt-6 pb-20">
 				<Social socialNetworks={socialNetworks} />

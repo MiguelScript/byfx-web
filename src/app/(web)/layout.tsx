@@ -7,7 +7,7 @@ export default function layout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<div className="app-bg px-8 w-full h-full flex flex-col">
+		<div className="app-bg px-8 min-w-full min-h-full flex flex-col">
 			<Navbar />
 			<main className="flex flex-col grow">
 				{children}

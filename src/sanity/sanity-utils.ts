@@ -40,3 +40,9 @@ export async function getServices(): Promise<service[]> {
        "image": image.asset->url,
     }`);
 }
+
+export async function getService({ _id }: { _id: string }): Promise<service> {
+	return client.fetch(groq`*[_type == "services" && _id == $serviceId][0]`, {
+		serviceId: _id,
+	});
+}

@@ -12,17 +12,33 @@
 	background-image: url("/assets/img/byfx-background2-min.png");
 }
 
+.card-bg-1 {
+	background-image: url("/assets/img/background-2.png");
+	background-size: contain;
+	mix-blend-mode: screen;
+}
 
 .service-image {
 	width: 320px;
 	height: 170px;
 }
 
-@import '../styles/buttons.css';
+.react-international-phone-input-container{
+	@apply  min-h-[40px];
+}
 
+.react-international-phone-country-selector-button {
+	@apply !bg-[#1B1B1B66] !border-none !rounded-l-[10px] !px-2 !py-2 !h-full;
+}
+
+.react-international-phone-input {
+	@apply !bg-[#1B1B1B66] !border-none !rounded-r-[10px] grow !min-h-[40px] placeholder:!text-[#888888] !text-[#F3F3F3] !text-base;
+}
+
+@import "../styles/buttons.css";
 
 @layer base {
-  :root {
+	:root {
 		--radius: 0.5rem;
 	}
 }
