@@ -173,12 +173,13 @@ export const ContactForm = ({ whatsapp }: { whatsapp: string }) => {
 					<Button variant="dark" type="submit" disabled={isSubmitting} classNames="!px-16">
 						<p className="">Enviar</p>
 					</Button>
-					<Button variant="dark">
+					<Button variant="dark" classNames="hidden lg:flex">
 						<a href={whatsapp} target="_blank" className="text-[#ACFF6A]">
 							Ir a whatsapp
 						</a>
 					</Button>
 				</div>
+
 			</form>
 		</div>
 	);
