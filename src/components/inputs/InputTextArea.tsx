@@ -22,10 +22,9 @@ type InputTextProps = {
 	requiredText?: boolean;
 };
 
-export const InputText = ({
+export const InputTextArea = ({
 	text,
 	id,
-	type,
 	name,
 	placeholder,
 	onChange,
@@ -54,15 +53,16 @@ export const InputText = ({
 						<span className="ml-1 font-medium text-red-500">*</span>
 					)}
 				</div>
-				<input
+				<textarea
 					name={name}
 					id={id}
-					type={type}
 					placeholder={placeholder}
 					onChange={onChange}
 					value={value}
-					className={`w-full p-2 dark:border-none mb-0 rounded-[10px] mt-2  placeholder:text-[#888888] dark:bg-dark-input bg-[#1B1B1B66] disabled:bg-gray-900 disabled:cursor-not-allowed ${extraClass}`}
+					className={`w-full p-2 dark:border-none mb-0 rounded-[10px] mt-2 placeholder:text-[#888888] dark:bg-dark-input bg-[#1B1B1B66] disabled:bg-gray-900 disabled:cursor-not-allowed ${extraClass}`}
 					onBlur={onBlur}
+					rows={4}
+					cols={30}
 					{...rest}
 				/>
 				<div className="flex flex-col">

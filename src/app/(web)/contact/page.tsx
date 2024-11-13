@@ -17,7 +17,7 @@ export default async function Contact() {
 					<div className="card-bg-1 absolute -z-10 top-0 w-full h-full rounded-[20px]"></div>
 				</div>
 			</div>
-			<div className="pt-6 pb-20">
+			<div className="pt-6 pb-16">
 				<Social socialNetworks={socialNetworks} />
 			</div>
 		</section>

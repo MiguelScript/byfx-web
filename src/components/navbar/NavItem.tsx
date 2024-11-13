@@ -36,12 +36,12 @@ export const NavItem = ({
 			}}
 		>
 			<Link href={path}>
-				<p className="text-2xl">{name}</p>
+				<p className="text-xl 2xl:text-2xl">{name}</p>
 			</Link>
 			<div
 				className={`${isActive ? "block" : "hidden"} ${isActive ? animation : ""} animate__animated animate__faster flex justify-center items-center`}
 			>
-				<div className=" w-3 h-3 bg-[#ACFF6A] rounded-full"></div>
+				<div className=" w-2 h-2 bg-[#ACFF6A]"></div>
 			</div>
 		</div>
 	);

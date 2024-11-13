@@ -46,3 +46,12 @@ export async function getService({ _id }: { _id: string }): Promise<service> {
 		serviceId: _id,
 	});
 }
+
+export async function getTeamContent(): Promise<any> {
+	return await client.fetch(groq`*[_type == "team"][0]{
+        _id,
+        title,
+        description,
+        equitment[]
+    }`);
+}

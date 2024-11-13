@@ -1,0 +1,10 @@
+.team-img-container {
+      @apply w-[300px] h-[400px] lg:w-[500px] lg:h-[600px] xl:w-[500px] xl:h-[600px] 2xl:w-[600px] 2xl:h-[700px]
+}
+
+.team-img {
+	width: 100% !important;
+	height: 100% !important;
+	object-fit: cover;
+      opacity: 0.5;
+}

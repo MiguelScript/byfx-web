@@ -19,9 +19,10 @@ export const Navbar = () => {
 			<div className="grow">
 				<Image
 					src="/assets/img/logo-byfx.png"
-					width={150}
-					height={150}
+					width={120}
+					height={120}
 					alt="logo"
+					className="2xl:w-[150px]"
 				></Image>
 			</div>
 			<div className="hidden lg:flex items-center font-mono tracking-[.25em]">
@@ -40,14 +41,14 @@ export const Navbar = () => {
 							/>
 						))}
 				</div>
-				<div className="ml-32 min-h-[40px]">
+				<div className="ml-28 min-h-[40px] relative -top-3">
 					<Link
 						href={"contact"}
 						className=""
 						onClick={() => setCurrentPathPosition(3)}
 					>
 						<button className="rounded-[20px] px-8 py-2   btn-cotizar">
-							<p className="text-2xl">Cotizar</p>
+							<p className="text-xl 2xl:text-2xl">Cotizar</p>
 						</button>
 					</Link>
 				</div>
