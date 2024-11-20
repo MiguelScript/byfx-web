@@ -20,10 +20,8 @@ const team = {
 			type: "array",
 			of: [
 				{
-					name: "image",
-					title: "Imagen",
-					type: "image",
-					
+					type: "reference",
+					to: [{ type: "team-brand" }],
 				},
 			],
 		},

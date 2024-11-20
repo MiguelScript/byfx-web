@@ -48,10 +48,15 @@ export async function getService({ _id }: { _id: string }): Promise<service> {
 }
 
 export async function getTeamContent(): Promise<any> {
-	return await client.fetch(groq`*[_type == "team"][0]{
-        _id,
+	const query = `*[_type == "team"][0]{
         title,
         description,
-        equitment[]
-    }`);
+        equitment[]->{
+          name,
+          image,
+          size
+        }
+      }`;
+	const data = await client.fetch(query);
+	return data;
 }

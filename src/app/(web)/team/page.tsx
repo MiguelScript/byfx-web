@@ -7,7 +7,6 @@ import Image from "next/image";
 
 export default async function Team() {
 	const teamContent = await getTeamContent();
-	console.log(teamContent);
 	return (
 		<>
 			<div className="mt-6">
