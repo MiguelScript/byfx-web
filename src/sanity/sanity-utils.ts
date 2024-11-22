@@ -51,6 +51,12 @@ export async function getTeamContent(): Promise<any> {
 	const query = `*[_type == "team"][0]{
         title,
         description,
+        audio {
+          asset->{
+          _id,
+          url
+        }
+      },
         equitment[]->{
           name,
           image,

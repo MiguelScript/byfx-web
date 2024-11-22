@@ -15,6 +15,11 @@ const team = {
 			of: [{ type: "block" }],
 		},
 		{
+			name: "audio",
+			title: "audio",
+			type: "file",
+		},
+		{
 			name: "equitment",
 			title: "Equipos",
 			type: "array",

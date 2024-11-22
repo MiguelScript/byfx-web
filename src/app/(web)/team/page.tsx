@@ -7,6 +7,8 @@ import Image from "next/image";
 
 export default async function Team() {
 	const teamContent = await getTeamContent();
+	const audio = teamContent.audio.asset.url;
+
 	return (
 		<>
 			<div className="mt-6">
@@ -26,13 +28,25 @@ export default async function Team() {
 						<div className="flex gap-2 items-center">
 							<h1 className="">somos</h1>
 							<h1 className=" text-[#ACFF6A]">byfx</h1>
-							<AudioPlayer classNames={{ container: "hidden lg:flex", wave: "h-12 lg:h-8 2xl:h-12  w-40 lg:w-32 2xl:w-40" , icon: "h-8 lg:h-3 2xl:h-8"}} />
+							<AudioPlayer
+								audio={audio}
+								classNames={{
+									container: "hidden lg:flex",
+									wave: "h-12 lg:h-8 2xl:h-12  w-40 lg:w-32 2xl:w-40",
+									icon: "h-8 lg:h-3 2xl:h-8",
+								}}
+							/>
 						</div>
 						<div className="flex gap-2 mt-4 2xl:mt-1 items-center">
 							<h1 className=" ">somos</h1>
 							<h1 className=" text-[#ACFF6A]">Productores</h1>
 						</div>
-						<AudioPlayer classNames={{ container: "flex  lg:hidden w-fit mt-6 mb-2 xl:mt-4" }} />
+						<AudioPlayer
+							audio={audio}
+							classNames={{
+								container: "flex  lg:hidden w-fit mt-6 mb-2 xl:mt-4",
+							}}
+						/>
 
 						<div className="text-lg pt-4 text-[#888888] font-sans font-normal leading-[22px] xl:pr-12 2xl:pr-4">
 							<PortableText value={teamContent.description} />
