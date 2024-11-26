@@ -41,6 +41,16 @@ export async function getServices(): Promise<service[]> {
     }`);
 }
 
+export async function getServicesList(): Promise<
+	Pick<service, "_id" | "name" | "position">[]
+> {
+	return client.fetch(groq`*[_type == "services"] | order(position asc){
+        _id,
+        name,
+        position,
+    }`);
+}
+
 export async function getService({ _id }: { _id: string }): Promise<service> {
 	return client.fetch(groq`*[_type == "services" && _id == $serviceId][0]`, {
 		serviceId: _id,
@@ -62,6 +72,14 @@ export async function getTeamContent(): Promise<any> {
           image,
           size
         }
+      }`;
+	const data = await client.fetch(query);
+	return data;
+}
+
+export async function getQuoteContent(): Promise<any> {
+	const query = `*[_type == "quote"][0]{
+        countries
       }`;
 	const data = await client.fetch(query);
 	return data;

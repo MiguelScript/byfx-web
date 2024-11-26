@@ -17,13 +17,19 @@ export const Navbar = () => {
 	return (
 		<nav className="flex px-4 xl:px-16 xl:pt-10 pb-4 pt-4 lg:pt-0">
 			<div className="grow">
-				<Image
-					src="/assets/img/logo-byfx.png"
-					width={120}
-					height={120}
-					alt="logo"
-					className="2xl:w-[150px]"
-				></Image>
+				<Link
+					href={"/"}
+					className=""
+					onClick={() => setCurrentPathPosition(0)}
+				>
+					<Image
+						src="/assets/img/logo-byfx.png"
+						width={120}
+						height={120}
+						alt="logo"
+						className="2xl:w-[150px]"
+					></Image>
+				</Link>
 			</div>
 			<div className="hidden lg:flex items-center font-mono tracking-[.25em]">
 				<div className="flex gap-x-16 items-center">

@@ -2,10 +2,13 @@ import { Button } from "@/components/buttons/button";
 import { CardGeneral } from "@/components/cards/CardGeneral";
 import { Social } from "@/components/footer/Social";
 import { ContactForm } from "@/components/forms/ContactForm";
-import { getSocialInfo } from "@/sanity/sanity-utils";
+import { getQuoteContent, getServicesList, getSocialInfo } from "@/sanity/sanity-utils";
 
 export default async function Contact() {
 	const socialNetworks = await getSocialInfo();
+	const quoteContent = await getQuoteContent();
+	const servicesList = await getServicesList();
+	
 	const whatsappLink =
 		socialNetworks.find((network) => network.name === "whatsapp")?.url ?? "";
 	return (
@@ -13,7 +16,7 @@ export default async function Contact() {
 			<div className="px-4 lg:px-0 grow flex flex-col items-center justify-center">
 				<div className="relative w-full lg:max-w-3xl xl:max-w-3xl ">
 					<CardGeneral extraClass="!bg-[#f2f2f21c] w-full w-full rounded-[20px]">
-						<ContactForm whatsapp={whatsappLink} />
+						<ContactForm whatsapp={whatsappLink} countries={quoteContent.countries} servicesList={servicesList}/>
 					</CardGeneral>
 
 					<div className="card-bg-1 absolute -z-10 top-0 w-full h-full rounded-[20px]"></div>

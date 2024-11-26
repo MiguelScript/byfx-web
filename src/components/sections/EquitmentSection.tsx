@@ -11,7 +11,7 @@ export function EquitmentSection({
 	}[];
 }) {
 	return (
-		<div className="flex flex-wrap gap-4 lg:grid-cols-4 lg:gap-12 pt-6">
+		<div className="flex flex-wrap gap-8 lg:grid-cols-4 lg:gap-12 pt-6">
 			{equitment.map((item, idx: number) => (
 				<div key={idx} className="flex items-center justify-center w-fit">
 					<Image

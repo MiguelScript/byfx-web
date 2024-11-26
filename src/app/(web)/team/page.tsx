@@ -24,7 +24,7 @@ export default async function Team() {
 							></Image>
 						</div>
 					</div>
-					<div className="xl:pt-12 font-mono text-[50px] leading-8 sm:text-6xl xl:text-7xl xl:leading-[60px] 2xl:text-8xl 2xl:leading-[100px] max-w-2xl">
+					<div className="pl-2 lg:pl-0 xl:pt-12 font-mono text-[50px] leading-8 sm:text-6xl xl:text-7xl xl:leading-[60px] 2xl:text-8xl 2xl:leading-[100px] max-w-2xl">
 						<div className="flex gap-2 items-center">
 							<h1 className="">somos</h1>
 							<h1 className=" text-[#ACFF6A]">byfx</h1>

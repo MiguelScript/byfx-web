@@ -26,12 +26,14 @@ export const NavbarMobile = () => {
 				>
 					<div className="bg-[#F2F2F21A] w-full grow py-3 px-5 flex flex-col items-start rounded-b-2xl">
 						<Drawer.Title className="font-medium mb-2 pl-7 pt-1 text-zinc-900 flex justify-start">
-							<Image
-								src="/assets/img/logo-byfx.png"
-								width={150}
-								height={150}
-								alt="logo"
-							></Image>
+							<Link href={"/"} className="" onClick={() => setIsOpen(false)}>
+								<Image
+									src="/assets/img/logo-byfx.png"
+									width={150}
+									height={150}
+									alt="logo"
+								></Image>
+							</Link>
 						</Drawer.Title>
 						<div className="w-full">
 							<Drawer.Description className="text-zinc-600 mb-2">

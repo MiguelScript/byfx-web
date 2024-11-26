@@ -6,7 +6,7 @@ export default async function Page() {
 
 	return (
 		<>
-			<div className="grid grid-cols-1 xl:grid-cols-3 mt-10 gap-y-8 mx-auto gap-x-12">
+			<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-10 gap-y-8 mx-auto gap-x-12">
 				{services.map((service) => (
 					<CardService
 						key={service._id}

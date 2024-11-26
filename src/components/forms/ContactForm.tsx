@@ -14,6 +14,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "../ui/select";
+import service from "@/types/service";
 
 const initialValues: ContactFormProps = {
 	fullName: "",
@@ -25,7 +26,16 @@ const initialValues: ContactFormProps = {
 	proyectDescription: "",
 };
 
-export const ContactForm = ({ whatsapp }: { whatsapp: string }) => {
+export const ContactForm = ({
+	whatsapp,
+	countries,
+	servicesList,
+}: {
+	whatsapp: string;
+	countries: string;
+	servicesList: Pick<service, "_id" | "name" | "position">[];
+}) => {
+	const countriesOptions = countries.split(",");
 	const sendForm = (values: ContactFormProps) => {
 		console.log(values);
 	};
@@ -111,9 +121,15 @@ export const ContactForm = ({ whatsapp }: { whatsapp: string }) => {
 								<SelectValue placeholder="Seleccione un país" className="" />
 							</SelectTrigger>
 							<SelectContent className="rounded-[10px] bg-[#252727] disabled:bg-gray-900 border-none text-[#F3F3F3]">
-								<SelectItem value="venezuela">Venezuela</SelectItem>
-								<SelectItem value="chile">Chile</SelectItem>
-								<SelectItem value="colombia">Colombia</SelectItem>
+								{countriesOptions.map((country: string) => (
+									<SelectItem
+										key={country}
+										value={country}
+										className="capitalize"
+									>
+										{country}
+									</SelectItem>
+								))}
 							</SelectContent>
 						</Select>
 					</div>
@@ -140,7 +156,7 @@ export const ContactForm = ({ whatsapp }: { whatsapp: string }) => {
 								setFieldValue("serviceType", e);
 							}}
 							name="serviceType"
-							defaultValue={"video"}
+							defaultValue={servicesList[0]._id}
 						>
 							<SelectTrigger
 								className={`mt-2 min-h-[40px] rounded-[10px] bg-[#1B1B1B66] placeholder:text-[#888888] disabled:bg-gray-900 border-none ${values.serviceType === "" ? "text-[#888888] " : "text-[#F3F3F3]"}`}
@@ -148,9 +164,13 @@ export const ContactForm = ({ whatsapp }: { whatsapp: string }) => {
 								<SelectValue placeholder="Seleccione..." />
 							</SelectTrigger>
 							<SelectContent className="rounded-[10px] bg-[#252727] disabled:bg-gray-900 border-none text-[#F3F3F3]">
-								<SelectItem value="video">Video</SelectItem>
-								<SelectItem value="branding">Branding</SelectItem>
-								<SelectItem value="web">Diseño web</SelectItem>
+								{servicesList.map(
+									(service: Pick<service, "_id" | "name" | "position">) => (
+										<SelectItem key={service._id} value={service._id}>
+											{service.name}
+										</SelectItem>
+									)
+								)}
 							</SelectContent>
 						</Select>
 					</div>
@@ -170,7 +190,12 @@ export const ContactForm = ({ whatsapp }: { whatsapp: string }) => {
 					/>
 				</div>
 				<div className="flex mt-8 gap-4 justify-center font-mono tracking-[0.25em] text-lg">
-					<Button variant="dark" type="submit" disabled={isSubmitting} classNames="!px-16">
+					<Button
+						variant="dark"
+						type="submit"
+						disabled={isSubmitting}
+						classNames="!px-16"
+					>
 						<p className="">Enviar</p>
 					</Button>
 					<Button variant="dark" classNames="hidden lg:flex">
@@ -179,7 +204,6 @@ export const ContactForm = ({ whatsapp }: { whatsapp: string }) => {
 						</a>
 					</Button>
 				</div>
-
 			</form>
 		</div>
 	);

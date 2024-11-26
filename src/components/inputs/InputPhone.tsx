@@ -58,6 +58,13 @@ export const InputPhone = ({
 					value={value}
 					onChange={(phone) => onChange(phone)}
 					placeholder={placeholder}
+					className="phone-input-custom-class"
+					countrySelectorStyleProps={{
+						dropdownStyleProps: {
+							className: "!bg-[#252727] !outline-none phone-input-custom-class-dropdown",
+							listItemClassName: " hover:!text-[#252727]"
+						}
+					}}
 				/>
 				<div className="flex flex-col">
 					{helperText && (
