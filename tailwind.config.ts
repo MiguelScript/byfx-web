@@ -15,7 +15,10 @@ const config: Config = {
     		},
     		fontFamily: {
     			sans: ["var(--font-montserrat)"],
-    			mono: ["var(--font-bebas-neue)"]
+    			mono: ["var(--font-bebas-neue)"],
+    			team1: ["var(--font-aguafina-script)"],
+    			team2: ["var(--font-alumni-sans)"],
+    			team3: ["var(--font-amatic-sc)"],
     		},
     		borderRadius: {
     			lg: 'var(--radius)',

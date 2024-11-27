@@ -1,10 +1,60 @@
 .team-img-container {
-      @apply w-[300px] h-[400px] lg:w-[500px] lg:h-[600px] xl:w-[500px] xl:h-[600px] 2xl:w-[600px] 2xl:h-[700px]
+	@apply w-[300px] h-[400px] lg:w-[500px] lg:h-[600px] xl:w-[500px] xl:h-[600px] 2xl:w-[600px] 2xl:h-[700px];
 }
 
 .team-img {
 	width: 100% !important;
 	height: 100% !important;
 	object-fit: cover;
-      opacity: 0.5;
+	opacity: 0.5;
+}
+
+.text-slider {
+	position: relative;
+	width: 350px; /* Ajusta según tu contenido */
+	height: 72px; /* Ajusta según la altura del texto */
+	/* overflow: hidden; */
+}
+
+.text-slider span {
+	top: 0;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: flex-start;
+	/* align-items: end; */
+	text-transform: uppercase;
+	opacity: 0; /* Oculta el texto por defecto */
+	transform: translateY(100%); /* Empieza fuera del área visible */
+	animation: slideInOut 6s infinite;
+}
+
+.text-slider span:nth-child(1) {
+	animation-delay: 0s; /* Primer texto sin retraso */
+}
+
+.text-slider span:nth-child(2) {
+	animation-delay: 2s; /* Segundo texto inicia después del primero */
+}
+
+.text-slider span:nth-child(3) {
+	animation-delay: 4s; /* Segundo texto inicia después del primero */
+}
+
+@keyframes slideInOut {
+	0% {
+		opacity: 0;
+		transform: translateY(100%); /* Empieza entrando desde abajo */
+	}
+	10%,
+	30% {
+		opacity: 1;
+		transform: translateY(0); /* Texto en posición visible */
+	}
+	40%,
+	100% {
+		opacity: 0;
+		transform: translateY(-100%); /* Sale hacia arriba */
+	}
 }

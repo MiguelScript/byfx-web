@@ -37,9 +37,13 @@ export default async function Team() {
 								}}
 							/>
 						</div>
-						<div className="flex gap-2 mt-4 2xl:mt-1 items-center">
+						<div className="flex gap-2 mt-4 2xl:mt-1 items-start">
 							<h1 className=" ">somos</h1>
-							<h1 className=" text-[#ACFF6A]">Productores</h1>
+							<div className="text-slider">
+								<span className="font-team2 text-[95px]">Productores</span>
+								<span className="font-team1 text-[75px]">Profesionales</span>
+								<span className="font-team3 text-[85px]">Proactivos</span>
+							</div>
 						</div>
 						<AudioPlayer
 							audio={audio}

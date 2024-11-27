@@ -6,6 +6,32 @@
 	@apply bg-[#1B1B1B];
 }
 
-.btn-cotizar {
-	background-image: url("/assets/img/btn-background-min.png");
+.btn-cotizar::before {
+	content: "";
+	position: absolute;
+	width: 100px;
+	height: 100%;
+	top: 0;
+	padding: 0 30px;
+	animation: colorChange 3s infinite alternate;
+	transition: all ease;
+	left: 0;
+}
+
+
+@keyframes colorChange {
+	0% {
+		transform: translateX(0);
+		background-color: #3498db; /* Azul */
+		border-top-left-radius: 20px;
+		border-bottom-left-radius: 20px;
+
+	}
+	100% {
+		/* background-color: #e74c3c; */
+		transform: translateX(100%);
+		background-image: url("/assets/img/btn-background-min.png");
+		border-top-right-radius: 20px;
+		border-bottom-right-radius: 20px;
+	}
 }

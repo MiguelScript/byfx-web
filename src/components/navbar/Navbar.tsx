@@ -17,11 +17,7 @@ export const Navbar = () => {
 	return (
 		<nav className="flex px-4 xl:px-16 xl:pt-10 pb-4 pt-4 lg:pt-0">
 			<div className="grow">
-				<Link
-					href={"/"}
-					className=""
-					onClick={() => setCurrentPathPosition(0)}
-				>
+				<Link href={"/"} className="" onClick={() => setCurrentPathPosition(0)}>
 					<Image
 						src="/assets/img/logo-byfx.png"
 						width={120}
@@ -53,8 +49,8 @@ export const Navbar = () => {
 						className=""
 						onClick={() => setCurrentPathPosition(3)}
 					>
-						<button className="rounded-[20px] px-8 py-2   btn-cotizar">
-							<p className="text-xl 2xl:text-2xl">Cotizar</p>
+						<button className="btn-cotizar rounded-[20px] py-2 bg-[#1B1B1B] relative w-[200px]">
+							<p className="text-xl 2xl:text-2xl relative z-10">Cotizar</p>
 						</button>
 					</Link>
 				</div>
