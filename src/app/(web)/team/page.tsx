@@ -40,9 +40,9 @@ export default async function Team() {
 						<div className="flex gap-2 mt-4 2xl:mt-1 items-start">
 							<h1 className=" ">somos</h1>
 							<div className="text-slider">
-								<span className="font-team2 text-[95px]">Productores</span>
-								<span className="font-team1 text-[75px]">Profesionales</span>
-								<span className="font-team3 text-[85px]">Proactivos</span>
+								<span className="font-team2 text-[95px] leading-[106px] capitalize">Productores</span>
+								<span className="font-team1 text-[75px] leading-[106px] capitalize">Profesionales</span>
+								<span className="font-team3 text-[85px] leading-[106px] capitalize">Proactivos</span>
 							</div>
 						</div>
 						<AudioPlayer

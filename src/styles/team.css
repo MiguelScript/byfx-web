@@ -23,9 +23,7 @@
 	height: 100%;
 	display: flex;
 	justify-content: flex-start;
-	/* align-items: end; */
-	text-transform: uppercase;
-	opacity: 0; /* Oculta el texto por defecto */
+	opacity: 0; 
 	transform: translateY(100%); /* Empieza fuera del área visible */
 	animation: slideInOut 6s infinite;
 }
@@ -45,16 +43,16 @@
 @keyframes slideInOut {
 	0% {
 		opacity: 0;
-		transform: translateY(100%); /* Empieza entrando desde abajo */
+		transform: translateY(100%); 
 	}
 	10%,
 	30% {
 		opacity: 1;
-		transform: translateY(0); /* Texto en posición visible */
+		transform: translateY(0); 
 	}
 	40%,
 	100% {
 		opacity: 0;
-		transform: translateY(-100%); /* Sale hacia arriba */
+		transform: translateY(-100%); 
 	}
 }

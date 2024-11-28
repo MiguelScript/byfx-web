@@ -29,7 +29,7 @@ export const AudioPlayer = ({ audio, classNames }: AudioPlayerProps) => {
 
 	return (
 		<div
-			className={`h-[55px] lg:h-[40px] 2xl:h-[55px] bg-[#F2F2F21A] rounded-[100px] flex items-center pl-1 pr-4 lg:pr-2 2xl:pr-4 gap-4 lg:gap-2 2xl:gap-4 relative lg:-top-1 ${classNames?.container}`}
+			className={`h-[55px] lg:h-[40px] 2xl:h-[55px] bg-[#F2F2F21A] rounded-[100px] flex items-center pl-1 pr-2 gap-2 lg:gap-2 2xl:gap-3 relative lg:-top-1 ${classNames?.container}`}
 		>
 			{/* <audio
 				ref={audioPlayerRef}
@@ -68,8 +68,8 @@ export const AudioPlayer = ({ audio, classNames }: AudioPlayerProps) => {
 			</div>
 			<div className="overflow-hidden">
 				<WavesurferPlayer
-					height={100}
-					width={150}
+					height={45}
+					width={160}
 					progressColor="#ACFF6A"
 					waveColor="#888888"
 					cursorWidth={0}
