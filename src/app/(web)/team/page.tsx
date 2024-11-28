@@ -24,8 +24,8 @@ export default async function Team() {
 							></Image>
 						</div>
 					</div>
-					<div className="pl-2 lg:pl-0 xl:pt-12 font-mono text-[50px] leading-8 sm:text-6xl xl:text-7xl xl:leading-[60px] 2xl:text-8xl 2xl:leading-[100px] max-w-2xl">
-						<div className="flex gap-2 items-center">
+					<div className="pl-2 lg:pl-0 xl:pt-12 font-mono text-[60px] leading-8 sm:text-6xl xl:text-7xl xl:leading-[60px] 2xl:text-8xl 2xl:leading-[100px] max-w-2xl">
+						<div className="flex gap-3 xl:gap-4 items-center">
 							<h1 className="">somos</h1>
 							<h1 className=" text-[#ACFF6A]">byfx</h1>
 							<AudioPlayer
@@ -37,12 +37,12 @@ export default async function Team() {
 								}}
 							/>
 						</div>
-						<div className="flex gap-2 mt-4 2xl:mt-1 items-start">
+						<div className="flex gap-3 xl:gap-4 mt-8 sm:mt-4 2xl:mt-1 items-start">
 							<h1 className=" ">somos</h1>
-							<div className="text-slider">
-								<span className="font-team2 text-[95px] leading-[106px] capitalize">Productores</span>
-								<span className="font-team1 text-[75px] leading-[106px] capitalize">Profesionales</span>
-								<span className="font-team3 text-[85px] leading-[106px] capitalize">Proactivos</span>
+							<div className="text-slider overflow-hidden w-[200px] h-[72px] xl:w-[450px] xl:h-[100px]">
+								<span className="font-team2 text-[59px] 2xl:text-[105px] leading-[106px] capitalize -top-[36px] sm:-top-[25px] 2xl:-top-[9px]">Productores</span>
+								<span className="font-team1 text-[50px] 2xl:text-[85px] leading-[106px] capitalize -top-[30px] sm:-top-[20px] 2xl:top-1">Profesionales</span>
+								<span className="font-team3 text-[53px] 2xl:text-[90px] leading-[106px] capitalize -top-[38px] sm:-top-[28px] 2xl:-top-[8px]">Proactivos</span>
 							</div>
 						</div>
 						<AudioPlayer
