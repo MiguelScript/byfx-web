@@ -49,7 +49,7 @@ export const Navbar = () => {
 						className=""
 						onClick={() => setCurrentPathPosition(3)}
 					>
-						<button className="btn-cotizar rounded-[20px] py-2 bg-[#1B1B1B] relative w-[200px]">
+						<button className="btn-cotizar rounded-[15px] py-2  relative w-[200px]">
 							<p className="text-xl 2xl:text-2xl relative z-10">Cotizar</p>
 						</button>
 					</Link>
