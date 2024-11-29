@@ -11,7 +11,7 @@ export default async function Team() {
 
 	return (
 		<>
-			<div className="mt-6">
+			<div className="pt-6">
 				<div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-12">
 					<div className="hidden lg:flex justify-center  md:justify-end">
 						<div className="team-img-container ">
@@ -39,10 +39,16 @@ export default async function Team() {
 						</div>
 						<div className="flex gap-3 xl:gap-4 mt-8 sm:mt-4 2xl:mt-1 items-start">
 							<h1 className=" ">somos</h1>
-							<div className="text-slider overflow-hidden w-[200px] h-[72px] xl:w-[450px] xl:h-[100px]">
-								<span className="font-team2 text-[59px] 2xl:text-[105px] leading-[106px] capitalize -top-[36px] sm:-top-[25px] 2xl:-top-[9px]">Productores</span>
-								<span className="font-team1 text-[50px] 2xl:text-[85px] leading-[106px] capitalize -top-[30px] sm:-top-[20px] 2xl:top-1">Profesionales</span>
-								<span className="font-team3 text-[53px] 2xl:text-[90px] leading-[106px] capitalize -top-[38px] sm:-top-[28px] 2xl:-top-[8px]">Proactivos</span>
+							<div className="text-slider overflow-hidden max-[375px]:-top-4 -top-4 sm:-top-2 xl:-top-3 2xl:-top-2 w-[220px] max-[320px]:w-[200px] sm:w-[250px] h-[60px] xl:w-[450px] xl:h-[120px]">
+								<span className="font-team2 max-[400px]:text-[55px] text-[59px] xl:text-[75px] 2xl:text-[100px] leading-[106px] capitalize max-[375px]:-top-[20px] -top-[20px] sm:-top-[18px] xl:-top-[13px] 2xl:top-[4px]">
+									Productores
+								</span>
+								<span className="font-team1 text-[50px] xl:text-[65px] 2xl:text-[83px] leading-[106px] capitalize max-[375px]:-top-[15px] -top-[14px] sm:-top-[10px] xl:-top-[4px] 2xl:top-3">
+									Profesionales
+								</span>
+								<span className="font-team3 text-[53px] xl:text-[65px] 2xl:text-[85px] leading-[106px] capitalize max-[375px]:-top-[22px] -top-[23px] sm:-top-[18px] xl:-top-[13px] 2xl:-top-[0px]">
+									Proactivos
+								</span>
 							</div>
 						</div>
 						<AudioPlayer
