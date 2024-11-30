@@ -1,0 +1,25 @@
+.react-international-phone-input-container {
+	@apply min-h-[40px];
+}
+
+.react-international-phone-country-selector-button {
+	@apply !bg-[#252727] !border-none !rounded-l-[10px] !px-2 !py-2 !h-full;
+}
+
+.react-international-phone-input {
+	@apply !bg-[#1B1B1B66] !border-none !rounded-r-[10px] grow !min-h-[40px] placeholder:!text-[#888888] !text-[#F3F3F3] !text-base;
+}
+
+.phone-input-custom-class-dropdown::-webkit-scrollbar {
+	display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.phone-input-custom-class-dropdown {
+	--react-international-phone-dropdown-item-text-color: "#F3F3F3",
+		--react-international-phone-selected-dropdown-item-text-color: "#252727";
+	--react-international-phone-selected-dropdown-item-dial-code-color: "#252727";
+	--react-international-phone-dropdown-item-font-size: "12px";
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}

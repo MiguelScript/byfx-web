@@ -8,59 +8,29 @@
 	}
 }
 
-.app-bg {
-	background-image: url("/assets/img/byfx-background2-min.png");
-}
-
-.show-bg-home .bg-home {
-	position: absolute;
-
-	background-image: url("/assets/img/drone-flying-background.png");
-	background-blend-mode: soft-light;
-	@apply absolute w-screen h-screen top-0 -z-10 opacity-60 bg-cover;
-}
-
-.card-bg-1 {
-	background-image: url("/assets/img/background-2.png");
-	background-size: contain;
-	mix-blend-mode: screen;
-}
-
-.service-image {
-	background-position-x: center;
-}
-
-.react-international-phone-input-container {
-	@apply min-h-[40px];
-}
-
-.react-international-phone-country-selector-button {
-	@apply !bg-[#252727] !border-none !rounded-l-[10px] !px-2 !py-2 !h-full;
-}
-
-.react-international-phone-input {
-	@apply !bg-[#1B1B1B66] !border-none !rounded-r-[10px] grow !min-h-[40px] placeholder:!text-[#888888] !text-[#F3F3F3] !text-base;
-}
-
-.phone-input-custom-class-dropdown::-webkit-scrollbar {
-	display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.phone-input-custom-class-dropdown {
-	--react-international-phone-dropdown-item-text-color: "#F3F3F3",
-		--react-international-phone-selected-dropdown-item-text-color: "#252727";
-	--react-international-phone-selected-dropdown-item-dial-code-color: "#252727";
-	--react-international-phone-dropdown-item-font-size: "12px";
-	-ms-overflow-style: none; /* IE and Edge */
-	scrollbar-width: none; /* Firefox */
-}
-
-@import "../styles/buttons.css";
-@import "../styles/team.css";
-
 @layer base {
 	:root {
 		--radius: 0.5rem;
 	}
 }
+
+.app-bg {
+	background-image: url("/assets/img/byfx-background2-min.png");
+}
+
+/* .app-layout::before {
+	content: '';
+	width: 100vw;
+	height: 100vh;
+	display: block;
+	position: absolute;
+	z-index: -10;
+	background-image: url("/assets/img/byfx-background2-min.png");
+} */
+
+@import "../styles/components/buttons.css";
+@import "../styles/components/input-phone.css";
+@import "../styles/home.css";
+@import "../styles/team.css";
+@import "../styles/services.css";
+@import "../styles/contact.css";
