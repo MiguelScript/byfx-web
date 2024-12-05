@@ -1,6 +1,7 @@
 import HomeBackground from "@/components/background/HomeBackground";
 import { Navbar } from "@/components/navbar/Navbar";
 import "animate.css";
+import "swiper/css";
 
 export default function layout({
 	children,

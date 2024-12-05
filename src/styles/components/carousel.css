@@ -1,0 +1,7 @@
+.custom-prev, .custom-next {
+      @apply !rounded-full !bg-[#F2F2F21A] w-12 h-12 flex items-center justify-center !p-0
+}
+
+.custom-next {
+      @apply rotate-180
+}

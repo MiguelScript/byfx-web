@@ -26,6 +26,17 @@ const services = {
 			title: "Posición",
 			type: "number",
 		},
+		{
+			name: "proyects",
+			title: "Proyectos",
+			type: "array",
+			of: [
+				{
+					type: "reference",
+					to: [{ type: "proyects" }],
+				},
+			],
+		},
 	],
 };
 

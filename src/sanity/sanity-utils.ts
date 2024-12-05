@@ -84,3 +84,28 @@ export async function getQuoteContent(): Promise<any> {
 	const data = await client.fetch(query);
 	return data;
 }
+
+export async function getProyectsByServiceId({
+	_id,
+}: {
+	_id: string;
+}): Promise<service> {
+	return client.fetch(
+		groq`*[_type == "services" && _id == $serviceId][0] {
+  name,
+  description,
+  image,
+  position,
+  proyects[]->{
+    client,
+    title,
+    resourceType,
+    link,
+    image
+  }
+}`,
+		{
+			serviceId: _id,
+		}
+	);
+}

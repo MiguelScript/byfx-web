@@ -5,7 +5,8 @@ import home from "./home";
 import team from "./team";
 import teamBrand from "./team-brand";
 import quote from "./quote";
+import proyects from "./proyects";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-	types: [home, socialNetworks, services, team, teamBrand, quote],
+	types: [home, socialNetworks, proyects, team, teamBrand, quote, services],
 };
