@@ -11,7 +11,7 @@ export default async function Page({
 
 	return (
 		<div className="xl:pt-12">
-			<ProyectCarousel proyects={proyects} />
+			{proyects && <ProyectCarousel proyects={proyects} />}
 		</div>
 	);
 }

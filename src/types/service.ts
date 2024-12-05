@@ -4,7 +4,7 @@ type service = {
 	description: string;
 	position: number;
 	image: string;
-	proyects: proyect[];
+	proyects?: proyect[];
 };
 
 export type proyect = {
