@@ -1,7 +1,7 @@
 .show-bg-home .bg-home {
 	position: absolute;
 
-	background-image: url("/assets/img/drone-flying-background.png");
-	background-blend-mode: soft-light;
-	@apply absolute w-screen h-screen top-0 -z-10 opacity-60 bg-cover;
+	background-image: url("/assets/img/home-bg-ws.png");
+	/* background-blend-mode: soft-light; */
+	@apply absolute w-screen h-screen top-0 -z-20  bg-cover;
 }

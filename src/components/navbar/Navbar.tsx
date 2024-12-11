@@ -45,7 +45,7 @@ export const Navbar = () => {
 				</div>
 				<div className="ml-28 min-h-[40px] relative -top-3">
 					<Link
-						href={"contact"}
+						href={"/contact"}
 						className=""
 						onClick={() => setCurrentPathPosition(3)}
 					>

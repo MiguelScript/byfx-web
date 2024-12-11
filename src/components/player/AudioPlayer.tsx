@@ -58,7 +58,7 @@ export const AudioPlayer = ({ audio, classNames }: AudioPlayerProps) => {
 					></Image>
 				) : (
 					<Image
-						src="/assets/icons/nav-icon.svg"
+						src="/assets/icons/pause-icon.svg"
 						width={16}
 						height={16}
 						alt="logo"

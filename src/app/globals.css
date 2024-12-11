@@ -14,19 +14,38 @@
 	}
 }
 
+
 .app-bg {
-	background-image: url("/assets/img/byfx-background2-min.png");
+	position: relative;
+	overflow: hidden;
 }
 
-/* .app-layout::before {
+.app-bg::after {
 	content: '';
-	width: 100vw;
-	height: 100vh;
-	display: block;
 	position: absolute;
+	background-image: url("/assets/img/layout-bg.png");
+	mix-blend-mode: screen;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
 	z-index: -10;
-	background-image: url("/assets/img/byfx-background2-min.png");
-} */
+}
+
+.show-bg-home .app-bg::before {
+	content: '';
+	position: absolute;
+	background-image: url("/assets/img/home-bg-ws.png");
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	z-index: -20;
+}
 
 .custom-prev,
 .custom-next {

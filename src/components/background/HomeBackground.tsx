@@ -15,5 +15,5 @@ export default function HomeBackground() {
 	}, [pathname]);
 
 	// return <div className="bg-home"></div>;
-	return <></>;
+	return <></>
 }
