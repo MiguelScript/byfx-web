@@ -1,13 +1,14 @@
 import { Button } from "@/components/buttons/button";
 import { AudioPlayer } from "@/components/player/AudioPlayer";
 import { EquitmentSection } from "@/components/sections/EquitmentSection";
-import { getTeamContent } from "@/sanity/sanity-utils";
+import { getTeamContent, getWhatsappLink } from "@/sanity/sanity-utils";
 import { PortableText } from "next-sanity";
 import Image from "next/image";
 
 export default async function Team() {
 	const teamContent = await getTeamContent();
 	const audio = teamContent.audio.asset.url;
+	const { url: whatsappLink } = await getWhatsappLink();
 
 	return (
 		<>
@@ -65,7 +66,7 @@ export default async function Team() {
 						<div className="max-h-8 mt-8">
 							<Button classNames="flex">
 								<a
-									href={""}
+									href={whatsappLink}
 									target="_blank"
 									className="text-[#ACFF6A] font-mono tracking-[0.25em] text-lg"
 								>

@@ -12,8 +12,19 @@ export async function getSocialNetworks(): Promise<socialNetworks[]> {
     }`);
 }
 
-export async function getSocialInfo(): Promise<socialNetworks[]> {
+export async function getSocialInfoHome(): Promise<socialNetworks[]> {
 	return client.fetch(groq`*[_type == "social-networks" && showInHome == true] | order(posicion desc){
+        _id,
+        name,
+        url,
+        "image": image.asset->url,
+        imgSize,
+        posicion
+    }`);
+}
+
+export async function getWhatsappLink(): Promise<socialNetworks> {
+	return client.fetch(groq`*[_type == "social-networks" && name == "whatsapp"][0] {
         _id,
         name,
         url,

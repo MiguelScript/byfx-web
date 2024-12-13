@@ -20,7 +20,7 @@ const proyects = {
 			options: {
 				list: [
 					{ title: "Enlace", value: "link" },
-					{ title: "Imagen", value: "image" },
+					{ title: "Archivo", value: "file" },
 				],
 			},
 		},
@@ -37,7 +37,7 @@ const proyects = {
 			options: {
 				hotspot: true,
 			},
-			hidden: ({ document }: any) => document?.resourceType !== "image",
+			hidden: ({ document }: any) => document?.resourceType !== "file",
 		},
 	],
 };

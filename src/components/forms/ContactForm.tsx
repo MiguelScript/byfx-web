@@ -26,6 +26,35 @@ const initialValues: ContactFormProps = {
 	proyectDescription: "",
 };
 
+const sendForm = async (formData: ContactFormProps) => {
+	try {
+		console.log(formData);
+		const response = await fetch("/api/send-email", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				to: formData.email,
+				subject: "Hola, quiero una demo",
+				text: "Hola, este es un mensaje de prueba.",
+				html: `<p>Hola, este es un mensaje de <strong>prueba</strong>.</p>`,
+			}),
+		});
+
+		console.log("object");
+		const data = await response.json();
+
+		if (response.ok) {
+			console.log("Correo enviado:", data);
+		} else {
+			console.error("Error al enviar el correo:", data);
+		}
+	} catch (error) {
+		console.error("Error al llamar a la API:", error);
+	}
+};
+
 export const ContactForm = ({
 	whatsapp,
 	countries,
@@ -36,13 +65,10 @@ export const ContactForm = ({
 	servicesList: Pick<service, "_id" | "name" | "position">[];
 }) => {
 	const countriesOptions = countries.split(",");
-	const sendForm = (values: ContactFormProps) => {
-		console.log(values);
-	};
 
 	const formik = useFormik({
 		initialValues,
-		onSubmit: (values) => sendForm(values),
+		onSubmit: async (values) => await sendForm(values),
 		validationSchema: contactFormSchema,
 	});
 

@@ -1,7 +1,40 @@
-.show-bg-home .bg-home {
+.show-bg-home .app-bg::before {
+	content: "";
 	position: absolute;
-
 	background-image: url("/assets/img/home-bg-ws.png");
-	/* background-blend-mode: soft-light; */
-	@apply absolute w-screen h-screen top-0 -z-20  bg-cover;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	z-index: -20;
+	background-position-x: 0px;
+}
+
+@media (390px <= width <= 410px) {
+	.show-bg-home .app-bg::before {
+		background-position-x: -831px;
+		background-position-y: -45px;
+	}
+}
+
+@media (410px < width <= 500px) {
+	.show-bg-home .app-bg::before {
+		background-position-x: -890px;
+		background-position-y: -45px;
+	}
+}
+
+@media (500px < width <= 800px) {
+	.show-bg-home .app-bg::before {
+		background-position-x: -700px;
+		background-position-y: -45px;
+	}
+}
+
+@media (800px < width <= 1440px) {
+	.show-bg-home .app-bg::before {
+		background-position-x: right;
+	}
 }

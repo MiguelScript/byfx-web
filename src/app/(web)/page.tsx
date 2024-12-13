@@ -1,8 +1,8 @@
 import { Social } from "@/components/footer/Social";
-import { getHomeTexts, getSocialInfo } from "@/sanity/sanity-utils";
+import { getHomeTexts, getSocialInfoHome } from "@/sanity/sanity-utils";
 
 export default async function Home() {
-	const socialNetworks = await getSocialInfo();
+	const socialNetworks = await getSocialInfoHome();
 	const texts = await getHomeTexts();
 	const content = texts[0].content;
 	const highlight = content.split("*").filter((x) => x !== "");
