@@ -59,7 +59,7 @@ export const AssetSection = ({
 						allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 						referrerPolicy="strict-origin-when-cross-origin"
 						allowFullScreen
-						className={`rounded-[20px]   ${isLoading ? "invisible absolute" : "visible"}`}
+						className={`rounded-[20px] ${isLoading ? "invisible absolute" : "visible"}`}
 						onLoad={() => {
 							if (swiperSlide.isActive === true) {
 								setIsLoading(false);

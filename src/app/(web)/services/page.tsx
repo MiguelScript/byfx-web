@@ -1,5 +1,10 @@
 import { CardService } from "@/components/cards/CardService";
 import { getServices } from "@/sanity/sanity-utils";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Byfx | Servicios",
+};
 
 export default async function Page() {
 	const services = await getServices();

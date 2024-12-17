@@ -8,6 +8,11 @@ import {
 	getSocialInfoHome,
 	getWhatsappLink,
 } from "@/sanity/sanity-utils";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Byfx | Cotizar",
+};
 
 export default async function Contact() {
 	const socialNetworks = await getSocialInfoHome();

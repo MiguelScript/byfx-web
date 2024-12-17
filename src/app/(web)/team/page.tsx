@@ -2,8 +2,13 @@ import { Button } from "@/components/buttons/button";
 import { AudioPlayer } from "@/components/player/AudioPlayer";
 import { EquitmentSection } from "@/components/sections/EquitmentSection";
 import { getTeamContent, getWhatsappLink } from "@/sanity/sanity-utils";
+import { Metadata } from "next";
 import { PortableText } from "next-sanity";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+	title: "Byfx | Equipo",
+};
 
 export default async function Team() {
 	const teamContent = await getTeamContent();
