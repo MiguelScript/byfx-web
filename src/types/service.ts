@@ -11,9 +11,9 @@ export type proyect = {
 	_id: string;
 	client: string;
 	title: string;
-	resourceType: string;
+	resourceType: "link" | "file";
 	link: string;
-	image: string;
+	file: { asset: { url: string } };
 };
 
 export default service;

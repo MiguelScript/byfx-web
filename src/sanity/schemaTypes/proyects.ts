@@ -31,11 +31,11 @@ const proyects = {
 			hidden: ({ document }: any) => document?.resourceType !== "link",
 		},
 		{
-			name: "image",
-			title: "Imagen",
-			type: "image",
+			name: "file",
+			title: "Archivo",
+			type: "file",
 			options: {
-				hotspot: true,
+				accept: ".jpg,.jpeg,.png,.gif,.svg,.mp4,.mov,.avi,.wmv", // Tipos de archivo aceptados (opcional)
 			},
 			hidden: ({ document }: any) => document?.resourceType !== "file",
 		},

@@ -112,7 +112,12 @@ export async function getProyectsByServiceId({
     title,
     resourceType,
     link,
-    image
+    file {
+          asset->{
+          _id,
+          url
+        }
+      }
   }
 }`,
 		{
