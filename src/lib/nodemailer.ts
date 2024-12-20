@@ -1,12 +1,12 @@
 import nodemailer from "nodemailer";
 
 export const transporter = nodemailer.createTransport({
-	service: "gmail",
+	host: "mail.privateemail.com",
+	port: 465,
+	secure: true, // true for 465, false for other ports
 	auth: {
-		// user: process.env.GMAIL_USER,
-		// pass: process.env.GMAIL_PASS,
-		user: "acostalugo.m@gmail.com",
-		pass: "gxvn tbfi osro xxev",
+		user: process.env.NEXT_PUBLIC_EMAIL_USER, // tu correo de Namecheap
+		pass: process.env.EMAIL_PASS, // tu contraseña de Namecheap
 	},
 });
 

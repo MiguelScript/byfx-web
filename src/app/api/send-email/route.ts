@@ -1,33 +1,35 @@
-import { transporter } from "@/lib/nodemailer";
+import { ContactFormProps } from "@/types/contactForm";
 import { NextResponse } from "next/server";
+import ejs from "ejs";
+import { transporter } from "@/lib/nodemailer";
+import { emailTemplate } from "@/templates/getEmailTemplate";
 
-interface EmailRequestBody {
+type EmailRequestBody = ContactFormProps & {
 	to: string;
 	subject: string;
-	text?: string;
-	html?: string;
-}
+};
 
 export async function POST(req: Request) {
-      const body: EmailRequestBody = await req.json();
-      const { to, subject, text, html } = body;
-
 	try {
-		await transporter.sendMail({
-			from: "acostalugo.m@gmail.com" as string, // Dirección de origen
-			to, // Dirección de destino
-			subject, // Asunto del correo
-			text, // Contenido en texto plano
-			html, // Contenido en HTML
-		});
+		const body: EmailRequestBody = await req.json();
+		const { to, subject, ...rest } = body;
+
+		const htmlToSend = await ejs.render(emailTemplate, rest);
+
+		const mailOptions = {
+			from: process.env.NEXT_PUBLIC_EMAIL_USER ?? "info@byfx.pro",
+			to: to,
+			subject: subject,
+			html: htmlToSend,
+		};
+
+		const info = await transporter.sendMail(mailOptions);
 
 		return NextResponse.json({
 			status: "success",
-			data: { message: "Correo enviado con éxito" },
+			data: { message: "Correo enviado con éxito", info },
 		});
 	} catch (error) {
-		console.error("Error al enviar correo:", error);
-
 		return NextResponse.json({
 			status: "error",
 			data: { message: "Error al enviar el correo", error },

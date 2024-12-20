@@ -15,6 +15,7 @@ import {
 	SelectValue,
 } from "../ui/select";
 import service from "@/types/service";
+import { useState } from "react";
 
 const initialValues: ContactFormProps = {
 	fullName: "",
@@ -28,21 +29,24 @@ const initialValues: ContactFormProps = {
 
 const sendForm = async (formData: ContactFormProps) => {
 	try {
-		console.log(formData);
 		const response = await fetch("/api/send-email", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
-				to: formData.email,
-				subject: "Hola, quiero una demo",
-				text: "Hola, este es un mensaje de prueba.",
-				html: `<p>Hola, este es un mensaje de <strong>prueba</strong>.</p>`,
+				to: process.env.NEXT_PUBLIC_EMAIL_USER,
+				subject: `Hola, quiero una demo - ${formData.fullName}`,
+				fullName: formData.fullName,
+				email: formData.email,
+				company: formData.company,
+				country: formData.country,
+				phone: formData.phone,
+				serviceType: formData.serviceType,
+				proyectDescription: formData.proyectDescription,
 			}),
 		});
 
-		console.log("object");
 		const data = await response.json();
 
 		if (response.ok) {
@@ -64,11 +68,21 @@ export const ContactForm = ({
 	countries: string;
 	servicesList: Pick<service, "_id" | "name" | "position">[];
 }) => {
+	const [isLoading, setIsLoading] = useState(false);
 	const countriesOptions = countries.split(",");
 
 	const formik = useFormik({
 		initialValues,
-		onSubmit: async (values) => await sendForm(values),
+		onSubmit: async (values) => {
+			setIsLoading(true);
+			await sendForm({
+				...values,
+				serviceType:
+					servicesList.find((service) => service._id === values.serviceType)
+						?.name ?? values.serviceType,
+			});
+			setIsLoading(false);
+		},
 		validationSchema: contactFormSchema,
 	});
 
@@ -199,6 +213,11 @@ export const ContactForm = ({
 								)}
 							</SelectContent>
 						</Select>
+						{touched.serviceType && errors.serviceType && (
+							<span className="text-sm text-red-500 break-words">
+								{errors.serviceType}
+							</span>
+						)}
 					</div>
 					<InputTextArea
 						text="Describa su proyecto"
@@ -221,6 +240,7 @@ export const ContactForm = ({
 						type="submit"
 						disabled={isSubmitting}
 						classNames="!px-16"
+						isLoading={isLoading}
 					>
 						<p className="">Enviar</p>
 					</Button>
