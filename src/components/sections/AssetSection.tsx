@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { proyect } from "@/types/service";
 import { useSwiperSlide } from "swiper/react";
 import Skeleton from "react-loading-skeleton";
@@ -21,7 +21,6 @@ const getFileType = (link: string): "img" | "video" | "svg" | null => {
 	}
 
 	return "video";
-
 };
 
 export const AssetSection = ({
@@ -37,10 +36,15 @@ export const AssetSection = ({
 	const link =
 		proyect.resourceType === "file" ? proyect.file.asset.url : proyect.link;
 	const fileType = getFileType(link);
+	useEffect(() => {
+		if (swiperSlide.isActive === true) {
+			console.log(isLoading);
+		}
+	}, [isLoading]);
 
 	return (
-		<div className="py-3 px-4 bg-[#F2F2F21A] rounded-[20px] mb-6 flex justify-center relative">
-			<div className="2xl:w-[1100px] 2xl:h-[600px] overflow-hidden flex justify-center items-center">
+		<div className=" px-2 py-2 xl:py-3 xl:px-4 bg-[#F2F2F21A] rounded-[20px] mb-6 flex justify-center relative">
+			<div className="w-full h-[400px] 2xl:w-[1100px] 2xl:h-[600px] overflow-hidden flex justify-center items-center">
 				{isLoading && (
 					<Skeleton
 						baseColor="#202020"

@@ -52,6 +52,8 @@
 	cursor: pointer;
 	font-size: 16px;
 	border-radius: 5px;
+
+	@apply hidden xl:block
 }
 
 @import "../styles/components/buttons.css";
