@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import { proyect } from "@/types/service";
 import { useSwiperSlide } from "swiper/react";
 import Skeleton from "react-loading-skeleton";
@@ -36,11 +36,6 @@ export const AssetSection = ({
 	const link =
 		proyect.resourceType === "file" ? proyect.file.asset.url : proyect.link;
 	const fileType = getFileType(link);
-	useEffect(() => {
-		if (swiperSlide.isActive === true) {
-			console.log(isLoading);
-		}
-	}, [isLoading]);
 
 	return (
 		<div className=" px-2 py-2 xl:py-3 xl:px-4 bg-[#F2F2F21A] rounded-[20px] mb-6 flex justify-center relative">

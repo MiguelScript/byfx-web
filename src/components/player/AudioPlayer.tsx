@@ -31,19 +31,6 @@ export const AudioPlayer = ({ audio, classNames }: AudioPlayerProps) => {
 		<div
 			className={`h-[55px] lg:h-[40px] 2xl:h-[55px] bg-[#F2F2F21A] rounded-[100px] flex items-center pl-1 pr-2 gap-2 lg:gap-2 2xl:gap-3 relative lg:-top-1 ${classNames?.container}`}
 		>
-			{/* <audio
-				ref={audioPlayerRef}
-				src={audio} // URL del audio
-				onLoadedData={() => handleLoadedData()}
-				onCanPlay={() => console.log("El audio puede empezar a reproducirse")}
-				onCanPlayThrough={() =>
-					console.log("El audio puede reproducirse completamente")
-				}
-				onError={handleError}
-				preload="auto"
-				controls
-				className="opacity-0 absolute"
-			></audio> */}
 			<div
 				onClick={() => onPlayPause()}
 				className={`relative overflow-hidden h-12 lg:h-8 2xl:h-12  w-12 lg:w-8 2xl:w-12  rounded-full bg-[#F2F2F21A] flex items-center justify-center hover:cursor-pointer hover:bg-[#1B1B1B] ${classNames?.iconContainer}`}

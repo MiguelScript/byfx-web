@@ -31,7 +31,6 @@ export const ProyectCarousel = ({ proyects }: { proyects: proyect[] }) => {
 			<Swiper
 				modules={[Navigation, A11y]}
 				slidesPerView={1}
-				/* onSwiper={(swiper) => console.log(swiper)}*/
 				onSlideChange={() => {
 					setIsLoading(true);
 				}}
