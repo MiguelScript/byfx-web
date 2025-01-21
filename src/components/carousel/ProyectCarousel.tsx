@@ -17,7 +17,7 @@ export const ProyectCarousel = ({ proyects }: { proyects: proyect[] }) => {
 
 	return (
 		<div className="flex justify-center mt-8 xl:mt-0">
-			<div className="hidden xl:flex flex-col 2xl:pt-[270px] mx-4">
+			<div className="hidden xl:flex flex-col xl:pt-[200px] 2xl:pt-[270px] mx-4">
 				<div className="custom-prev">
 					<Image
 						src="/assets/icons/arrow.svg"
@@ -53,7 +53,7 @@ export const ProyectCarousel = ({ proyects }: { proyects: proyect[] }) => {
 					</SwiperSlide>
 				))}
 			</Swiper>
-			<div className="hidden xl:flex flex-col 2xl:pt-[270px] mx-4">
+			<div className="hidden xl:flex flex-col xl:pt-[200px] 2xl:pt-[270px] mx-4">
 				<div className="custom-next rounded-[20px] ">
 					<Image
 						src="/assets/icons/arrow.svg"

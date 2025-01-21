@@ -53,7 +53,7 @@
 	font-size: 16px;
 	border-radius: 5px;
 
-	@apply hidden xl:block
+	@apply hidden xl:flex
 }
 
 @import "../styles/components/buttons.css";
