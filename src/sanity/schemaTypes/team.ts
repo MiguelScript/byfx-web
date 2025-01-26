@@ -9,6 +9,14 @@ const team = {
 			type: "string",
 		},
 		{
+			name: "image",
+			title: "Fotografía",
+			type: "image",
+			options: {
+				hotspot: true,
+			},
+		},
+		{
 			name: "description",
 			title: "Descripción",
 			type: "array",

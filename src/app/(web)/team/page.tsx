@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 
 export default async function Team() {
 	const teamContent = await getTeamContent();
+	console.log(teamContent);
 	const audio = teamContent.audio.asset.url;
 	const { url: whatsappLink } = await getWhatsappLink();
 
@@ -22,7 +23,7 @@ export default async function Team() {
 					<div className="hidden lg:flex justify-center  md:justify-end">
 						<div className="team-img-container ">
 							<Image
-								src={"/assets/img/team-img-min.jpg"}
+								src={teamContent.image}
 								width={400}
 								height={400}
 								alt="logo"

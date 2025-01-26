@@ -39,7 +39,9 @@ export const AssetSection = ({
 
 	return (
 		<div className=" px-2 py-2 xl:py-3 xl:px-4 bg-[#F2F2F21A] rounded-[20px] mb-6 flex justify-center relative">
-			<div className="w-full h-[400px] 2xl:w-[1100px] 2xl:h-[600px] overflow-hidden flex justify-center items-center">
+			<div
+				className={`w-full ${fileType === "img" ? "h-[200px]" : "h-[400px]"} md:h-[500px]   2xl:w-[1100px] 2xl:h-[600px] overflow-hidden flex justify-center items-center`}
+			>
 				{isLoading && (
 					<Skeleton
 						baseColor="#202020"
@@ -72,7 +74,7 @@ export const AssetSection = ({
 						height={900}
 						src={link}
 						alt={proyect.title}
-						className={`rounded-[20px] bg-contain w-full h-full  ${isLoading ? "invisible absolute" : "visible"}`}
+						className={`rounded-[20px] asset-img  ${isLoading ? "invisible absolute" : "visible"}`}
 						onLoad={() => {
 							if (swiperSlide.isActive === true) {
 								setIsLoading(false);
