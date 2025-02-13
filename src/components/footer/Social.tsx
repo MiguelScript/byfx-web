@@ -14,7 +14,7 @@ export const Social = ({
 				<a href={network.url} target="_blank" key={network.name}>
 					<ButtonIcon>
 						<Image
-							src={network?.image ?? ""}
+							src={network?.image ?? "noiamge.jpg"}
 							alt={network.name}
 							height={network.imgSize ?? 30}
 							width={network.imgSize ?? 30}
