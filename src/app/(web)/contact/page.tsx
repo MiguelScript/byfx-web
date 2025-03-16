@@ -21,7 +21,7 @@ export default async function Contact() {
 	const { url: whatsappLink } = await getWhatsappLink();
 
 	return (
-		<section className="grow flex flex-col">
+		<section className="grow flex flex-col font-sans">
 			<div className="px-4 lg:px-0 grow flex flex-col items-center justify-center">
 				<div className="relative w-full lg:max-w-3xl xl:max-w-3xl ">
 					<CardGeneral extraClass="!bg-[#f2f2f21c] w-full w-full rounded-[20px]">

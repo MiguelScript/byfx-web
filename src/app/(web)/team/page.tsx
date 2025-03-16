@@ -18,7 +18,7 @@ export default async function Team() {
 
 	return (
 		<>
-			<div className="pt-6">
+			<div className="pt-6 font-sans">
 				<div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-12">
 					<div className="hidden lg:flex justify-center  md:justify-end">
 						<div className="team-img-container ">
