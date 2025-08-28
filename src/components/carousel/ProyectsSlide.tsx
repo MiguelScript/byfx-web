@@ -20,15 +20,19 @@ export const ProyectsSlide = ({
 				setIsLoading={setIsLoading}
 			/>
 			<div className="flex lg:space-x-4 flex-wrap justify-start lg:justify-center font-mono text-[28px]">
+				{proyect.client && proyect.client.trim() !== '' && (
 				<p className="text-[#ACFF6A]">
 					cliente:
 					<span className="ml-2 text-[#F3F3F3]">{proyect.client}</span>
 				</p>
+				)}
 				<span className="hidden lg:block">-</span>
+				{proyect.title && proyect.title.trim() !== '' && (
 				<p className="text-[#ACFF6A]">
 					proyecto:
 					<span className="ml-2 text-[#F3F3F3]">{proyect.title}</span>
 				</p>
+				)}
 			</div>
 		</>
 	);

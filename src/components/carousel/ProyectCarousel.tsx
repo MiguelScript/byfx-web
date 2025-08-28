@@ -42,7 +42,11 @@ export const ProyectCarousel = ({ proyects }: { proyects: proyect[] }) => {
 					prevEl: ".custom-prev",
 				}}
 			>
-				{proyects.map((proyect, idx) => (
+				{proyects.map((proyect, idx) =>{ 
+					if (!proyect?.file?.asset) {
+					   return;	
+					}
+					return (
 					<SwiperSlide key={idx} className="">
 						<ProyectsSlide
 							key={proyect._id}
@@ -51,7 +55,8 @@ export const ProyectCarousel = ({ proyects }: { proyects: proyect[] }) => {
 							setIsLoading={setIsLoading}
 						/>
 					</SwiperSlide>
-				))}
+					)
+				})}
 			</Swiper>
 			<div className="hidden xl:flex flex-col xl:pt-[200px] 2xl:pt-[270px] mx-4">
 				<div className="custom-next rounded-[20px] ">

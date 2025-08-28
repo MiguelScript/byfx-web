@@ -9,11 +9,11 @@ type service = {
 
 export type proyect = {
 	_id: string;
-	client: string;
-	title: string;
+	client?: string;
+	title?: string;
 	resourceType: "link" | "file";
 	link: string;
-	file: { asset: { url: string } };
+	file?: { asset: { url: string } };
 };
 
 export default service;
