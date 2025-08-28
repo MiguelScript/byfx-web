@@ -34,7 +34,11 @@ export const AssetSection = ({
 }) => {
 	const swiperSlide = useSwiperSlide();
 	const link =
-		proyect.resourceType === "file" ? proyect.file.asset.url : proyect.link;
+		proyect.resourceType === "file" ? proyect.file?.asset.url : proyect.link;
+	
+	if (!link) {
+		return null;
+	}
 	const fileType = getFileType(link);
 
 	return (
@@ -73,7 +77,7 @@ export const AssetSection = ({
 						width={1000}
 						height={900}
 						src={link}
-						alt={proyect.title}
+						alt={proyect.title || ""}
 						className={`rounded-[20px] asset-img  ${isLoading ? "invisible absolute" : "visible"}`}
 						onLoad={() => {
 							if (swiperSlide.isActive === true) {
@@ -87,7 +91,7 @@ export const AssetSection = ({
 						width={400}
 						height={400}
 						src={link}
-						alt={proyect.title}
+						alt={proyect.title || ""}
 						className={`rounded-[20px] bg-contain ${isLoading ? "invisible absolute" : "visible"}`}
 						onLoad={() => {
 							if (swiperSlide.isActive === true) {
