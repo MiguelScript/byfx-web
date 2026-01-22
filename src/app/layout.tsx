@@ -7,6 +7,7 @@ import {
 	Amatic_SC,
 	Alumni_Sans,
 	Aguafina_Script,
+	Inter,
 } from "next/font/google";
 
 const bebas_neue = Bebas_Neue({
@@ -33,6 +34,11 @@ const amaticSc = Amatic_SC({
 	variable: "--font-amatic-sc",
 });
 
+const inter = Inter({
+	subsets: ["latin"],
+	variable: "--font-inter",
+});
+
 export const metadata: Metadata = {
 	title: "Byfx",
 	description: "Byfx | Producción de video Barquisimeto - Venezuela",
@@ -49,7 +55,7 @@ export default function RootLayout({
 	return (
 		<html
 			lang="en"
-			className={`${montserrat.variable} ${bebas_neue.variable} ${amaticSc.variable} ${alumniSans.variable} ${aguafinaScript.variable}`}
+			className={`${montserrat.variable} ${bebas_neue.variable} ${amaticSc.variable} ${alumniSans.variable} ${aguafinaScript.variable} ${inter.variable}`}
 		>
 			<body className={`h-screen bg-[#1B1B1B] text-[#F3F3F3] font-sans`}>
 				{children}

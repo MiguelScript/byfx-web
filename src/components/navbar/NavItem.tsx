@@ -29,20 +29,20 @@ export const NavItem = ({
 
 	return (
 		<div
-			className="min-h-[50px] flex flex-col"
+			className=" flex flex-col"
 			onClick={() => {
 				setAnimation(getAnimation(currentPathPosition, position));
 				onClick();
 			}}
 		>
 			<Link href={path}>
-				<p className="text-xl 2xl:text-2xl">{name}</p>
+				<p className={`text-lg 2xl:text-xl ${isActive ? "text-[#FFFFFF]" : "text-[#F3F3F380]"}`}>{name}</p>
 			</Link>
-			<div
+			{/* <div
 				className={`${isActive ? "block" : "hidden"} ${isActive ? animation : ""} animate__animated animate__faster flex justify-center items-center`}
 			>
 				<div className=" w-2 h-2 bg-[#ACFF6A]"></div>
-			</div>
+			</div> */}
 		</div>
 	);
 };
