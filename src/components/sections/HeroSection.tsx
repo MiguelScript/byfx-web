@@ -9,6 +9,7 @@ export function HeroSection({
 }) {
   return (
     <div className="pt-24 px-12 relative">
+      <div className="absolute top-[296px] left-1/2 -translate-x-1/2 w-[400px] h-[270px] bg-[#D9D9D9] bg-opacity-50 blur-[180px]"></div>
       <div className="flex">
         <div className="app-container mx-auto relative pb-2">
           <div className="flex items-center justify-center mb-2 pt-12">
@@ -40,7 +41,7 @@ export function HeroSection({
           ))}
         </div>
       </div>
-      <div className="flex justify-center relative -top-2">
+      <div className="flex justify-center relative -top-2 mb-12">
         <button className="bg-[#ACFF6A] text-[#202020] rounded-[100px] py-[8px]  relative px-6 font-mono flex items-center justify-center gap-x-2">
           <Image
             src={"/assets/icons/whatsapp-icon.svg"}
@@ -53,10 +54,7 @@ export function HeroSection({
         </button>
       </div>
       <div className="flex justify-center mt-8">
-        <div className="w-[80%] h-[1px] bg-gradient-to-r from-[#000000] via-[#D9D9D9] to-[#000000]"></div>
-      </div>
-      <div className="flex justify-center absolute">
-        <div className="w-[516px] h-[279px] bg-[#D9D9D9] bg-opacity-50 backdrop-blur-[464px]"></div>
+        <div className="w-[60%] h-[3px] bg-gradient-to-r from-[#191919] via-[#D9D9D9] to-[#191919]"></div>
       </div>
     </div>
   );

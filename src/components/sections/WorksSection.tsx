@@ -7,8 +7,8 @@ export default async function WorksSection() {
   const featuredWorks = await getFeaturedWorks();
 
   return (
-    <div className="app-container mt-32 mx-auto">
-      <h2 className="text-center text-2xl 2xl:text-[50px] font-normal text-[#FFFFFF] font-mono mb-6">
+    <div className="app-container pt-24 mx-auto z-10 app-bg">
+      <h2 className="text-center text-2xl 2xl:text-[50px] font-normal text-[#FFFFFF] font-mono mb-4">
         Trabajos realizados
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mx-auto gap-x-8">
