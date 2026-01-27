@@ -12,7 +12,7 @@ export default function Layout({
 	useLayoutBackground();
 	return (
 		<div className={`app-bg min-w-full min-h-screen `}>
-			<div className="px-3 flex flex-col min-h-screen">
+			<div className="flex flex-col min-h-screen">
 				<Navbar />
 				<main className="flex flex-col grow">{children}</main>
 			</div>

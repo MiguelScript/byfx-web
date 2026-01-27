@@ -17,11 +17,11 @@ export function HeroSection({
               hacemos videos geniales
             </h1>
           </div>
-          <p className="px-[55px] text-[#FFFFFFB2] text-center xl:text-[20px]">
-            En <strong>BYFX</strong> ofrecemos servicios de{" "}
-            <strong>producción audiovisual </strong>
+          <p className="px-[55px] text-[#FFFFFFB2] text-center xl:text-[20px] font-light">
+            En <strong className="font-semibold">BYFX</strong> ofrecemos servicios de{" "}
+            <strong className="font-semibold">producción audiovisual </strong>
             para marcas, empresas y agencias creativas que quieren destacar con
-            identidad, calidad visual e <strong>storytelling</strong> real.
+            identidad, calidad visual e <strong className="font-semibold">storytelling</strong> real.
           </p>
         </div>
 

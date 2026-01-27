@@ -24,6 +24,10 @@
 	@apply max-w-[1222px];
 }
 
+.gradient-bg {
+	background: linear-gradient(to right, #6277E3, #E66F47, #ACFF6A);
+}
+
 .gradient-text {
 	background: linear-gradient(to right, #6277E3, #E66F47, #ACFF6A);
 	-webkit-background-clip: text;

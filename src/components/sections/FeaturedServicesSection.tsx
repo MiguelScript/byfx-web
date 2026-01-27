@@ -15,7 +15,7 @@ export default async function FeaturedServicesSection() {
       <h2 className="text-center text-2xl 2xl:text-[50px] font-normal text-[#FFFFFF] font-mono mt-24 mb-8">
         Nuestros servicios
       </h2>
-      <div className="grid grid-cols-1 xl:grid-cols-2 mx-auto gap-x-8">
+      <div className="grid grid-cols-1 xl:grid-cols-2 mx-auto gap-x-6">
         {services.map((service) => (
           <CardFeaturedService
             key={service._id}
