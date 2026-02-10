@@ -56,8 +56,8 @@ export default async function Footer({
         </div>
       </div>
       <div className="app-container mx-auto mt-4 w-full">
-        <h2 className="text-2xl font-mono">Servicios</h2>
-        <div className="flex flex-wrap justify-start gap-x-8 w-full">
+        <h2 className="text-xl 2xl:text-3xl font-mono">Servicios</h2>
+        <div className="flex flex-wrap justify-start gap-x-8 w-full mt-4">
           {services.map((service) => (
             <Link
               key={service._id}
@@ -74,17 +74,17 @@ export default async function Footer({
           <p className="font-mono uppercase font-normal text-[30px]">
             teléfono
           </p>
-          <p className="text-[#FFFFFF80] font-light ">+58 424-597 40 70</p>
+          <p className="text-[#FFFFFF80] font-light  text-[15px]">+58 424-597 40 70</p>
         </div>
         <div>
           <p className="font-mono uppercase font-normal text-[30px]">
             dirección
           </p>
-          <p className="text-[#FFFFFF80] font-light ">+58 424-597 40 70</p>
+          <p className="text-[#FFFFFF80] font-light text-[15px]">Barquisimeto - Venezuela</p>
         </div>
         <div>
           <p className="font-mono uppercase font-normal text-[30px]">mail</p>
-          <p className="text-[#FFFFFF80] font-light ">byfx.pro@gmail.com</p>
+          <p className="text-[#FFFFFF80] font-light text-[15px]">byfx.pro@gmail.com</p>
         </div>
         <div>
           <p className="font-mono uppercase font-normal text-[30px]">social</p>
@@ -105,7 +105,7 @@ export default async function Footer({
           </div>
         </div>
       </div>
-      <div className="app-container mx-auto mt-8 mb-4 text-[#FFFFFF4D]">
+      <div className="app-container mx-auto mt-8 mb-4 text-[#FFFFFF4D] text-[12px]">
         <p>2024 - BYFX PRODUCTORA AUDIOVISUAL | Diseñado por <a href="https://www.byux.art" target="_blank" className="underline hover:opacity-80">www.byux.art</a></p>
       </div>
     </div>

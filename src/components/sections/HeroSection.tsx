@@ -8,7 +8,7 @@ export function HeroSection({
   socialNetworks: socialNetworks[];
 }) {
   return (
-    <div className="pt-24 px-12 relative">
+    <div className="pt-24 px-12 relative home-hero">
       <div className="absolute top-[296px] left-1/2 -translate-x-1/2 w-[400px] h-[270px] bg-[#D9D9D9] bg-opacity-50 blur-[180px]"></div>
       <div className="flex">
         <div className="app-container mx-auto relative pb-2">

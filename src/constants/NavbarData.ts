@@ -5,8 +5,8 @@ export const navbarData = [
 		navWeb: true,
 	},
 	{
-		name: "Servicios",
-		path: "/services",
+		name: "Acerca de BYFX",
+		path: "/about-us",
 		navWeb: true,
 	},
 	{

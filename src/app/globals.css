@@ -42,7 +42,7 @@
 	letter-spacing: 0%;
 }
 
-.hero-title::after {
+.home-hero .hero-title::after {
 	content: "";
 	position: absolute;
 	right: -115px;
