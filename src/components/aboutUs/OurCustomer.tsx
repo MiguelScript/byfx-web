@@ -1,12 +1,13 @@
 import Image from "next/image";
+import { ClientCard } from "./ClientCard";
 
-interface ClientCard {
+interface ClientCardData {
   icon: string;
   title: string;
   description: string;
 }
 
-const clientCards: ClientCard[] = [
+const clientCards: ClientCardData[] = [
   {
     icon: "/assets/icons/sparkles-icon.svg",
     title: "Marcas",
@@ -29,14 +30,14 @@ const clientCards: ClientCard[] = [
 
 export function OurCustomer({ whatsappLink }: { whatsappLink: string }) {
   return (
-    <section className="py-16 px-12">
+    <section className="pt-32 pb-16">
       <div className="app-container mx-auto">
-        <div className="flex justify-between items-center mb-12">
+        <div className="relative flex justify-center items-center mb-12">
           <div>
-            <p className="text-[#FFFFFFB2] text-sm mb-2">
+            <p className="text-[#FFFFFF4D] text-center text-lg mb-2 font-normal">
               ¿Para quien producimos?
             </p>
-            <h2 className="text-5xl xl:text-6xl 2xl:text-7xl font-mono uppercase">
+            <h2 className="text-4xl xl:text-5xl font-normal font-mono uppercase">
               Nuestros Clientes
             </h2>
           </div>
@@ -44,7 +45,7 @@ export function OurCustomer({ whatsappLink }: { whatsappLink: string }) {
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#ACFF6A] text-[#202020] rounded-[100px] py-[8px] px-6 font-mono flex items-center justify-center gap-x-2 hover:bg-[#9EF055] transition-colors"
+            className="absolute right-0 bg-[#ACFF6A] text-[#202020] rounded-[100px] py-[8px] px-6 font-mono flex items-center justify-center gap-x-2 hover:bg-[#9EF055] transition-colors"
           >
             <Image
               src={"/assets/icons/whatsapp-icon.svg"}
@@ -58,24 +59,25 @@ export function OurCustomer({ whatsappLink }: { whatsappLink: string }) {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {clientCards.map((card, index) => (
-            <ClientCardComponent key={index} {...card} />
+            <ClientCard key={index} {...card} />
           ))}
+        </div>
+        <div className="pt-36 pb-16 text-center text-[#FFFFFF66] text-xl xl:text-3xl font-normal">
+          <p>
+            <span className="font-bold text-[#FFFFFF]">BYFX</span> existe para
+            resolver problemas de{" "}
+            <span className="font-bold text-[#FFFFFF]">
+              producción audiovisual .
+            </span>
+          </p>
+          <p>
+            Nuestra <span className="font-bold text-[#FFFFFF]">misión</span> es
+            ofrecer <span className="font-bold text-[#FFFFFF]">soluciones</span>{" "}
+            adaptadas a cada proyecto, sin importar su
+          </p>
+          <p>formato, escala o complejidad.</p>
         </div>
       </div>
     </section>
-  );
-}
-
-function ClientCardComponent({ icon, title, description }: ClientCard) {
-  return (
-    <div className="bg-[#1A1A1A] rounded-lg p-8 border border-[#2A2A2A] hover:border-[#3A3A3A] transition-colors">
-      <div className="w-12 h-12 bg-[#2A2A2A] rounded-lg flex items-center justify-center mb-6">
-        <Image src={icon} width={24} height={24} alt={title} />
-      </div>
-      <h3 className="text-2xl font-semibold mb-4">{title}</h3>
-      <p className="text-[#FFFFFFB2] text-base leading-relaxed">
-        {description}
-      </p>
-    </div>
   );
 }
