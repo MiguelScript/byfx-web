@@ -10,8 +10,8 @@ export const navbarData = [
 		navWeb: true,
 	},
 	{
-		name: "Equipo",
-		path: "/team",
+		name: "Trabajos",
+		path: "/works",
 		navWeb: true,
 	},
 	{
