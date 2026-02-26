@@ -13,7 +13,7 @@ export default async function Works() {
 
   return (
     <>
-      <div className="pt-6 font-sans bg-[#181818]">
+      <div className="font-sans bg-[#181818]">
         <WorksGrid services={services} />
 
         <Footer socialNetworks={socialNetworks} />
