@@ -24,7 +24,7 @@ export const Button = ({
 		<button
 			disabled={disabled || isLoading}
 			type={type}
-			className={` px-8 py-2 rounded-[15px] ${buttonVariants[variant as keyof typeof buttonVariants]} ${classNames}`}
+			className={` px-8 py-2 rounded-[100px] ${buttonVariants[variant as keyof typeof buttonVariants]} ${classNames}`}
 		>
 			{!isLoading && children}
 			{isLoading && <Spinner h="h-4" w="w-4" />}

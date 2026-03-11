@@ -47,7 +47,7 @@ export const InputText = ({
 						<LabelInputForm
 							label={text}
 							htmlFor={id || name}
-							extraClass="ml-4 font-normal text-sm !text-[#F3F3F3]"
+							extraClass="font-normal text-base !text-[#FFFFFF]"
 						/>
 					)}
 					{requiredText && (
@@ -61,7 +61,7 @@ export const InputText = ({
 					placeholder={placeholder}
 					onChange={onChange}
 					value={value}
-					className={`w-full p-2 dark:border-none mb-0 rounded-[10px] mt-2  placeholder:text-[#888888] dark:bg-dark-input bg-[#1B1B1B66] disabled:bg-gray-900 disabled:cursor-not-allowed ${extraClass}`}
+					className={`w-full p-2 dark:border-none mb-0 mt-2  placeholder:text-[#FFFFFFB2] dark:bg-dark-input bg-[#FBFBFB]/20 disabled:bg-gray-900 disabled:cursor-not-allowed ${extraClass}`}
 					onBlur={onBlur}
 					{...rest}
 				/>

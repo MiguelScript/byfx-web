@@ -3,11 +3,11 @@
 }
 
 .react-international-phone-country-selector-button {
-	@apply !bg-[#252727] !border-none !rounded-l-[10px] !px-2 !py-2 !h-full;
+	@apply !bg-[#282828] !border-none !rounded-l-[0px] !px-2 !py-2 !h-full;
 }
 
 .react-international-phone-input {
-	@apply !bg-[#1B1B1B66] !border-none !rounded-r-[10px] grow !min-h-[40px] placeholder:!text-[#888888] !text-[#F3F3F3] !text-base;
+	@apply !bg-[#FBFBFB]/20 !border-none !rounded-r-[0px] grow !min-h-[40px] placeholder:!text-[#888888] !text-[#F3F3F3] !text-base;
 }
 
 .phone-input-custom-class-dropdown::-webkit-scrollbar {

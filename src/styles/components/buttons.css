@@ -1,9 +1,9 @@
 .btn-default {
-	@apply bg-[#F2F2F21A];
+	@apply bg-[#FFFFFF] text-[#000000];
 }
 
 .btn-dark {
-	@apply bg-[#1B1B1B];
+	@apply bg-[#1B1B1B] text-[#FFFFFF];
 }
 
 .btn-cotizar {

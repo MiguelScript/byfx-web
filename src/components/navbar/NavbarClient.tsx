@@ -4,16 +4,19 @@ import React, { useState, useEffect } from "react";
 import { NavItem } from "./NavItem";
 import { usePathname } from "next/navigation";
 import { navbarData } from "@/constants/NavbarData";
-import Link from "next/link";
 import { NavbarMobile } from "./NavbarMobile";
 import { ServicesDropdown } from "./ServicesDropdown";
+import { ContactDrawer } from "@/components/drawers/ContactDrawer";
 import service from "@/types/service";
 
 interface NavbarClientProps {
   services: service[];
+  whatsapp: string;
+  countries: string;
+  servicesList: Array<{ _id: string; name: string; position: number }>;
 }
 
-export const NavbarClient = ({ services }: NavbarClientProps) => {
+export const NavbarClient = ({ services, countries }: NavbarClientProps) => {
   const pathname = usePathname();
   const [showServicesDropdown, setShowServicesDropdown] = useState(false);
   const [isServicesClicked, setIsServicesClicked] = useState(false);
@@ -73,13 +76,13 @@ export const NavbarClient = ({ services }: NavbarClientProps) => {
         </div>
       </div>
       <div className="ml-28 min-h-[40px]">
-        <Link href={"/contact"} className="">
+        <ContactDrawer countries={countries}>
           <button className="bg-[#ffffff] text-[#000000] rounded-[100px] py-2 px-10  relative">
             <p className="text-lg 2xl:text-xl relative z-10 font-mono">
               Cotizar
             </p>
           </button>
-        </Link>
+        </ContactDrawer>
       </div>
 
       <NavbarMobile />
