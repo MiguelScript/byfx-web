@@ -1,6 +1,6 @@
 import Footer from "@/components/footer/Footer";
 import { WorksGrid } from "@/components/works/WorksGrid";
-import { getServices, getSocialInfoHome } from "@/sanity/sanity-utils";
+import { getTrabajosWithRecursos, getSocialInfoHome } from "@/sanity/sanity-utils";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -9,12 +9,12 @@ export const metadata: Metadata = {
 
 export default async function Works() {
   const socialNetworks = await getSocialInfoHome();
-  const services = await getServices();
+  const trabajos = await getTrabajosWithRecursos();
 
   return (
     <>
       <div className="font-sans bg-[#181818]">
-        <WorksGrid services={services} />
+        <WorksGrid trabajos={trabajos} />
 
         <Footer socialNetworks={socialNetworks} />
       </div>

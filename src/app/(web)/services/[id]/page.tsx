@@ -1,4 +1,5 @@
 import { getProyectsByServiceId } from "@/sanity/sanity-utils";
+import { notFound } from "next/navigation";
 
 export default async function Page({
   params,
@@ -8,14 +9,17 @@ export default async function Page({
   const id = (await params).id;
   const serviceData = await getProyectsByServiceId({ _id: id });
 
-  console.log(serviceData);
+  if (!serviceData) {
+    notFound();
+  }
+
   return (
     <div className="min-h-screen bg-[#1A1A1A] text-white">
       <div className="app-container mx-auto px-4 xl:px-16 py-16 xl:py-24">
         {/* Hashtag */}
         <div className="text-center mb-8">
           <span className="gradient-text text-sm xl:text-base font-mono">
-            #Marcas&Empresas
+            {serviceData.hashtag}
           </span>
         </div>
 
@@ -25,24 +29,33 @@ export default async function Page({
             {serviceData.name}
           </h1>
 
-          {/* Service Description */}
+          {/* Service Description with Highlight */}
           <div className="max-w-4xl mx-auto">
             <p className="text-lg xl:text-xl leading-relaxed text-[#D1D5DB] mb-4">
-              {serviceData.description}
+              {serviceData.description.split(serviceData.highlight).map((part, index, array) => (
+                <span key={index}>
+                  {part}
+                  {index < array.length - 1 && (
+                    <span className="text-white font-semibold">
+                      {serviceData.highlight}
+                    </span>
+                  )}
+                </span>
+              ))}
             </p>
           </div>
         </div>
 
         {/* Project Tags */}
-        {serviceData.proyects && serviceData.proyects.length > 0 && (
+        {serviceData.tags && serviceData.tags.length > 0 && (
           <div className="flex flex-wrap justify-center gap-4 xl:gap-6">
-            {serviceData.proyects.map((project, index) => (
+            {serviceData.tags.map((tag, index) => (
               <div
                 key={index}
                 className="bg-[#FFFFFF33] hover:bg-[#FFFFFF44] transition-colors duration-200 px-6 py-3 rounded-full"
               >
                 <span className="text-white text-sm xl:text-base font-medium">
-                  {project.title}
+                  {tag}
                 </span>
               </div>
             ))}

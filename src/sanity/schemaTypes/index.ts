@@ -6,7 +6,8 @@ import team from "./team";
 import teamBrand from "./team-brand";
 import quote from "./quote";
 import proyects from "./proyects";
+import trabajos from "./trabajos";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-	types: [home, socialNetworks, quote, team, teamBrand, services, proyects],
+	types: [home, socialNetworks, quote, team, teamBrand, services, proyects, trabajos],
 };
