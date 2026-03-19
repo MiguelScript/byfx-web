@@ -23,8 +23,8 @@ export const CardFeaturedService = ({
       </div>
       <div className="overflow-hidden h-64 w-full">
         <div
-          className="bg-[#1B1B1B] h-full w-full bg-cover transition-transform duration-500 ease-in-out group-hover:scale-125"
-          style={{ backgroundImage: `url(${image})` }}
+          className="bg-[#1B1B1B] w-[600px] h-[250px] bg-cover transition-transform duration-500 ease-in-out group-hover:scale-125"
+          style={{ backgroundImage: `url(${image})`, backgroundPosition: "center" }}
         >
           {/* <Image
 					src={image}

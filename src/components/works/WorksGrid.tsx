@@ -3,7 +3,7 @@
 import { useState } from "react";
 import trabajo from "@/types/trabajo";
 import Image from "next/image";
-import { RecursosModal } from "../modals/RecursosModal";
+// import { RecursosModal } from "../modals/RecursosModal";
 import { RecursosDrawer } from "../modals/RecursosDrawer";
 
 interface WorksGridProps {

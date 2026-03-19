@@ -32,12 +32,12 @@ export default async function Page({
           {/* Service Description with Highlight */}
           <div className="max-w-4xl mx-auto">
             <p className="text-lg xl:text-xl leading-relaxed text-[#D1D5DB] mb-4">
-              {serviceData.description.split(serviceData.highlight).map((part, index, array) => (
+              {serviceData.description.split(serviceData.hashtag).map((part, index, array) => (
                 <span key={index}>
                   {part}
                   {index < array.length - 1 && (
                     <span className="text-white font-semibold">
-                      {serviceData.highlight}
+                      {serviceData.hashtag}
                     </span>
                   )}
                 </span>
