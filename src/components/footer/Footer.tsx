@@ -14,7 +14,7 @@ export default async function Footer({
   const services = await getServices();
 
   return (
-    <div className="flex flex-col gap-10 justify-center bg-[#000000] py-10">
+    <div className="flex flex-col gap-10 justify-center bg-[#000000] py-10 px-4">
       <div className="app-container  mx-auto w-full flex justify-between items-center">
         <div className="">
           <Link href={"/"} className="">
@@ -69,7 +69,7 @@ export default async function Footer({
           ))}
         </div>
       </div>
-      <div className="app-container w-full mx-auto flex justify-between gap-x-16 mt-4">
+      <div className="app-container w-full mx-auto flex flex-wrap justify-between gap-x-16 mt-4">
         <div>
           <p className="font-mono uppercase font-normal text-[30px]">
             teléfono
@@ -88,7 +88,7 @@ export default async function Footer({
         </div>
         <div>
           <p className="font-mono uppercase font-normal text-[30px]">social</p>
-          <div className="flex gap-x-2">
+          <div className="flex  gap-x-2">
             {socialNetworks.map((network) => (
               <a href={network.url} target="_blank" key={network.name}>
                 <ButtonIcon className="!bg-[#000000] rounded-full">

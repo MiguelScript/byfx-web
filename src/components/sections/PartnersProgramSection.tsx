@@ -1,16 +1,16 @@
 export function PartnersProgramSection() {
   return (
     <div className="mt-32 py-24 relative bg-[#000000]">
-      <div className="flex  app-container justify-start mx-auto">
-        <div className="text-[#FFFFFF] pr-12">
+      <div className="flex flex-col lg:flex-row app-container justify-start mx-auto">
+        <div className="text-[#FFFFFF] pr-12 ml-6 lg:ml-0">
           <p className="text-[20px]">¿Eres creativo independiente?</p>
           <p className="text-[20px]">Únete a nuestro</p>
-          <p className="font-mono text-[120px] leading-none">PROGRAMA</p>
-          <p className="font-mono text-[120px] leading-none">
+          <p className="font-mono text-[100px] lg:text-[120px] leading-none">PROGRAMA</p>
+          <p className="font-mono text-[100px] lg:text-[120px] leading-none">
             DE <span className="font-mono gradient-text">PARTNERS</span>
           </p>
         </div>
-        <div className="flex flex-col gradient-bg  rounded-l-[20px] px-20 py-12 absolute w-[50%] right-0">
+        <div className="flex flex-col ml-8 gradient-bg  rounded-l-[20px] px-20 py-12 lg:absolute lg:w-[50%] lg:right-0 lg:ml-0">
           <p className="text-[#FFFFFF] font-bold">
             ¿Qué es el programa de Partners?
           </p>
