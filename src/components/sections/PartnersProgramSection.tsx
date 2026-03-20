@@ -1,4 +1,6 @@
-export function PartnersProgramSection() {
+import { ContactDrawer } from "@/components/drawers/ContactDrawer";
+
+export function PartnersProgramSection({ countries }: { countries: string }) {
   return (
     <div className="mt-32 py-24 relative bg-[#000000]">
       <div className="flex flex-col lg:flex-row app-container justify-start mx-auto">
@@ -22,9 +24,11 @@ export function PartnersProgramSection() {
             <strong>ganar por comisiones</strong>
             mientras haces crecer tu portafolio.
           </p>
-          <button className="bg-[#181818] w-fit rounded-[100px] py-[8px]  relative px-8 font-mono gap-x-2 mt-8">
-            <p className="text-xl 2xl:text-2xl text-[#FFFFFF] ">CONTACTAR</p>
-          </button>
+          <ContactDrawer countries={countries}>
+            <button className="bg-[#181818] w-fit rounded-[100px] py-[8px] relative px-8 font-mono gap-x-2 mt-8">
+              <p className="text-xl 2xl:text-2xl text-[#FFFFFF]">CONTACTAR</p>
+            </button>
+          </ContactDrawer>
         </div>
       </div>
     </div>

@@ -33,7 +33,7 @@ export default async function Team() {
 
           <EquitmentSection equitment={teamContent.equitment} />
           <OurCustomer whatsappLink={whatsappLink} />
-          <Footer socialNetworks={socialNetworks} />
+          <Footer socialNetworks={socialNetworks} whatsappLink={whatsappLink} />
         </div>
       </div>
     </>

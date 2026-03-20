@@ -4,8 +4,10 @@ import { ButtonIcon } from "../buttons/ButtonIcon";
 
 export function HeroSection({
   socialNetworks,
+  whatsappLink,
 }: {
   socialNetworks: socialNetworks[];
+  whatsappLink: string;
 }) {
   return (
     <div className="pt-24 px-12 relative home-hero">
@@ -42,7 +44,7 @@ export function HeroSection({
         </div>
       </div>
       <div className="flex justify-center relative mt-8 mb-12">
-        <button className="bg-[#ACFF6A] text-[#202020] rounded-[100px] py-[8px]  relative px-6 font-mono flex items-center justify-center gap-x-2">
+        <a href={whatsappLink} target="_blank" className="bg-[#ACFF6A] text-[#202020] rounded-[100px] py-[8px] cursor-pointer  relative px-6 font-mono flex items-center justify-center gap-x-2">
           <Image
             src={"/assets/icons/whatsapp-icon.svg"}
             width={"25"}
@@ -51,7 +53,7 @@ export function HeroSection({
             className=""
           />
           <p className="text-xl 2xl:text-2xl">IR A WHATSAPP</p>
-        </button>
+        </a>
       </div>
       <div className="flex justify-center mt-8">
         <div className="w-[60%] h-[3px] bg-gradient-to-r from-[#191919] via-[#D9D9D9] to-[#191919]"></div>

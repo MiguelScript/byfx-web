@@ -8,8 +8,10 @@ import { ButtonIcon } from "../buttons/ButtonIcon";
 
 export default async function Footer({
   socialNetworks,
+  whatsappLink,
 }: {
   socialNetworks: socialNetworks[];
+  whatsappLink: string;
 }) {
   const services = await getServices();
 
@@ -41,18 +43,20 @@ export default async function Footer({
           </div>
         </div>
         <div className="ml-28 min-h-[40px]">
-          <Link href={"/contact"} className="">
-            <button className="bg-[#ACFF6A] text-[#202020] rounded-[100px] py-[8px]  relative px-6 font-mono flex items-center justify-center gap-x-2">
-              <Image
-                src={"/assets/icons/whatsapp-icon.svg"}
-                width={"25"}
-                height={"25"}
-                alt="logo"
-                className=""
-              />
-              <p className="text-xl 2xl:text-2xl">IR A WHATSAPP</p>
-            </button>
-          </Link>
+          <a
+            href={whatsappLink}
+            target="_blank"
+            className="bg-[#ACFF6A] text-[#202020] rounded-[100px] py-[8px]  relative px-6 font-mono flex items-center justify-center gap-x-2"
+          >
+            <Image
+              src={"/assets/icons/whatsapp-icon.svg"}
+              width={"25"}
+              height={"25"}
+              alt="logo"
+              className=""
+            />
+            <p className="text-xl 2xl:text-2xl">IR A WHATSAPP</p>
+          </a>
         </div>
       </div>
       <div className="app-container mx-auto mt-4 w-full">
@@ -74,17 +78,23 @@ export default async function Footer({
           <p className="font-mono uppercase font-normal text-[30px]">
             teléfono
           </p>
-          <p className="text-[#FFFFFF80] font-light  text-[15px]">+58 424-597 40 70</p>
+          <p className="text-[#FFFFFF80] font-light  text-[15px]">
+            +58 424-597 40 70
+          </p>
         </div>
         <div>
           <p className="font-mono uppercase font-normal text-[30px]">
             dirección
           </p>
-          <p className="text-[#FFFFFF80] font-light text-[15px]">Barquisimeto - Venezuela</p>
+          <p className="text-[#FFFFFF80] font-light text-[15px]">
+            Barquisimeto - Venezuela
+          </p>
         </div>
         <div>
           <p className="font-mono uppercase font-normal text-[30px]">mail</p>
-          <p className="text-[#FFFFFF80] font-light text-[15px]">byfx.pro@gmail.com</p>
+          <p className="text-[#FFFFFF80] font-light text-[15px]">
+            byfx.pro@gmail.com
+          </p>
         </div>
         <div>
           <p className="font-mono uppercase font-normal text-[30px]">social</p>
@@ -106,7 +116,16 @@ export default async function Footer({
         </div>
       </div>
       <div className="app-container mx-auto mt-8 mb-4 text-[#FFFFFF4D] text-[12px]">
-        <p>2024 - BYFX PRODUCTORA AUDIOVISUAL | Diseñado por <a href="https://www.byux.art" target="_blank" className="underline hover:opacity-80">www.byux.art</a></p>
+        <p>
+          2024 - BYFX PRODUCTORA AUDIOVISUAL | Diseñado por{" "}
+          <a
+            href="https://www.byux.art"
+            target="_blank"
+            className="underline hover:opacity-80"
+          >
+            www.byux.art
+          </a>
+        </p>
       </div>
     </div>
   );
