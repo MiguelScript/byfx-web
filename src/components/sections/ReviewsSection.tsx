@@ -1,4 +1,4 @@
-import { getGooglePlaceReviews, GooglePlaceReview } from "@/lib/googlePlaces";
+import { getGooglePlaceReviews } from "@/lib/googlePlaces";
 import { reviewsData } from "@/data/reviewsData";
 import Image from "next/image";
 
@@ -26,15 +26,24 @@ function getInitials(name: string): string {
     .toUpperCase();
 }
 
-function ReviewCardGoogle({ review }: { review: GooglePlaceReview }) {
+type ReviewCardProps = {
+  name: string;
+  photoUrl?: string;
+  initials: string;
+  timeAgo: string;
+  rating: number;
+  text: string;
+};
+
+function ReviewCard({ name, photoUrl, initials, timeAgo, rating, text }: ReviewCardProps) {
   return (
-    <div className="bg-[#F9F9F9] rounded-2xl p-5 flex flex-col gap-3 min-w-0">
+    <div className="bg-[#F9F9F9] p-5 flex flex-col gap-3 min-w-0">
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-3 min-w-0">
-          {review.profile_photo_url ? (
+          {photoUrl ? (
             <Image
-              src={review.profile_photo_url}
-              alt={review.author_name}
+              src={photoUrl}
+              alt={name}
               width={40}
               height={40}
               className="w-10 h-10 rounded-full shrink-0 object-cover"
@@ -42,90 +51,68 @@ function ReviewCardGoogle({ review }: { review: GooglePlaceReview }) {
           ) : (
             <div className="w-10 h-10 rounded-full bg-[#4285F4] flex items-center justify-center shrink-0">
               <span className="text-white text-xs font-bold font-mono">
-                {getInitials(review.author_name)}
+                {initials}
               </span>
             </div>
           )}
           <div className="min-w-0">
             <p className="text-[#1A1A1A] font-semibold text-sm leading-tight truncate">
-              {review.author_name}
+              {name}
             </p>
-            <p className="text-[#6B7280] text-xs">{review.relative_time_description}</p>
+            <p className="text-[#6B7280] text-xs">{timeAgo}</p>
           </div>
         </div>
         <GoogleIcon />
       </div>
 
       <div className="flex gap-0.5">
-        {Array.from({ length: review.rating }).map((_, i) => (
+        {Array.from({ length: rating }).map((_, i) => (
           <StarIcon key={i} />
         ))}
       </div>
 
       <p className="text-[#374151] text-sm leading-relaxed line-clamp-3">
-        {review.text}
-      </p>
-    </div>
-  );
-}
-
-function ReviewCardLocal({ review }: { review: (typeof reviewsData)[number] }) {
-  return (
-    <div className="bg-[#F9F9F9] rounded-2xl p-5 flex flex-col gap-3 min-w-0">
-      <div className="flex items-center justify-between gap-3">
-        <div className="flex items-center gap-3 min-w-0">
-          <div className="w-10 h-10 rounded-full bg-[#4285F4] flex items-center justify-center shrink-0">
-            <span className="text-white text-xs font-bold font-mono">
-              {review.avatar}
-            </span>
-          </div>
-          <div className="min-w-0">
-            <p className="text-[#1A1A1A] font-semibold text-sm leading-tight truncate">
-              {review.name}
-            </p>
-            <p className="text-[#6B7280] text-xs">{review.timeAgo}</p>
-          </div>
-        </div>
-        <GoogleIcon />
-      </div>
-
-      <div className="flex gap-0.5">
-        {Array.from({ length: review.rating }).map((_, i) => (
-          <StarIcon key={i} />
-        ))}
-      </div>
-
-      <p className="text-[#374151] text-sm leading-relaxed line-clamp-3">
-        {review.text}
+        {text}
       </p>
     </div>
   );
 }
 
 export async function ReviewsSection() {
-  let reviews: GooglePlaceReview[] | null = null;
+  let cards: ReviewCardProps[] = [];
   let overallRating = 5.0;
-  let fromGoogle = false;
 
   try {
     const data = await getGooglePlaceReviews();
-    reviews = data.reviews;
     overallRating = data.rating;
-    fromGoogle = true;
+    cards = data.reviews.map((r) => ({
+      name: r.author_name,
+      photoUrl: r.profile_photo_url || undefined,
+      initials: getInitials(r.author_name),
+      timeAgo: r.relative_time_description,
+      rating: r.rating,
+      text: r.text,
+    }));
   } catch {
-    reviews = null;
+    cards = reviewsData.map((r) => ({
+      name: r.name,
+      initials: r.avatar,
+      timeAgo: r.timeAgo,
+      rating: r.rating,
+      text: r.text,
+    }));
   }
 
   return (
     <div className="py-16 xl:py-24 bg-[#191919]">
-      <div className="app-container mx-auto px-4 xl:px-16">
+      <div className="app-container mx-auto">
         {/* Header */}
         <div className="text-center mb-10">
           <h2 className="text-white font-bold font-mono text-3xl xl:text-5xl uppercase tracking-wider mb-3">
             Opiniones Reales
           </h2>
           <div className="flex items-center justify-center gap-2">
-            <span className="text-white font-mono text-lg font-semibold">
+            <span className="text-white text-xl font-normal leading-none mt-1">
               {overallRating.toFixed(1)}
             </span>
             <div className="flex gap-0.5">
@@ -138,13 +125,9 @@ export async function ReviewsSection() {
 
         {/* Cards grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 xl:gap-6">
-          {fromGoogle && reviews
-            ? reviews.map((review) => (
-                <ReviewCardGoogle key={review.time} review={review} />
-              ))
-            : reviewsData.map((review) => (
-                <ReviewCardLocal key={review.id} review={review} />
-              ))}
+          {cards.map((card, i) => (
+            <ReviewCard key={i} {...card} />
+          ))}
         </div>
       </div>
     </div>

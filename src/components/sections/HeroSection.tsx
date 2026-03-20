@@ -12,7 +12,7 @@ export function HeroSection({
       <div className="absolute top-[296px] left-1/2 -translate-x-1/2 w-[400px] h-[270px] bg-[#D9D9D9] bg-opacity-50 blur-[180px]"></div>
       <div className="flex">
         <div className="app-container mx-auto relative pb-2">
-          <div className="flex items-center justify-center mb-2 pt-12">
+          <div className="flex items-center justify-center mb-3 pt-12">
             <h1 className="hero-title tracking-[0.015em] text-7xl xl:text-7xl xl:leading-[60px] 2xl:text-[130px] 2xl:leading-[100px] font-mono">
               hacemos videos geniales
             </h1>
@@ -25,7 +25,7 @@ export function HeroSection({
           </p>
         </div>
 
-        <div className="flex flex-col gap-5 justify-center">
+        <div className="flex flex-col gap-5 justify-center mb-8">
           {socialNetworks.map((network) => (
             <a href={network.url} target="_blank" key={network.name}>
               <ButtonIcon className="!bg-[#000000] rounded-full">
@@ -41,7 +41,7 @@ export function HeroSection({
           ))}
         </div>
       </div>
-      <div className="flex justify-center relative -top-2 mb-12">
+      <div className="flex justify-center relative mt-8 mb-12">
         <button className="bg-[#ACFF6A] text-[#202020] rounded-[100px] py-[8px]  relative px-6 font-mono flex items-center justify-center gap-x-2">
           <Image
             src={"/assets/icons/whatsapp-icon.svg"}
