@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { createPortal } from "react-dom";
 import { NavItem } from "./NavItem";
 import { usePathname } from "next/navigation";
 import { navbarData } from "@/constants/NavbarData";
 import { NavbarMobile } from "./NavbarMobile";
-import { ServicesDropdown } from "./ServicesDropdown";
 import { ContactDrawer } from "@/components/drawers/ContactDrawer";
+import Link from "next/link";
 import service from "@/types/service";
 
 interface NavbarClientProps {
@@ -18,38 +19,47 @@ interface NavbarClientProps {
 
 export const NavbarClient = ({ services, countries }: NavbarClientProps) => {
   const pathname = usePathname();
-  const [showServicesDropdown, setShowServicesDropdown] = useState(false);
-  const [isServicesClicked, setIsServicesClicked] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [navBottom, setNavBottom] = useState(0);
+  const [mounted, setMounted] = useState(false);
+  const triggerRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const updateNavBottom = () => {
+      const nav = document.getElementById("main-navbar");
+      if (nav) setNavBottom(nav.getBoundingClientRect().bottom);
+    };
+    updateNavBottom();
+    window.addEventListener("resize", updateNavBottom);
+    window.addEventListener("scroll", updateNavBottom, { passive: true });
+    return () => {
+      window.removeEventListener("resize", updateNavBottom);
+      window.removeEventListener("scroll", updateNavBottom);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!servicesOpen) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
       if (
-        isServicesClicked &&
-        !target.closest(".services-dropdown") &&
-        !target.closest(".services-nav-item")
+        !target.closest("#services-dropdown-panel") &&
+        !triggerRef.current?.contains(target)
       ) {
-        setIsServicesClicked(false);
-        setShowServicesDropdown(false);
+        setServicesOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isServicesClicked]);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [servicesOpen]);
 
-  const handleServicesHover = (isHovering: boolean) => {
-    if (!isServicesClicked) {
-      setShowServicesDropdown(isHovering);
-    }
-  };
-
-  const handleServicesClick = () => {
-    setIsServicesClicked(!isServicesClicked);
-    setShowServicesDropdown(!isServicesClicked);
-  };
+  useEffect(() => {
+    setServicesOpen(false);
+  }, [pathname]);
 
   return (
     <>
@@ -57,24 +67,34 @@ export const NavbarClient = ({ services, countries }: NavbarClientProps) => {
         <div className="flex gap-x-16 items-center">
           {navbarData
             .filter((item) => item.navWeb === true)
-            .map((item, idx) => (
-              <NavItem
-                key={idx}
-                path={item.path}
-                name={item.name}
-                isActive={pathname === item.path}
-                navigation={item.navigation}
-                onHover={
-                  item.name === "Servicios" ? handleServicesHover : undefined
-                }
-                onServicesClick={
-                  item.name === "Servicios" ? handleServicesClick : undefined
-                }
-                onClick={() => {}}
-              />
-            ))}
+            .map((item, idx) =>
+              item.name === "Servicios" ? (
+                <p
+                  key={idx}
+                  ref={triggerRef}
+                  onClick={() => setServicesOpen((o) => !o)}
+                  className={`text-lg 2xl:text-xl transition-colors duration-200 cursor-pointer select-none ${
+                    pathname.startsWith("/services") || servicesOpen
+                      ? "text-[#FFFFFF]"
+                      : "text-[#F3F3F380] hover:text-[#FFFFFF]"
+                  }`}
+                >
+                  {item.name}
+                </p>
+              ) : (
+                <NavItem
+                  key={idx}
+                  path={item.path}
+                  name={item.name}
+                  isActive={pathname === item.path}
+                  navigation={item.navigation}
+                  onClick={() => {}}
+                />
+              )
+            )}
         </div>
       </div>
+
       <div className="ml-28 min-h-[40px]">
         <ContactDrawer countries={countries}>
           <button className="bg-[#ffffff] text-[#000000] rounded-[100px] py-2 px-10  relative">
@@ -87,14 +107,31 @@ export const NavbarClient = ({ services, countries }: NavbarClientProps) => {
 
       <NavbarMobile />
 
-      <ServicesDropdown
-        services={services}
-        isVisible={showServicesDropdown || isServicesClicked}
-        onMouseEnter={() => !isServicesClicked && setShowServicesDropdown(true)}
-        onMouseLeave={() =>
-          !isServicesClicked && setShowServicesDropdown(false)
-        }
-      />
+      {mounted && servicesOpen &&
+        createPortal(
+          <div
+            id="services-dropdown-panel"
+            style={{ top: navBottom }}
+            className="fixed left-0 right-0 w-screen z-50 bg-[#18181899] backdrop-blur-3xl border-b border-[#FFFFFF1A]"
+          >
+            <div className="app-container mx-auto px-4 xl:px-16 py-4 flex flex-wrap gap-x-8 gap-y-2 justify-center items-center font-mono">
+              {services.map((service, index) => (
+                <div key={service._id} className="flex items-center">
+                  <Link
+                    href={`/services/${service._id}`}
+                    className="uppercase text-sm text-[#F3F3F380] hover:text-white transition-colors duration-200"
+                  >
+                    {service.name}
+                  </Link>
+                  {index < services.length - 1 && (
+                    <span className="ml-8 text-[#FFFFFF30]">•</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>,
+          document.body
+        )}
     </>
   );
 };
