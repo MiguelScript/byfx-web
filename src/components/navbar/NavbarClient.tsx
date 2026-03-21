@@ -8,6 +8,7 @@ import { navbarData } from "@/constants/NavbarData";
 import { NavbarMobile } from "./NavbarMobile";
 import { ContactDrawer } from "@/components/drawers/ContactDrawer";
 import Link from "next/link";
+import { ChevronDownIcon } from "@radix-ui/react-icons";
 import service from "@/types/service";
 
 interface NavbarClientProps {
@@ -73,13 +74,16 @@ export const NavbarClient = ({ services, countries }: NavbarClientProps) => {
                   key={idx}
                   ref={triggerRef}
                   onClick={() => setServicesOpen((o) => !o)}
-                  className={`text-lg 2xl:text-xl transition-colors duration-200 cursor-pointer select-none ${
+                  className={`flex items-center gap-1 text-lg 2xl:text-xl transition-colors duration-200 cursor-pointer select-none ${
                     pathname.startsWith("/services") || servicesOpen
                       ? "text-[#FFFFFF]"
                       : "text-[#F3F3F380] hover:text-[#FFFFFF]"
                   }`}
                 >
                   {item.name}
+                  <ChevronDownIcon
+                    className={`w-4 h-4 transition-transform duration-200 ${servicesOpen ? "rotate-180" : "rotate-0"}`}
+                  />
                 </p>
               ) : (
                 <NavItem
@@ -90,7 +94,7 @@ export const NavbarClient = ({ services, countries }: NavbarClientProps) => {
                   navigation={item.navigation}
                   onClick={() => {}}
                 />
-              )
+              ),
             )}
         </div>
       </div>
@@ -107,30 +111,29 @@ export const NavbarClient = ({ services, countries }: NavbarClientProps) => {
 
       <NavbarMobile />
 
-      {mounted && servicesOpen &&
+      {mounted &&
+        servicesOpen &&
         createPortal(
           <div
             id="services-dropdown-panel"
             style={{ top: navBottom }}
-            className="fixed left-0 right-0 w-screen z-50 bg-[#18181899] backdrop-blur-3xl border-b border-[#FFFFFF1A]"
+            className="fixed left-0 right-0 w-screen z-50 bg-[#ffffff] backdrop-blur-3xl py-4"
           >
             <div className="app-container mx-auto px-4 xl:px-16 py-4 flex flex-wrap gap-x-8 gap-y-2 justify-center items-center font-mono">
-              {services.map((service, index) => (
+              {services.map((service) => (
                 <div key={service._id} className="flex items-center">
+                  <span className="mr-2 text-lg text-[#000000]">•</span>
                   <Link
                     href={`/services/${service._id}`}
-                    className="uppercase text-sm text-[#F3F3F380] hover:text-white transition-colors duration-200"
+                    className="uppercase text-xl text-[#000000] font-mono  transition-colors duration-200"
                   >
                     {service.name}
                   </Link>
-                  {index < services.length - 1 && (
-                    <span className="ml-8 text-[#FFFFFF30]">•</span>
-                  )}
                 </div>
               ))}
             </div>
           </div>,
-          document.body
+          document.body,
         )}
     </>
   );

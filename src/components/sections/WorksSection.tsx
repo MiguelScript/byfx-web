@@ -7,7 +7,7 @@ export default async function WorksSection() {
   const featuredWorks = await getFeaturedWorks();
 
   return (
-    <div className="app-container pt-24 mx-auto z-10 app-bg">
+    <div className="app-container lg:pt-24 mx-auto z-10 app-bg w-full">
       <h2 className="text-center text-2xl 2xl:text-[50px] font-normal text-[#FFFFFF] font-mono mb-4">
         Trabajos realizados
       </h2>
