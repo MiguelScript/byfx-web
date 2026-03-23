@@ -96,7 +96,7 @@ export default function FaqSection() {
   return (
     <section
       ref={sectionRef}
-      className="w-full lg:pb-32 pb-16 px-6 lg:px-0 relative app-container mx-auto"
+      className="w-full lg:pb-32 pb-16 lg:px-0 relative app-container mx-auto"
     >
       <div className="flex justify-center">
         <div className="w-[60%] h-[3px] bg-gradient-to-r from-[#191919] via-[#D9D9D9] to-[#191919]"></div>

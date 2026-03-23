@@ -22,7 +22,7 @@
 }
 
 .app-container {
-	@apply max-w-[1222px];
+	@apply max-w-[340px] lg:max-w-[1222px];
 }
 
 .gradient-bg {

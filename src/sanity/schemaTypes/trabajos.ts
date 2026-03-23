@@ -20,6 +20,12 @@ const trabajos = {
 			to: [{ type: "services" }],
 		},
 		{
+			name: "featured",
+			title: "Destacado en home",
+			type: "boolean",
+			initialValue: false,
+		},
+		{
 			name: "imagen",
 			title: "Imagen de portada",
 			type: "image",

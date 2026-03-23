@@ -99,7 +99,7 @@ export const NavbarClient = ({ services, countries }: NavbarClientProps) => {
         </div>
       </div>
 
-      <div className="ml-28 min-h-[40px]">
+      <div className="ml-28 min-h-[40px] hidden lg:block">
         <ContactDrawer countries={countries}>
           <button className="bg-[#ffffff] text-[#000000] rounded-[100px] py-2 px-10  relative">
             <p className="text-lg 2xl:text-xl relative z-10 font-mono">

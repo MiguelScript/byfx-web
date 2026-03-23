@@ -54,13 +54,12 @@ export async function getServices(): Promise<service[]> {
     }`);
 }
 
-export async function getFeaturedWorks(): Promise<service[]> {
-  return client.fetch(groq`*[_type == "services"] | order(position asc){
+export async function getFeaturedWorks(): Promise<trabajo[]> {
+  return client.fetch(groq`*[_type == "trabajos" && featured == true] | order(position asc){
         _id,
-        name,
-        description,
-        position,
-       "image": image.asset->url,
+        titulo,
+        cliente,
+       "imagen": imagen.asset->url,
     }`);
 }
 

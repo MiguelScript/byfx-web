@@ -14,8 +14,8 @@ export default async function Home() {
 
   return (
     <>
-      <HeroSection socialNetworks={socialNetworks} whatsappLink={whatsappLink} />
-      <WorksSection />
+      <HeroSection socialNetworks={socialNetworks} whatsappLink={whatsappLink} countries={countries} />
+      <WorksSection socialNetworks={socialNetworks} />
       <FeaturedServicesSection />
       <PartnersProgramSection countries={countries} />
       <ReviewsSection />
