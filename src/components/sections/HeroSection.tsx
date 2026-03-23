@@ -33,7 +33,7 @@ export function HeroSection({
           </p>
         </div>
 
-        <div className="flex flex-col gap-5 justify-center mb-8">
+        <div className="hidden lg:flex flex-col gap-5 justify-center mb-8 ">
           {socialNetworks.map((network) => (
             <a href={network.url} target="_blank" key={network.name}>
               <ButtonIcon className="!bg-[#000000] rounded-full">

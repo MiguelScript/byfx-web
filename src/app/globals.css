@@ -29,6 +29,10 @@
 	background: linear-gradient(to right, #6277E3, #E66F47, #ACFF6A);
 }
 
+.gradient-bg-vertical {
+	background: linear-gradient(to bottom, #6277E3 0%, #E66F47 75%, #c8a858 100%, #ACFF6A 100%);
+}
+
 .gradient-text {
 	background: linear-gradient(to right, #6277E3, #E66F47, #ACFF6A);
 	-webkit-background-clip: text;
