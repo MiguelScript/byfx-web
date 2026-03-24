@@ -22,7 +22,7 @@ export default async function Team() {
       <div className="pt-6 font-sans">
         <AboutUsHeroSection />
         <div className="bg-[#181818] z-10 w-full relative ">
-          <div className="flex justify-center pt-16 pb-6">
+          <div className="flex justify-center pt-10 lg:pt-16 pb-2 lg:pb-6">
             <AudioPlayer
               audio={audio}
               classNames={{
