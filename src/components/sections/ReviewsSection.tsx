@@ -48,7 +48,7 @@ export async function ReviewsSection() {
       <div className="app-container mx-auto">
         {/* Header */}
         <div className="text-center mb-10">
-          <h2 className="text-white font-normal font-mono text-3xl xl:text-5xl uppercase tracking-normal mb-1">
+          <h2 className="text-white font-normal font-mono text-4xl xl:text-5xl uppercase tracking-normal mb-1">
             Opiniones Reales
           </h2>
           <div className="flex items-center justify-center gap-2">

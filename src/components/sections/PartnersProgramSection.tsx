@@ -2,17 +2,17 @@ import { ContactDrawer } from "@/components/drawers/ContactDrawer";
 
 export function PartnersProgramSection({ countries }: { countries: string }) {
   return (
-    <div className="mt-32 pt-24 lg:py-24 relative bg-[#000000]">
+    <div className="mt-32 pt-12 lg:py-24 relative bg-[#000000]">
       <div className="flex flex-col lg:flex-row app-container justify-start mx-auto">
-        <div className="text-[#FFFFFF] pr-12 ml-6 lg:ml-0">
-          <p className="text-[20px]">¿Eres creativo independiente?</p>
-          <p className="text-[20px]">Únete a nuestro</p>
-          <p className="font-mono text-[100px] lg:text-[120px] leading-none">PROGRAMA</p>
-          <p className="font-mono text-[100px] lg:text-[120px] leading-none">
+        <div className="text-[#FFFFFF] lg:pr-12 lg:ml-0">
+          <p className="text-[20px] leading-tight lg:leading-normal">¿Eres creativo independiente?</p>
+          <p className="text-[20px] mb-2 lg:mb-0">Únete a nuestro</p>
+          <p className="font-mono text-7xl lg:text-[120px] leading-none">PROGRAMA</p>
+          <p className="font-mono text-7xl lg:text-[120px] leading-none">
             DE <span className="font-mono gradient-text">PARTNERS</span>
           </p>
         </div>
-        <div className="flex flex-col gradient-bg-vertical lg:gradient-bg rounded-t-[20px] lg:rounded-t-[0px] lg:rounded-l-[20px] px-8 lg:px-20 lg:py-12 py-8 lg:absolute lg:w-[50%] lg:right-0 lg:ml-0">
+        <div className="flex flex-col gradient-bg-vertical lg:gradient-bg rounded-t-[20px] lg:rounded-t-[0px] lg:rounded-l-[20px] px-8 lg:px-20 lg:py-12 py-8 lg:absolute lg:w-[50%] lg:right-0 lg:ml-0 mt-6 lg:mt-0">
           <p className="text-[#FFFFFF] font-bold text-lg">
             ¿Qué es el programa de Partners?
           </p>

@@ -103,14 +103,14 @@ export default function FaqSection() {
       </div>
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[270px] bg-[#D9D9D9] bg-opacity-50 blur-[180px]"></div>
       <div className="app-section mx-auto mt-16">
-        <div className="max-w-[630px] mx-auto">
+        <div className="max-w-[630px] mx-auto mb-4 lg:mb-0">
           <h2
             ref={titleRef}
-            className="text-3xl lg:text-[40px] font-medium text-center  mb-2 font-mono uppercase"
+            className="text-4xl lg:text-[40px] font-medium text-center  mb-2 font-mono uppercase"
           >
             preguntas frecuentes
           </h2>
-          <p className="text-[#FFFFFFB2] text-center">
+          <p className="text-[#FFFFFFB2] text-center text-sm lg:text-base">
             ¿No ves tu duda aquí? Escríbenos por WhatsApp: serás atendido
             personalmente, podrás pedir cotizaciones sin compromiso y aclarar
             cualquier duda al instante.
