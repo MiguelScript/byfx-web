@@ -13,7 +13,7 @@ export const CardFeaturedService = ({
       href={`services/${_id}`}
       className="group  flex flex-col backdrop-blur-lg  lg:max-w-none  min-h-[300px] lg:py-4"
     >
-      <div className="lg:mt-4 grow gap-1 mb-6 lg:mb-2 max-w-80 mx-auto">
+      <div className="lg:mt-4 grow gap-1 mb-6 lg:mb-2 max-w-80 mx-auto lg:max-w-none">
         <h3 className="text-lg xl:text-xl font-bold text-[#FFFFFF]">
           {name}
         </h3>
