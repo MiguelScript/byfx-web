@@ -15,7 +15,7 @@ export function HeroSection({
 
   return (
     <div className="pt-6 lg:pt-24 px-12 relative home-hero">
-      <div className="absolute top-[296px] left-1/2 -translate-x-1/2 w-[400px] h-[270px] bg-[#D9D9D9] bg-opacity-50 blur-[180px]"></div>
+      <div className="absolute top-[435px] lg:top-[296px] left-1/2 -translate-x-1/2 lg:w-[400px] w-[220px] lg:h-[270px] h-[100px] bg-[#D9D9D9] lg:bg-opacity-50 blur-[150px] lg:blur-[180px]"></div>
       <div className="flex">
         <div className="app-container mx-auto relative pb-2">
           <div className="flex items-center justify-center mb-3 pt-12">

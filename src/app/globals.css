@@ -25,6 +25,10 @@
 	@apply max-w-[340px] lg:max-w-[1222px];
 }
 
+.app-container-desktop {
+	@apply max-w-[1222px];
+}
+
 .gradient-bg {
 	background: linear-gradient(to right, #6277E3, #E66F47, #ACFF6A);
 }

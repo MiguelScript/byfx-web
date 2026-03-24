@@ -96,12 +96,12 @@ export default function FaqSection() {
   return (
     <section
       ref={sectionRef}
-      className="w-full lg:pb-32 pb-16 lg:px-0 relative app-container mx-auto"
+      className="w-full lg:pb-32 pb-16 lg:px-0 relative app-container-desktop mx-auto"
     >
       <div className="flex justify-center">
         <div className="w-[60%] h-[3px] bg-gradient-to-r from-[#191919] via-[#D9D9D9] to-[#191919]"></div>
       </div>
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[270px] bg-[#D9D9D9] bg-opacity-50 blur-[180px]"></div>
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 lg:w-[400px] w-[220px] lg:h-[270px] h-[100px] bg-[#D9D9D9] bg-opacity-50 blur-[180px]"></div>
       <div className="app-section mx-auto mt-16">
         <div className="max-w-[630px] mx-auto mb-4 lg:mb-0">
           <h2
@@ -110,7 +110,7 @@ export default function FaqSection() {
           >
             preguntas frecuentes
           </h2>
-          <p className="text-[#FFFFFFB2] text-center text-sm lg:text-base">
+          <p className="text-[#FFFFFFB2] text-center text-sm lg:text-base px-6 lg:px-0">
             ¿No ves tu duda aquí? Escríbenos por WhatsApp: serás atendido
             personalmente, podrás pedir cotizaciones sin compromiso y aclarar
             cualquier duda al instante.
@@ -125,7 +125,7 @@ export default function FaqSection() {
                 value={`item-${index}`}
                 className="border-b border-[#FFFFFF1A] lg:pt-3 lg:pb-2 pr-4"
                 trigger={
-                  <AccordionTrigger className="text-[#FFFFFFB2] text-base font-normal lg:py-2">
+                  <AccordionTrigger className="text-[#FFFFFFB2] text-base font-normal lg:py-2 px-6 lg:px-0">
                     {item.question}
                   </AccordionTrigger>
                 }

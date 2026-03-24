@@ -5,14 +5,14 @@ export default async function FeaturedServicesSection() {
   const services = await getServices();
 
   return (
-    <div className="app-container mt-20 mx-auto">
-      <div className="uppercase text-center font-mono text-4xl 2xl:text-[150px] leading-[107%] tracking-[0%] gradient-text">
+    <div className="app-container-desktop mt-12 lg:mt-20 mx-auto w-full">
+      <div className="uppercase text-center font-mono text-5xl 2xl:text-[150px] leading-[107%] tracking-[0%] gradient-text">
         <p>Soluciones</p>
         <p>audiovisuales para</p>
         <p>marcas y para</p>
         <p>quienes las crean.</p>
       </div>
-      <h2 className="text-center text-2xl 2xl:text-[50px] font-normal text-[#FFFFFF] font-mono mt-24 mb-8">
+      <h2 className="text-center text-3xl 2xl:text-[50px] font-normal text-[#FFFFFF] font-mono mt-16 lg:mt-24 mb-12 lg:mb-8">
         Nuestros servicios
       </h2>
       <div className="mx-auto">

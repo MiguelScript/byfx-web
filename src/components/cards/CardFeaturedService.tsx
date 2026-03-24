@@ -11,9 +11,9 @@ export const CardFeaturedService = ({
   return (
     <Link
       href={`services/${_id}`}
-      className="group mx-auto flex flex-col backdrop-blur-lg max-w-80 lg:max-w-none  min-h-[300px] py-4"
+      className="group  flex flex-col backdrop-blur-lg  lg:max-w-none  min-h-[300px] lg:py-4"
     >
-      <div className="mt-4 grow gap-1 mb-2">
+      <div className="lg:mt-4 grow gap-1 mb-6 lg:mb-2 max-w-80 mx-auto">
         <h3 className="text-lg xl:text-xl font-bold text-[#FFFFFF]">
           {name}
         </h3>
