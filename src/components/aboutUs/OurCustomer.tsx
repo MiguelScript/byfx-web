@@ -64,7 +64,7 @@ export function OurCustomer({ whatsappLink }: { whatsappLink: string }) {
             <ClientCard key={index} {...card} />
           ))}
         </div>
-        <div className="pt-36 pb-16 text-center text-[#FFFFFF66] text-2xl xl:text-3xl font-normal">
+        <div className="pt-24 lg:pt-44 pb-16 lg:pb-32 text-center text-[#FFFFFF66] text-2xl xl:text-3xl font-normal xl:leading-[45px]">
           <p>
             <span className="font-bold text-[#FFFFFF]">BYFX</span> existe para
             resolver problemas de{" "}
