@@ -25,8 +25,14 @@ const services = {
 		},
 		{
 			name: "description",
-			title: "Descripcion",
+			title: "Descripcion Preview",
 			type: "string",
+		},
+		{
+			name: "descriptionFullArray",
+			title: "Descripción Completa",
+			type: "array",
+			of: [{ type: "block" }],
 		},
 		{
 			name: "image",

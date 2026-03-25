@@ -4,6 +4,7 @@ import {
   getSocialInfoHome,
   getWhatsappLink,
 } from "@/sanity/sanity-utils";
+import { PortableText } from "next-sanity";
 import { notFound } from "next/navigation";
 
 export default async function Page({
@@ -38,10 +39,8 @@ export default async function Page({
             </h1>
 
             {/* Service Description with Highlight */}
-            <div className="max-w-4xl mx-auto mt-4 lg:mt-0">
-              <p className="text-base xl:text-xl leading-relaxed text-[#FFFFFFB2] mb-4">
-                {serviceData.description}
-              </p>
+            <div className="max-w-4xl mx-auto mt-4 lg:mt-0 text-base xl:text-lg  text-[#FFFFFFB2] font-[400] mb-4">
+              <PortableText value={serviceData.descriptionFullArray} />
             </div>
           </div>
 

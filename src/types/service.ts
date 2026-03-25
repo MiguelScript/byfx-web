@@ -1,7 +1,10 @@
+import { TypedObject } from "sanity";
+
 type service = {
   _id: string;
   name: string;
   description: string;
+  descriptionFullArray: TypedObject | TypedObject[];
   tags: string[];
   position: number;
   hashtag: string;

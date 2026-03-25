@@ -116,7 +116,7 @@ export async function getProyectsByServiceId({
     groq`*[_type == "services" && _id == $_id][0]{
       _id,
       name,
-      description,
+      descriptionFullArray,
       position,
       hashtag,
       tags,
