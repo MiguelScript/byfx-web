@@ -2,9 +2,9 @@ import Image from "next/image";
 import React from "react";
 import socialNetworks from "@/types/socialNetwork";
 import Link from "next/link";
-import { navbarData } from "@/constants/NavbarData";
 import { getServices } from "@/sanity/sanity-utils";
 import { ButtonIcon } from "../buttons/ButtonIcon";
+import { FooterClient } from "./FooterClient";
 
 const SOCIAL_ICON_CONFIG: Record<string, { path: string; size: number }> = {
   facebook: { path: "/assets/icons/facebook-black.svg", size: 22 },
@@ -30,7 +30,7 @@ export default async function Footer({
   const services = await getServices();
 
   return (
-    <div className="flex flex-col gap-10 justify-center bg-[#000000] py-10 px-4">
+    <div id="main-footer" className="flex flex-col gap-10 justify-center bg-[#000000] py-10 px-4">
       <div className="app-container  mx-auto w-full flex justify-between items-center">
         <div className="">
           <Link href={"/"} className="">
@@ -43,19 +43,7 @@ export default async function Footer({
             ></Image>
           </Link>
         </div>
-        <div className="hidden lg:flex items-center justify-center font-mono grow">
-          <div className="flex gap-x-16 items-center">
-            {navbarData
-              .filter((item) => item.navWeb === true)
-              .map((item, idx) => (
-                <Link key={idx} href={item.path}>
-                  <p className="text-lg 2xl:text-xl text-[#FFFFFF80]">
-                    {item.name}
-                  </p>
-                </Link>
-              ))}
-          </div>
-        </div>
+        <FooterClient services={services} />
         <div className="lg:ml-28 min-h-[40px]">
           <a
             href={whatsappLink}
@@ -103,7 +91,7 @@ export default async function Footer({
           {services.map((service) => (
             <Link
               key={service._id}
-              href={`/service/${service._id}`}
+              href={`/services/${service._id}`}
               className="text-center text-sm lg:text-base text-[#ffffff60] underline hover:opacity-80 flex items-center font-light tracking-tight"
             >
               {service.name}

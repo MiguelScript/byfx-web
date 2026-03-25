@@ -1,27 +1,19 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { NavItem } from "./NavItem";
-import { usePathname } from "next/navigation";
-import { navbarData } from "@/constants/NavbarData";
-import { NavbarMobile } from "./NavbarMobile";
-import { ContactDrawer } from "@/components/drawers/ContactDrawer";
 import Link from "next/link";
+import { navbarData } from "@/constants/NavbarData";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import service from "@/types/service";
 
-interface NavbarClientProps {
+interface FooterClientProps {
   services: service[];
-  whatsapp: string;
-  countries: string;
-  servicesList: Array<{ _id: string; name: string; position: number }>;
 }
 
-export const NavbarClient = ({ services, countries }: NavbarClientProps) => {
-  const pathname = usePathname();
+export function FooterClient({ services }: FooterClientProps) {
   const [servicesOpen, setServicesOpen] = useState(false);
-  const [navBottom, setNavBottom] = useState(0);
+  const [footerTop, setFooterTop] = useState(0);
   const [mounted, setMounted] = useState(false);
   const triggerRef = useRef<HTMLParagraphElement>(null);
 
@@ -30,16 +22,16 @@ export const NavbarClient = ({ services, countries }: NavbarClientProps) => {
   }, []);
 
   useEffect(() => {
-    const updateNavBottom = () => {
-      const nav = document.getElementById("main-navbar");
-      if (nav) setNavBottom(nav.getBoundingClientRect().bottom);
+    const updateFooterTop = () => {
+      const footer = document.getElementById("main-footer");
+      if (footer) setFooterTop(footer.getBoundingClientRect().top);
     };
-    updateNavBottom();
-    window.addEventListener("resize", updateNavBottom);
-    window.addEventListener("scroll", updateNavBottom, { passive: true });
+    updateFooterTop();
+    window.addEventListener("resize", updateFooterTop);
+    window.addEventListener("scroll", updateFooterTop, { passive: true });
     return () => {
-      window.removeEventListener("resize", updateNavBottom);
-      window.removeEventListener("scroll", updateNavBottom);
+      window.removeEventListener("resize", updateFooterTop);
+      window.removeEventListener("scroll", updateFooterTop);
     };
   }, []);
 
@@ -48,7 +40,7 @@ export const NavbarClient = ({ services, countries }: NavbarClientProps) => {
     const handleClickOutside = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (
-        !target.closest("#services-dropdown-panel") &&
+        !target.closest("#footer-services-dropdown-panel") &&
         !triggerRef.current?.contains(target)
       ) {
         setServicesOpen(false);
@@ -57,10 +49,6 @@ export const NavbarClient = ({ services, countries }: NavbarClientProps) => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [servicesOpen]);
-
-  useEffect(() => {
-    setServicesOpen(false);
-  }, [pathname]);
 
   return (
     <>
@@ -75,9 +63,9 @@ export const NavbarClient = ({ services, countries }: NavbarClientProps) => {
                   ref={triggerRef}
                   onClick={() => setServicesOpen((o) => !o)}
                   className={`flex items-center gap-1 text-lg 2xl:text-xl transition-colors duration-200 cursor-pointer select-none ${
-                    pathname.startsWith("/services") || servicesOpen
+                    servicesOpen
                       ? "text-[#FFFFFF]"
-                      : "text-[#F3F3F380] hover:text-[#FFFFFF]"
+                      : "text-[#FFFFFF80] hover:text-[#FFFFFF]"
                   }`}
                 >
                   {item.name}
@@ -86,37 +74,22 @@ export const NavbarClient = ({ services, countries }: NavbarClientProps) => {
                   />
                 </p>
               ) : (
-                <NavItem
-                  key={idx}
-                  path={item.path}
-                  name={item.name}
-                  isActive={pathname === item.path}
-                  navigation={item.navigation}
-                  onClick={() => {}}
-                />
+                <Link key={idx} href={item.path}>
+                  <p className="text-lg 2xl:text-xl text-[#FFFFFF80] hover:text-[#FFFFFF] transition-colors duration-200">
+                    {item.name}
+                  </p>
+                </Link>
               ),
             )}
         </div>
       </div>
 
-      <div className="ml-28 min-h-[40px] hidden lg:block">
-        <ContactDrawer countries={countries}>
-          <button className="bg-[#ffffff] text-[#000000] rounded-[100px] py-2 px-10  relative">
-            <p className="text-lg 2xl:text-xl relative z-10 font-mono">
-              Cotizar
-            </p>
-          </button>
-        </ContactDrawer>
-      </div>
-
-      <NavbarMobile services={services} countries={countries} />
-
       {mounted &&
         servicesOpen &&
         createPortal(
           <div
-            id="services-dropdown-panel"
-            style={{ top: navBottom }}
+            id="footer-services-dropdown-panel"
+            style={{ bottom: `calc(100vh - ${footerTop}px)` }}
             className="fixed left-0 right-0 w-screen z-50 bg-[#ffffff] backdrop-blur-3xl py-4"
           >
             <div className="app-container mx-auto px-4 xl:px-16 py-4 flex flex-wrap gap-x-8 gap-y-2 justify-center items-center font-mono">
@@ -125,7 +98,8 @@ export const NavbarClient = ({ services, countries }: NavbarClientProps) => {
                   <span className="mr-2 text-lg text-[#000000]">•</span>
                   <Link
                     href={`/services/${service._id}`}
-                    className="uppercase text-xl text-[#000000] font-mono  transition-colors duration-200"
+                    className="uppercase text-xl text-[#000000] font-mono transition-colors duration-200"
+                    onClick={() => setServicesOpen(false)}
                   >
                     {service.name}
                   </Link>
@@ -137,4 +111,4 @@ export const NavbarClient = ({ services, countries }: NavbarClientProps) => {
         )}
     </>
   );
-};
+}
