@@ -1,5 +1,3 @@
-"use client";
-import { useLayoutBackground } from "@/components/background/useLayoutBackground";
 import { Navbar } from "@/components/navbar/Navbar";
 import "animate.css";
 import "swiper/css";
@@ -9,7 +7,6 @@ export default function Layout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	useLayoutBackground();
 	return (
 		<div className={`app-bg min-w-full min-h-screen `}>
 			<div className="flex flex-col min-h-screen">
