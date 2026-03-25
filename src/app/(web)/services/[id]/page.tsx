@@ -6,6 +6,18 @@ import {
 } from "@/sanity/sanity-utils";
 import { PortableText } from "next-sanity";
 import { notFound } from "next/navigation";
+import { generateServiceMetadata } from "./metadata";
+import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
+import Script from "next/script";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const id = (await params).id;
+  return generateServiceMetadata(id);
+}
 
 export default async function Page({
   params,
@@ -21,8 +33,45 @@ export default async function Page({
     notFound();
   }
 
+  const breadcrumbItems = [
+    { name: "Inicio", url: "https://byfx.pro" },
+    { name: "Servicios", url: "https://byfx.pro/services" },
+    { name: serviceData.name, url: `https://byfx.pro/services/${id}` }
+  ];
+
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": serviceData.name,
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "BYFX",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Barquisimeto",
+        "addressRegion": "Lara",
+        "addressCountry": "VE"
+      }
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Barquisimeto"
+    },
+    "availableChannel": {
+      "@type": "ServiceChannel",
+      "serviceUrl": `https://byfx.pro/services/${id}`
+    }
+  };
+
   return (
     <>
+      <BreadcrumbSchema items={breadcrumbItems} />
+      <Script
+        id="service-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        strategy="afterInteractive"
+      />
       <div className="bg-[#1A1A1A] text-white">
         <div className="app-container mx-auto px-4 xl:px-16 py-16 xl:pt-16 xl:pb-24">
           {/* Hashtag */}

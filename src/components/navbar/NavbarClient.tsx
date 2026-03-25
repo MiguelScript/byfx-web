@@ -112,12 +112,19 @@ export const NavbarClient = ({ services, countries }: NavbarClientProps) => {
       <NavbarMobile services={services} countries={countries} />
 
       {mounted &&
-        servicesOpen &&
         createPortal(
           <div
             id="services-dropdown-panel"
-            style={{ top: navBottom }}
-            className="fixed left-0 right-0 w-screen z-50 bg-[#ffffff] backdrop-blur-3xl py-4"
+            style={{ 
+              top: navBottom,
+              transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+              transitionDuration: servicesOpen ? '500ms' : '200ms'
+            }}
+            className={`fixed left-0 right-0 w-screen z-50 bg-[#ffffff] backdrop-blur-3xl py-4 transition-all ${
+              servicesOpen 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 -translate-y-6 pointer-events-none'
+            }`}
           >
             <div className=" mx-auto px-4 xl:px-16 py-4 flex flex-wrap gap-x-8 gap-y-2 justify-center items-center font-mono">
               {services.map((service) => (

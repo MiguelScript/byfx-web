@@ -7,7 +7,24 @@ import { getSocialInfoHome, getTeamContent, getWhatsappLink } from "@/sanity/san
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Byfx | ACERCA DE BYFX",
+  title: "Acerca de Nosotros - Equipo Profesional de Producción Audiovisual",
+  description: "Conoce al equipo de BYFX en Barquisimeto, Venezuela. Profesionales especializados en producción de video, fotografía aérea y contenido audiovisual con equipos de última generación.",
+  keywords: [
+    "equipo producción video Barquisimeto",
+    "profesionales audiovisuales Venezuela",
+    "BYFX equipo",
+    "productora Barquisimeto",
+    "equipo drones Venezuela"
+  ],
+  openGraph: {
+    title: "Acerca de BYFX - Equipo Profesional en Barquisimeto",
+    description: "Conoce al equipo de BYFX en Barquisimeto, Venezuela. Profesionales especializados en producción de video y contenido audiovisual.",
+    url: "/about-us",
+    type: "website",
+  },
+  alternates: {
+    canonical: "/about-us",
+  },
 };
 
 export default async function Team() {
