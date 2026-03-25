@@ -15,13 +15,19 @@ import { useState } from "react";
 interface ContactDrawerProps {
   children: React.ReactNode;
   countries: string;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
 }
 
-export const ContactDrawer = ({ children, countries }: ContactDrawerProps) => {
-  const [open, setOpen] = useState(false);
+export const ContactDrawer = ({ children, countries, open: controlledOpen, onOpenChange }: ContactDrawerProps) => {
+  const [internalOpen, setInternalOpen] = useState(false);
+  
+  const isControlled = controlledOpen !== undefined;
+  const open = isControlled ? controlledOpen : internalOpen;
+  const handleOpenChange = isControlled ? onOpenChange : setInternalOpen;
 
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
+    <Sheet open={open} onOpenChange={handleOpenChange}>
       <SheetTrigger asChild>{children}</SheetTrigger>
       <SheetPortal>
         <SheetOverlay className="fixed inset-0 z-50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" style={{ backgroundColor: '#00000080' }} />

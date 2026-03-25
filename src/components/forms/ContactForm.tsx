@@ -26,7 +26,7 @@ const initialValues: ContactFormProps = {
   proyectDescription: "",
 };
 
-const sendForm = async (formData: ContactFormProps) => {
+const sendForm = async (formData: ContactFormProps): Promise<{ success: boolean; message: string }> => {
   try {
     const response = await fetch("/api/send-email", {
       method: "POST",
@@ -41,39 +41,41 @@ const sendForm = async (formData: ContactFormProps) => {
         company: formData.company,
         country: formData.country,
         phone: formData.phone,
-        // serviceType: formData.serviceType,
         proyectDescription: formData.proyectDescription,
       }),
     });
 
-    const data = await response.json();
-
     if (response.ok) {
-      console.log("Correo enviado:", data);
+      return { success: true, message: "¡Correo enviado con éxito! Nos pondremos en contacto pronto." };
     } else {
-      console.error("Error al enviar el correo:", data);
+      return { success: false, message: "Error al enviar el correo. Por favor, intenta nuevamente." };
     }
   } catch (error) {
     console.error("Error al llamar a la API:", error);
+    return { success: false, message: "Error de conexión. Por favor, verifica tu conexión a internet." };
   }
 };
 
+
 export const ContactForm = ({ countries }: { countries: string }) => {
-  const [isLoading, setIsLoading] = useState(false);
   console.log(countries);
-  //   const countriesOptions = countries.split(",");
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
   const formik = useFormik({
     initialValues,
-    onSubmit: async (values) => {
+    onSubmit: async (values, { resetForm }) => {
       setIsLoading(true);
-      await sendForm({
-        ...values,
-        // serviceType:
-        // 	servicesList.find((service) => service._id === values.serviceType)
-        // 		?.name ?? values.serviceType,
-      });
+      setMessage(null);
+      const result = await sendForm(values);
       setIsLoading(false);
+      
+      if (result.success) {
+        setMessage({ type: 'success', text: result.message });
+        resetForm();
+      } else {
+        setMessage({ type: 'error', text: result.message });
+      }
     },
     validationSchema: contactFormSchema,
   });
@@ -228,6 +230,17 @@ export const ContactForm = ({ countries }: { countries: string }) => {
             containerExtraClass="min-h-[70px] col-span-2"
           />
         </div>
+        
+        {message && (
+          <div className={`mt-6 p-4 rounded-lg text-center font-mono tracking-wider ${
+            message.type === 'success' 
+              ? 'bg-[#ACFF6A]/20 text-[#ACFF6A] border border-[#ACFF6A]/30' 
+              : 'bg-red-500/20 text-red-400 border border-red-500/30'
+          }`}>
+            {message.text}
+          </div>
+        )}
+        
         <div className="flex mt-8 gap-4 justify-center font-mono  text-lg xl:text-xl">
           <Button
             type="submit"
