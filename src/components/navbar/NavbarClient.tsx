@@ -119,7 +119,7 @@ export const NavbarClient = ({ services, countries }: NavbarClientProps) => {
             style={{ top: navBottom }}
             className="fixed left-0 right-0 w-screen z-50 bg-[#ffffff] backdrop-blur-3xl py-4"
           >
-            <div className="app-container mx-auto px-4 xl:px-16 py-4 flex flex-wrap gap-x-8 gap-y-2 justify-center items-center font-mono">
+            <div className=" mx-auto px-4 xl:px-16 py-4 flex flex-wrap gap-x-8 gap-y-2 justify-center items-center font-mono">
               {services.map((service) => (
                 <div key={service._id} className="flex items-center">
                   <span className="mr-2 text-lg text-[#000000]">•</span>

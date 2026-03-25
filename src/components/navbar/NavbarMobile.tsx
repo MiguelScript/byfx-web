@@ -18,6 +18,17 @@ export const NavbarMobile = ({ services, countries }: NavbarMobileProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [servicesOpen, setServicesOpen] = useState(false);
 
+	React.useEffect(() => {
+		const navbar = document.getElementById("main-navbar");
+		if (navbar) {
+			if (isOpen) {
+				navbar.style.backgroundColor = "#000000";
+			} else {
+				navbar.style.backgroundColor = "";
+			}
+		}
+	}, [isOpen]);
+
 	return (
 		<Drawer.Root direction="top" open={isOpen} onOpenChange={setIsOpen}>
 			<Drawer.Trigger className="lg:hidden relative flex h-10 flex-shrink-0 items-center justify-center gap-2 transition-all hover:bg-[#1A1A19]">
@@ -34,7 +45,7 @@ export const NavbarMobile = ({ services, countries }: NavbarMobileProps) => {
 					className=" top-0 w-screen fixed z-10 outline-none flex backdrop-blur-lg"
 					// The gap between the edge of the screen and the drawer is 8px in this case.
 				>
-					<div className="bg-[#F2F2F21A] w-full grow py-3 px-5 flex flex-col items-start rounded-b-2xl">
+					<div className="bg-black w-full grow py-3 px-5 flex flex-col items-start ">
 						<Drawer.Title className="font-medium mb-2 pl-7 pt-1 text-zinc-900 flex justify-start">
 							<Link href={"/"} className="" onClick={() => setIsOpen(false)}>
 								<Image
@@ -54,7 +65,7 @@ export const NavbarMobile = ({ services, countries }: NavbarMobileProps) => {
 												<div key={idx} className="flex flex-col gap-y-2">
 													<button
 														onClick={() => setServicesOpen(!servicesOpen)}
-														className="text-[#F3F3F3] text-lg font-mono tracking-[0.20em] px-4 py-2 w-full rounded-[15px] bg-[#F2F2F21A] flex items-center justify-between"
+														className="text-[#F3F3F3] text-xl font-mono font-normal tracking-wider px-4 py-2 w-full flex items-center justify-between border-b border-[#FFFFFF1A]"
 													>
 														{item.name}
 														<ChevronDownIcon
@@ -67,7 +78,7 @@ export const NavbarMobile = ({ services, countries }: NavbarMobileProps) => {
 																<Link
 																	key={service._id}
 																	href={`/services/${service._id}`}
-																	className="text-[#F3F3F3] text-base font-mono px-4 py-2 w-full rounded-[15px] bg-[#F2F2F21A]"
+																	className="text-[#F3F3F3] text-base underline px-4 py-2 w-full"
 																	onClick={() => {
 																		setIsOpen(false);
 																		setServicesOpen(false);
@@ -85,7 +96,7 @@ export const NavbarMobile = ({ services, countries }: NavbarMobileProps) => {
 										if (item.name === "Cotizar") {
 											return (
 												<ContactDrawer key={idx} countries={countries}>
-													<button className="text-[#F3F3F3] text-lg font-mono tracking-[0.20em] px-4 py-2 w-full rounded-[15px] bg-[#F2F2F21A] text-left">
+													<button className="text-[#F3F3F3] text-xl font-mono font-normal tracking-wider px-4 py-2 w-full text-left">
 														{item.name}
 													</button>
 												</ContactDrawer>
@@ -96,7 +107,7 @@ export const NavbarMobile = ({ services, countries }: NavbarMobileProps) => {
 											<Link
 												key={idx}
 												href={item.path}
-												className="text-[#F3F3F3] text-lg font-mono tracking-[0.20em] px-4 py-2 w-full rounded-[15px] bg-[#F2F2F21A]"
+												className="text-[#F3F3F3] text-xl font-mono font-normal tracking-wider px-4 py-2 w-full border-b border-[#FFFFFF1A]"
 												onClick={() => setIsOpen(false)}
 											>
 												{item.name}

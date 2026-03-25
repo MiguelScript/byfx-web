@@ -47,7 +47,7 @@ export function OurCustomer({ whatsappLink }: { whatsappLink: string }) {
                   href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="lg:absolute right-0 bg-[#ACFF6A] text-[#202020] rounded-[100px] py-[8px] px-6 font-mono flex items-center justify-center gap-x-2 hover:bg-[#9EF055] transition-colors"
+                  className="lg:absolute right-0 bottom-2 bg-[#ACFF6A] text-[#202020] rounded-[100px] py-[8px] px-6 font-mono flex items-center justify-center gap-x-2 hover:bg-[#9EF055] transition-colors"
                 >
                   <Image
                     src={"/assets/icons/whatsapp-icon.svg"}
@@ -61,7 +61,7 @@ export function OurCustomer({ whatsappLink }: { whatsappLink: string }) {
                 </a>
                 <Link
                   href="/works"
-                  className="bg-[#ffffff] text-[#000000] rounded-[100px] py-3 w-[150px] relative text-center"
+                  className="bg-[#ffffff] text-[#000000] rounded-[100px] py-3 w-[150px] relative text-center lg:hidden"
                 >
                   <p className="text-lg 2xl:text-xl relative z-10 font-mono">
                     Ver Trabajos

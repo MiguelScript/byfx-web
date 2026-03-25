@@ -13,7 +13,7 @@ export const Navbar = async () => {
   ]);
 
   return (
-    <nav id="main-navbar" className="flex sticky top-0 z-50 px-4 xl:px-16 xl:pt-6 xl:pb-6 pb-4 pt-4 lg:pt-0 lg:border-b lg:border-[#FFFFFF1A] bg-[#18181833] backdrop-blur-3xl">
+    <nav id="main-navbar" className="flex sticky top-0 z-50 px-4 xl:px-16 xl:pt-6 xl:pb-6 pb-4 pt-4 lg:pt-0 lg:border-b lg:border-[#FFFFFF1A] bg-[#18181833] backdrop-blur-3xl transition-colors duration-300">
       <div className="app-container  mx-auto w-full flex justify-between items-center">
         <div className="">
           <Link href={"/"} className="">

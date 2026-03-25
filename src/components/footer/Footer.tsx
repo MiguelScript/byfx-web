@@ -4,7 +4,7 @@ import socialNetworks from "@/types/socialNetwork";
 import Link from "next/link";
 import { getServices } from "@/sanity/sanity-utils";
 import { ButtonIcon } from "../buttons/ButtonIcon";
-import { FooterClient } from "./FooterClient";
+import { navbarData } from "@/constants/NavbarData";
 
 const SOCIAL_ICON_CONFIG: Record<string, { path: string; size: number }> = {
   facebook: { path: "/assets/icons/facebook-black.svg", size: 22 },
@@ -17,7 +17,12 @@ const SOCIAL_ICON_CONFIG: Record<string, { path: string; size: number }> = {
 };
 
 const getSocialIconConfig = (networkName: string) => {
-  return SOCIAL_ICON_CONFIG[networkName] || { path: "/assets/icons/default.svg", size: 22 };
+  return (
+    SOCIAL_ICON_CONFIG[networkName] || {
+      path: "/assets/icons/default.svg",
+      size: 22,
+    }
+  );
 };
 
 export default async function Footer({
@@ -30,7 +35,10 @@ export default async function Footer({
   const services = await getServices();
 
   return (
-    <div id="main-footer" className="flex flex-col gap-10 justify-center bg-[#000000] py-10 px-4">
+    <div
+      id="main-footer"
+      className="flex flex-col gap-10 justify-center bg-[#000000] py-10 px-4"
+    >
       <div className="app-container  mx-auto w-full flex justify-between items-center">
         <div className="">
           <Link href={"/"} className="">
@@ -43,7 +51,19 @@ export default async function Footer({
             ></Image>
           </Link>
         </div>
-        <FooterClient services={services} />
+        <div className="hidden lg:flex items-center justify-center font-mono grow">
+          <div className="flex gap-x-16 items-center">
+            {navbarData
+              .filter((item) => item.navWeb === true && item.name !== "Servicios")
+              .map((item, idx) => (
+                <Link key={idx} href={item.path}>
+                  <p className="text-lg 2xl:text-xl text-[#FFFFFF80]">
+                    {item.name}
+                  </p>
+                </Link>
+              ))}
+          </div>
+        </div>
         <div className="lg:ml-28 min-h-[40px]">
           <a
             href={whatsappLink}
@@ -62,11 +82,13 @@ export default async function Footer({
         </div>
       </div>
       <div className="app-container mx-auto block lg:hidden w-full">
-        <p className="font-mono uppercase font-normal text-xl tracking-wider">social</p>
+        <p className="font-mono uppercase font-normal text-xl tracking-wider">
+          social
+        </p>
         <div className="flex  gap-x-4 mt-2 lg:mt-0">
           {socialNetworks.map((network) => {
             const config = getSocialIconConfig(network.name);
-            
+
             return (
               <a href={network.url} target="_blank" key={network.name}>
                 <ButtonIcon className="!bg-[#FFFFFF] rounded-full">
@@ -125,11 +147,13 @@ export default async function Footer({
           </p>
         </div>
         <div className="hidden lg:block">
-          <p className="font-mono uppercase font-normal text-[30px] leading-6 mb-2">social</p>
+          <p className="font-mono uppercase font-normal text-[30px] leading-6 mb-2">
+            social
+          </p>
           <div className="flex  gap-x-4">
             {socialNetworks.map((network) => {
               const config = getSocialIconConfig(network.name);
-              
+
               return (
                 <a href={network.url} target="_blank" key={network.name}>
                   <ButtonIcon className="!bg-[#FFFFFF] rounded-full">
