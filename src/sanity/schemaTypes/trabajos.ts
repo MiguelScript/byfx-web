@@ -20,6 +20,12 @@ const trabajos = {
 			to: [{ type: "services" }],
 		},
 		{
+			name: "posicion",
+			title: "Posición",
+			type: "number",
+			validation: (Rule: any) => Rule.required().min(0),
+		},
+		{
 			name: "featured",
 			title: "Destacado en home",
 			type: "boolean",

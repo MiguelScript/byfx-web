@@ -54,10 +54,11 @@ export async function getServices(): Promise<service[]> {
 }
 
 export async function getFeaturedWorks(): Promise<trabajo[]> {
-  return client.fetch(groq`*[_type == "trabajos" && featured == true] | order(position asc){
+  return client.fetch(groq`*[_type == "trabajos" && featured == true] | order(posicion asc){
         _id,
         titulo,
         cliente,
+        posicion,
        "imagen": imagen.asset->url,
     }`);
 }
@@ -126,7 +127,7 @@ export async function getProyectsByServiceId({
 }
 
 export async function getTrabajosWithRecursos(): Promise<trabajo[]> {
-  return client.fetch(groq`*[_type == "trabajos"] | order(_createdAt desc) {
+  return client.fetch(groq`*[_type == "trabajos"] | order(posicion asc) {
     _id,
     titulo,
     cliente,
@@ -134,6 +135,7 @@ export async function getTrabajosWithRecursos(): Promise<trabajo[]> {
       _id,
       name
     },
+    posicion,
     "imagen": imagen.asset->url,
     recursos[] {
       _key,
@@ -162,6 +164,7 @@ export async function getRecursosByTrabajoId({
       _id,
       name
     },
+    posicion,
     "imagen": imagen.asset->url,
     recursos[] {
       _key,

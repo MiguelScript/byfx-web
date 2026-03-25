@@ -13,6 +13,7 @@ type trabajo = {
     _id: string;
     name: string;
   };
+  posicion: number;
   imagen: string;
   recursos?: recurso[];
 };

@@ -3,14 +3,14 @@ import Link from "next/link";
 import React from "react";
 
 export const CardFeaturedWork = ({
-  _id,
+  // _id,
   name,
   description,
   image,
 }: Pick<service, "name" | "description" | "image" | "_id">) => {
   return (
     <Link
-      href={`services/${_id}`}
+      href={`works`}
       className="group mx-auto flex flex-col backdrop-blur-lg w-full lg:max-w-none  min-h-[300px] lg:w-[395px] py-4"
     >
       <div className="mt-4 grow gap-1 mb-2">
