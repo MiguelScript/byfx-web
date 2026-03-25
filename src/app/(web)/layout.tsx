@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/navbar/Navbar";
 import "animate.css";
 import "swiper/css";
-
+ 
 export default function Layout({
 	children,
 }: Readonly<{
