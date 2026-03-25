@@ -1,14 +1,10 @@
-import socialNetworks from "@/types/socialNetwork";
 import Image from "next/image";
-import { ButtonIcon } from "../buttons/ButtonIcon";
 import { ContactDrawer } from "../drawers/ContactDrawer";
 
 export function HeroSection({
-  socialNetworks,
   whatsappLink,
   countries,
 }: {
-  socialNetworks: socialNetworks[];
   whatsappLink: string;
   countries: string;
 }) {
@@ -31,22 +27,6 @@ export function HeroSection({
             identidad, calidad visual e{" "}
             <strong className="font-semibold">storytelling</strong> real.
           </p>
-        </div>
-
-        <div className="hidden lg:flex flex-col gap-5 justify-center mb-8 ">
-          {socialNetworks.map((network) => (
-            <a href={network.url} target="_blank" key={network.name}>
-              <ButtonIcon className="!bg-[#000000] rounded-full">
-                <Image
-                  src={network?.image ?? "noiamge.jpg"}
-                  alt={network.name}
-                  height={network.imgSize ?? 22}
-                  width={network.imgSize ?? 22}
-                  className="text-[#FFFFFF] fill-[#FFFFFF]"
-                />
-              </ButtonIcon>
-            </a>
-          ))}
         </div>
       </div>
       <div className="flex justify-between lg:justify-center relative mt-8 mb-12 space-x-2">

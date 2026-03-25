@@ -28,6 +28,7 @@ export const ContactDrawer = ({ children, countries }: ContactDrawerProps) => {
         <SheetContent
           side="right"
           className="w-full sm:max-w-md p-0 bg-[#000000] border-l border-gray-800"
+          onOpenAutoFocus={(e) => e.preventDefault()}
         >
           <SheetHeader className="sr-only">
             <SheetTitle>Contacto</SheetTitle>

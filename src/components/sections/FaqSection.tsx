@@ -18,23 +18,28 @@ type FaqItem = {
 const faqItems: FaqItem[] = [
   {
     question: "¿Dónde está ubicada BYFX?",
-    answer: "answer1",
+    answer:
+      "BYFX está ubicada en Barquisimeto, Venezuela, una de las principales ciudades del país y capital del estado Lara. Aunque hemos realizado producciones audiovisuales en diferentes ciudades, trabajando con marcas y empresas según las necesidades de cada proyecto. Esto nos permite movilizar nuestro equipo y producir tanto a nivel local como en otras regiones del país.",
   },
   {
     question: "¿Cuáles son los servicios que ofrecemos?",
-    answer: "answer2",
+    answer:
+      "Sí. A través de nuestro servicio de Partner Production, BYFX funciona como el equipo audiovisual externo para agencias, freelancers y equipos de marketing que necesitan producción profesional sin crear un departamento interno. Nos integramos a tu flujo de trabajo y producimos bajo tus lineamientos y tu marca, mientras tú mantienes la relación con el cliente y la gestión del proyecto.",
   },
   {
     question: "¿Cuánto cuesta un video?",
-    answer: "answer3",
+    answer:
+      "Cada proyecto es diferente, por lo que nuestros presupuestos se elaboran de forma personalizada según las necesidades de producción, el tipo de video, la complejidad del rodaje y los objetivos del proyecto. Nuestro enfoque es proponer la mejor solución audiovisual para cada marca o empresa, optimizando recursos sin comprometer la calidad. Si tienes una idea o proyecto en mente, contáctanos y con gusto evaluamos tu caso para prepararte una propuesta adecuada.",
   },
   {
     question: "¿En cuanto tiempo entregan el material final?",
-    answer: "answer4",
+    answer:
+      "El tiempo de entrega depende del tipo de proyecto y de la complejidad de la producción. Antes de iniciar cualquier trabajo, definimos claramente los tiempos de entrega dentro del cronograma del proyecto. Para nosotros la puntualidad es fundamental, por lo que nos comprometemos a cumplir los plazos establecidos con cada cliente.",
   },
   {
     question: "¿Necesito experiencia para tomar las clases de edición?",
-    answer: "answer5",
+    answer:
+      "No. Las clases están diseñadas especialmente para personas que no tienen experiencia previa en edición ni trabajando con programas en computadora. Empezamos desde lo básico y avanzamos paso a paso, para que cualquier persona pueda aprender a editar video con un enfoque práctico y aplicable.",
   },
 ];
 
