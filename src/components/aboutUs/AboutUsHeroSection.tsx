@@ -1,6 +1,6 @@
 export function AboutUsHeroSection() {
   return (
-    <div className="pt-8 px-12 relative">
+    <div className="lg:pt-8 px-12 relative">
       <div className="absolute top-[417px] left-1/2 -translate-x-1/2 lg:w-[400px] w-[220px] lg:h-[270px] h-[100px] bg-[#D9D9D9] lg:bg-opacity-50 blur-[150px] lg:blur-[180px]"></div>
       <div className="flex">
         <div className="max-w-[1000px] mx-auto relative pb-2">

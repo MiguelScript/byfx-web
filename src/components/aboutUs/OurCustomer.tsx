@@ -31,7 +31,7 @@ const clientCards: ClientCardData[] = [
 
 export function OurCustomer({ whatsappLink }: { whatsappLink: string }) {
   return (
-    <section className="pt-32 pb-16">
+    <section className="pt-16 lg:pt-32 pb-16">
       <div className="app-container mx-auto">
         <div className="relative flex justify-center items-center mb-12">
           <div>

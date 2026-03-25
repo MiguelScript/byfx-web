@@ -9,6 +9,21 @@ const services = {
 			type: "string",
 		},
 		{
+			name: "hashtag",
+			title: "Hashtag",
+			type: "string",
+		},
+		{
+			name: "tags",
+			title: "Tags",
+			type: "array",
+			of: [
+				{
+					type: "string",
+				},
+			],
+		},
+		{
 			name: "description",
 			title: "Descripcion",
 			type: "string",

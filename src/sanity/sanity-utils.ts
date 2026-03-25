@@ -3,7 +3,6 @@ import { client } from "./lib/client";
 import socialNetworks from "@/types/socialNetwork";
 import service from "@/types/service";
 import home from "@/types/home";
-import { servicesData } from "@/data/servicesData";
 import trabajo from "@/types/trabajo";
 
 export async function getSocialNetworks(): Promise<socialNetworks[]> {
@@ -113,8 +112,17 @@ export async function getProyectsByServiceId({
 }: {
   _id: string;
 }): Promise<service | undefined> {
-  const service = servicesData.find((service) => service._id === _id);
-  return service;
+  return client.fetch(
+    groq`*[_type == "services" && _id == $_id][0]{
+      _id,
+      name,
+      description,
+      position,
+      hashtag,
+      tags,
+    }`,
+    { _id }
+  );
 }
 
 export async function getTrabajosWithRecursos(): Promise<trabajo[]> {
