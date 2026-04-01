@@ -84,9 +84,9 @@ const RecursoSlide = ({ recurso }: { recurso: recurso }) => {
   const fileType = getFileType(link);
 
   return (
-    <div className="px-2 py-2 xl:py-3 xl:px-4 bg-black flex justify-center">
+    <div className="px-2 py-2 xl:py-3 xl:px-4 flex justify-center">
       <div
-        className={`w-full ${fileType === "img" ? "h-[200px]" : "h-[340px]"} md:h-[420px] overflow-hidden flex justify-center items-center`}
+        className={`w-full ${fileType === "img" ? "h-[200px]" : "h-[380px]"} md:h-[420px] overflow-hidden flex justify-center items-center  rounded-[20px]`}
       >
         {fileType === "video" && (
           <iframe
@@ -98,16 +98,15 @@ const RecursoSlide = ({ recurso }: { recurso: recurso }) => {
             allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
-            className="rounded-[20px]"
           />
         )}
         {fileType === "img" && (
           <Image
-            width={1000}
-            height={900}
+            width={900}
+            height={1000}
             src={link}
             alt={recurso._key}
-            className="rounded-[20px] object-contain w-full h-full"
+            className="object-contain w-full h-full"
           />
         )}
         {fileType === "svg" && (
@@ -116,7 +115,7 @@ const RecursoSlide = ({ recurso }: { recurso: recurso }) => {
             height={400}
             src={link}
             alt={recurso._key}
-            className="rounded-[20px] bg-contain"
+            className="bg-contain"
           />
         )}
       </div>
@@ -131,6 +130,7 @@ export const RecursosDrawer = ({
   titulo,
   cliente,
 }: RecursosDrawerProps) => {
+  console.log(recursos);
   const [activeIndex, setActiveIndex] = useState(0);
 
   const validRecursos = recursos.filter((r) => {
@@ -142,7 +142,7 @@ export const RecursosDrawer = ({
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent
         side="bottom"
-        className="h-[100vh] p-0 bg-black/70 border-t border-[#FFFFFF1A] rounded-t-[20px] flex flex-col"
+        className="h-[100vh] p-0 bg-black/90 border-t border-[#FFFFFF1A] flex flex-col backdrop-blur-md"
       >
         <SheetHeader className="px-6 pt-6 pb-4 border-b border-[#FFFFFF1A] shrink-0">
           <SheetTitle className="text-xl font-bold text-white font-mono uppercase tracking-wider">
@@ -154,17 +154,19 @@ export const RecursosDrawer = ({
         </SheetHeader>
 
         {/* Carousel */}
-        <div className="flex-1 overflow-y-auto p-4 xl:p-6">
+        <div className="flex-1 overflow-y-auto p-4 xl:p-6 xl:pt-16">
           {validRecursos.length > 0 ? (
             <div className="flex items-center gap-4">
-              <div className="custom-prev-drawer cursor-pointer shrink-0 hidden xl:block">
-                <Image
-                  src="/assets/icons/arrow.svg"
-                  alt="prev"
-                  width={12}
-                  height={12}
-                  className="rotate-180"
-                />
+              <div className="custom-prev-drawer cursor-pointer shrink-0 hidden xl:block group">
+                <div className="p-3 border border-white/20 transition-all duration-300 hover:bg-white/10 hover:border-white/40">
+                  <Image
+                    src="/assets/icons/arrow.svg"
+                    alt="prev"
+                    width={12}
+                    height={12}
+                    className="transition-transform duration-300 group-hover:scale-110"
+                  />
+                </div>
               </div>
 
               <div className="max-w-4xl mx-auto">
@@ -188,13 +190,16 @@ export const RecursosDrawer = ({
                 </Swiper>
               </div>
 
-              <div className="custom-next-drawer cursor-pointer shrink-0 hidden xl:block">
-                <Image
-                  src="/assets/icons/arrow.svg"
-                  alt="next"
-                  width={12}
-                  height={12}
-                />
+              <div className="custom-next-drawer cursor-pointer shrink-0 hidden xl:block group">
+                <div className="p-3 border border-white/20 transition-all duration-300 hover:bg-white/10 hover:border-white/40">
+                  <Image
+                    src="/assets/icons/arrow.svg"
+                    alt="next"
+                    width={12}
+                    height={12}
+                    className="rotate-180 transition-transform duration-300 group-hover:scale-110 group-hover:"
+                  />
+                </div>
               </div>
             </div>
           ) : (

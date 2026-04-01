@@ -15,8 +15,10 @@ export function WorksGrid({ trabajos }: WorksGridProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleTrabajoClick = (trabajo: trabajo) => {
-    setSelectedTrabajo(trabajo);
-    setIsModalOpen(true);
+    if (trabajo.recursos && trabajo.recursos.length > 0) {
+      setSelectedTrabajo(trabajo);
+      setIsModalOpen(true);
+    }
   };
 
   const handleCloseModal = () => {
@@ -31,7 +33,7 @@ export function WorksGrid({ trabajos }: WorksGridProps) {
           {trabajos.map((trabajo) => (
             <div
               key={trabajo._id}
-              className="group cursor-pointer"
+              className={`group ${trabajo.recursos && trabajo.recursos.length > 0 ? "cursor-pointer" : ""}`}
               onClick={() => handleTrabajoClick(trabajo)}
             >
               <div className="relative overflow-hidden bg-[#1A1A1A] transition-all duration-300 aspect-[4/3] 2xl:h-[360px] 2xl:aspect-auto">
@@ -54,14 +56,8 @@ export function WorksGrid({ trabajos }: WorksGridProps) {
                     </p>
                   )}
                   <div className="flex text-[#FFFFFF99] text-lg tracking-tight">
-                    {trabajo.cliente && (
-                      <p className="">
-                        {trabajo.cliente} -
-                      </p>
-                    )}
-                    <h3 className="">
-                      {trabajo.titulo}
-                    </h3>
+                    {trabajo.cliente && <p className="">{trabajo.cliente} -</p>}
+                    <h3 className="">{trabajo.titulo}</h3>
                   </div>
                 </div>
               </div>
