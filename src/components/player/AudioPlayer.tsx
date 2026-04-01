@@ -29,11 +29,11 @@ export const AudioPlayer = ({ audio, classNames }: AudioPlayerProps) => {
 
 	return (
 		<div
-			className={`h-[55px] lg:h-[40px] 2xl:h-[55px] bg-[#F2F2F21A] rounded-[100px] flex items-center pl-1 pr-2 gap-2 lg:gap-2 2xl:gap-3 relative lg:-top-1 ${classNames?.container}`}
+			className={`h-[55px] lg:h-[40px] 2xl:h-[55px]  rounded-[100px] flex items-center pl-1 pr-2 gap-2 lg:gap-2 relative lg:-top-1 ${classNames?.container}`}
 		>
 			<div
 				onClick={() => onPlayPause()}
-				className={`relative overflow-hidden h-12 lg:h-8 2xl:h-12  w-12 lg:w-8 2xl:w-12  rounded-full bg-[#F2F2F21A] flex items-center justify-center hover:cursor-pointer hover:bg-[#1B1B1B] ${classNames?.iconContainer}`}
+				className={`relative overflow-hidden h-12 lg:h-8 2xl:h-16  w-12 lg:w-8 2xl:w-16  rounded-full bg-[#FFFFFF] flex items-center justify-center hover:cursor-pointer hover:bg-opacity-60 ${classNames?.iconContainer}`}
 			>
 				{!isPlaying ? (
 					<Image
@@ -55,8 +55,8 @@ export const AudioPlayer = ({ audio, classNames }: AudioPlayerProps) => {
 			</div>
 			<div className="overflow-hidden">
 				<WavesurferPlayer
-					height={45}
-					width={160}
+					height={60}
+					width={180}
 					progressColor="#ACFF6A"
 					waveColor="#888888"
 					cursorWidth={0}

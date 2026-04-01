@@ -1,48 +1,42 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 
 export const NavItem = ({
-	path,
-	name,
-	isActive,
-	currentPathPosition,
-	position,
-	onClick,
+  path,
+  name,
+  isActive,
+  onClick,
+  navigation,
 }: {
-	path: string;
-	name: string;
-	isActive: boolean;
-	onClick: () => void;
-	currentPathPosition: number;
-	position: number;
+  path: string;
+  name: string;
+  isActive: boolean;
+  onClick: () => void;
+  navigation: boolean;
 }) => {
-	const [animation, setAnimation] = useState("");
-	const getAnimation = (currentPathPosition: number, position: number) => {
-		if (currentPathPosition === position) {
-			return "";
-		}
-
-		return currentPathPosition < position
-			? "animate__slideInLeft"
-			: "animate__slideInRight";
-	};
-
-	return (
-		<div
-			className="min-h-[50px] flex flex-col"
-			onClick={() => {
-				setAnimation(getAnimation(currentPathPosition, position));
-				onClick();
-			}}
-		>
-			<Link href={path}>
-				<p className="text-xl 2xl:text-2xl">{name}</p>
-			</Link>
-			<div
-				className={`${isActive ? "block" : "hidden"} ${isActive ? animation : ""} animate__animated animate__faster flex justify-center items-center`}
-			>
-				<div className=" w-2 h-2 bg-[#ACFF6A]"></div>
-			</div>
-		</div>
-	);
+  return (
+    <div className="flex flex-col">
+      {navigation ? (
+        <Link href={path} onClick={onClick}>
+          <p
+            className={`text-lg 2xl:text-xl transition-colors duration-200 ${
+              isActive ? "text-[#FFFFFF]" : "text-[#F3F3F380] hover:text-[#FFFFFF]"
+            }`}
+          >
+            {name}
+          </p>
+        </Link>
+      ) : (
+        <div onClick={onClick} className="cursor-pointer">
+          <p
+            className={`text-lg 2xl:text-xl transition-colors duration-200 ${
+              isActive ? "text-[#FFFFFF]" : "text-[#F3F3F380] hover:text-[#FFFFFF]"
+            }`}
+          >
+            {name}
+          </p>
+        </div>
+      )}
+    </div>
+  );
 };

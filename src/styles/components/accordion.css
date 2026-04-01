@@ -1,0 +1,45 @@
+/* Accordion Animations */
+[data-radix-accordion-content] {
+  overflow: hidden;
+  transition: height 0.3s ease-out, opacity 0.2s ease-out;
+}
+
+[data-radix-accordion-content][data-state="closed"] {
+  height: 0;
+  opacity: 0;
+}
+
+[data-radix-accordion-content][data-state="open"] {
+  height: var(--radix-accordion-content-height);
+  opacity: 1;
+}
+
+/* Smooth trigger animations */
+[data-radix-accordion-trigger] {
+  transition: all 0.2s ease-out;
+}
+
+[data-radix-accordion-trigger]:hover {
+  transform: scale(1.01);
+  color: white;
+}
+
+[data-radix-accordion-trigger][data-state="open"] {
+  color: white;
+}
+
+/* Content fade-in animation */
+[data-radix-accordion-content] > div {
+  animation: fadeInContent 0.4s ease-out 0.1s both;
+}
+
+@keyframes fadeInContent {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

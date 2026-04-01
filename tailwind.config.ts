@@ -14,7 +14,7 @@ const config: Config = {
     			foreground: 'var(--foreground)'
     		},
     		fontFamily: {
-    			sans: ["var(--font-montserrat)"],
+    			sans: ["var(--font-inter)"],
     			mono: ["var(--font-bebas-neue)"],
     			team1: ["var(--font-aguafina-script)"],
     			team2: ["var(--font-alumni-sans)"],

@@ -14,10 +14,17 @@ export async function POST(req: Request) {
 		const body: EmailRequestBody = await req.json();
 		const { to, subject, ...rest } = body;
 
-		const htmlToSend = await ejs.render(emailTemplate, rest);
+		// Add default values for optional fields to prevent EJS errors
+		const templateData = {
+			...rest,
+			country: rest.country || '',
+			serviceType: rest.serviceType || '',
+		};
+
+		const htmlToSend = await ejs.render(emailTemplate, templateData);
 
 		const mailOptions = {
-			from: process.env.NEXT_PUBLIC_EMAIL_USER ?? "info@byfx.pro",
+			from: process.env.GMAIL_USER ?? "Byfx.pro@gmail.com",
 			to: to,
 			subject: subject,
 			html: htmlToSend,
@@ -30,9 +37,14 @@ export async function POST(req: Request) {
 			data: { message: "Correo enviado con éxito", info },
 		});
 	} catch (error) {
+		console.error("Error completo al enviar correo:", error);
 		return NextResponse.json({
 			status: "error",
+			email: process.env.GMAIL_USER,
+			passLength: process.env.GMAIL_APP_PASSWORD?.length,
+			errorMessage: error instanceof Error ? error.message : "Unknown error",
+			errorStack: error instanceof Error ? error.stack : undefined,
 			data: { message: "Error al enviar el correo", error },
-		});
+		}, { status: 500 });
 	}
 }

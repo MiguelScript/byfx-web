@@ -46,7 +46,7 @@ export const InputPhone = ({
 						<LabelInputForm
 							label={text}
 							htmlFor={id || name}
-							extraClass="ml-4 font-normal text-sm !text-[#F3F3F3]"
+							extraClass="font-normal text-base !text-[#FFFFFF]"
 						/>
 					)}
 					{requiredText && (
@@ -61,7 +61,7 @@ export const InputPhone = ({
 					className="phone-input-custom-class"
 					countrySelectorStyleProps={{
 						dropdownStyleProps: {
-							className: "!bg-[#252727] !outline-none phone-input-custom-class-dropdown",
+							className: "!bg-[#282828] !outline-none phone-input-custom-class-dropdown",
 							listItemClassName: " hover:!text-[#252727]"
 						}
 					}}
