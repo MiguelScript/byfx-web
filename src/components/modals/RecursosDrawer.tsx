@@ -145,11 +145,11 @@ export const RecursosDrawer = ({
         className="h-[100vh] p-0 bg-black/90 border-t border-[#FFFFFF1A] flex flex-col backdrop-blur-md"
       >
         <SheetHeader className="px-6 pt-6 pb-4 border-b border-[#FFFFFF1A] shrink-0">
-          <SheetTitle className="text-xl font-bold text-white font-mono uppercase tracking-wider">
+          <SheetTitle className="text-2xl font-normal text-white font-mono uppercase">
             {titulo}
           </SheetTitle>
           {cliente && (
-            <p className="text-[#FFFFFFB2] font-mono text-sm mt-1">{cliente}</p>
+            <p className="text-[#FFFFFFB2] font-mono text-base tracking-wider">{cliente}</p>
           )}
         </SheetHeader>
 
