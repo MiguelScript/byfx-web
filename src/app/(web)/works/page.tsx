@@ -15,7 +15,7 @@ export default async function Works() {
   const socialNetworks = await getSocialInfoHome();
   const trabajos = await getTrabajosWithRecursos();
   const { url: whatsappLink } = await getWhatsappLink();
-  console.log(trabajos);
+
   return (
     <>
       <div className="font-sans bg-[#181818]">

@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom cursor — replace 'cursor-custom.png' with your image filename in /public/assets/icons/ */
+/* Recommended size: 32×32px. The two numbers after the URL are the hotspot (click point). */
+/* body {
+	cursor: url('/assets/icons/cursor-custom.png') 0 0, auto;
+}
+ */
 
 @layer utilities {
 	.text-balance {

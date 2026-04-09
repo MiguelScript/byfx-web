@@ -16,6 +16,7 @@ const socialNetworks = {
 					{ title: "Youtube", value: "youtube" },
 					{ title: "Whatsapp", value: "whatsapp" },
 					{ title: "Linkedin", value: "linkedin" },
+					{ title: "Behance", value: "behance" },
 				],
 			},
 		},

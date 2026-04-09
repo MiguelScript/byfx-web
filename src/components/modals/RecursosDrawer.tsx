@@ -162,7 +162,7 @@ export const RecursosDrawer = ({
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent
         side="bottom"
-        className="h-[100vh] p-0 bg-black/90 border-t border-[#FFFFFF1A] flex flex-col backdrop-blur-md"
+        className="h-[100dvh] p-0 bg-black/90 border-t border-[#FFFFFF1A] flex flex-col backdrop-blur-md"
       >
         <SheetHeader className="px-4 md:px-6 pt-5 pb-3 md:pt-6 md:pb-4 border-b border-[#FFFFFF1A] shrink-0 pr-14">
           <SheetTitle className="text-lg md:text-2xl font-normal text-white font-mono uppercase leading-tight">
