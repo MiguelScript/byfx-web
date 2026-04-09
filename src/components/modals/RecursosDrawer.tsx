@@ -88,7 +88,7 @@ const RecursoSlide = ({ recurso }: { recurso: recurso }) => {
 
   const heightClass =
     fileType === "img"
-      ? "h-[260px] sm:h-[320px] md:h-[400px]"
+      ? "h-[260px] sm:h-[320px] md:h-[500px]"
       : "h-[220px] sm:h-[300px] md:h-[420px]";
 
   return (
