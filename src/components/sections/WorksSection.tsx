@@ -14,7 +14,7 @@ export default async function WorksSection({
 
   return (
     <section className=" app-bg w-full">
-      <div className="flex flex-wrap gap-5 justify-center items-center my-8 lg:hidden">
+      <div className="flex flex-wrap gap-5 justify-center items-center lg:hidden py-6">
         {socialNetworks.map((network) => (
           <a href={network.url} target="_blank" key={network.name}>
             <ButtonIcon className="!bg-[#000000] rounded-full w-[50px] h-[50px] text-center">
