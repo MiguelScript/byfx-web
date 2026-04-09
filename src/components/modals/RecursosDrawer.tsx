@@ -77,6 +77,8 @@ const toEmbedUrl = (link: string): string => {
 };
 
 const RecursoSlide = ({ recurso }: { recurso: recurso }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const link =
     recurso.resourceType === "file" ? recurso.file?.asset.url : recurso.link;
 
@@ -84,15 +86,24 @@ const RecursoSlide = ({ recurso }: { recurso: recurso }) => {
 
   const fileType = getFileType(link);
 
+  const heightClass =
+    fileType === "img"
+      ? "h-[260px] sm:h-[320px] md:h-[400px]"
+      : "h-[220px] sm:h-[300px] md:h-[420px]";
+
   return (
     <div className="px-1 py-2 xl:py-3 xl:px-4 flex justify-center">
       <div
-        className={`w-full ${
-          fileType === "img"
-            ? "h-[260px] sm:h-[320px] md:h-[400px]"
-            : "h-[220px] sm:h-[300px] md:h-[420px]"
-        } overflow-hidden flex justify-center items-center rounded-[16px]`}
+        className={`relative w-full ${heightClass} overflow-hidden flex justify-center items-center rounded-[16px]`}
       >
+        {/* Skeleton shimmer */}
+        {!isLoaded && (
+          <div className="absolute inset-0 rounded-[16px] overflow-hidden">
+            <div className="w-full h-full bg-[#2a2a2a] animate-pulse" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent skeleton-shimmer" />
+          </div>
+        )}
+
         {fileType === "video" && (
           <iframe
             width="100%"
@@ -103,6 +114,8 @@ const RecursoSlide = ({ recurso }: { recurso: recurso }) => {
             allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
+            onLoad={() => setIsLoaded(true)}
+            className={`transition-opacity duration-500 ${isLoaded ? "opacity-100" : "opacity-0"}`}
           />
         )}
         {fileType === "img" && (
@@ -111,7 +124,8 @@ const RecursoSlide = ({ recurso }: { recurso: recurso }) => {
             height={1000}
             src={link}
             alt={recurso._key}
-            className="object-contain w-full h-full"
+            className={`object-contain w-full h-full transition-opacity duration-500 ${isLoaded ? "opacity-100" : "opacity-0"}`}
+            onLoad={() => setIsLoaded(true)}
           />
         )}
         {fileType === "svg" && (
@@ -120,7 +134,8 @@ const RecursoSlide = ({ recurso }: { recurso: recurso }) => {
             height={400}
             src={link}
             alt={recurso._key}
-            className="bg-contain"
+            className={`bg-contain transition-opacity duration-500 ${isLoaded ? "opacity-100" : "opacity-0"}`}
+            onLoad={() => setIsLoaded(true)}
           />
         )}
       </div>
