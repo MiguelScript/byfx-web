@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import { recurso } from "@/types/trabajo";
-import { A11y, Navigation } from "swiper/modules";
+import { A11y, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "../ui/sheet";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 interface RecursosDrawerProps {
   isOpen: boolean;
@@ -84,9 +85,13 @@ const RecursoSlide = ({ recurso }: { recurso: recurso }) => {
   const fileType = getFileType(link);
 
   return (
-    <div className="px-2 py-2 xl:py-3 xl:px-4 flex justify-center">
+    <div className="px-1 py-2 xl:py-3 xl:px-4 flex justify-center">
       <div
-        className={`w-full ${fileType === "img" ? "h-[200px]" : "h-[380px]"} md:h-[420px] overflow-hidden flex justify-center items-center  rounded-[20px]`}
+        className={`w-full ${
+          fileType === "img"
+            ? "h-[260px] sm:h-[320px] md:h-[400px]"
+            : "h-[220px] sm:h-[300px] md:h-[420px]"
+        } overflow-hidden flex justify-center items-center rounded-[16px]`}
       >
         {fileType === "video" && (
           <iframe
@@ -144,75 +149,83 @@ export const RecursosDrawer = ({
         side="bottom"
         className="h-[100vh] p-0 bg-black/90 border-t border-[#FFFFFF1A] flex flex-col backdrop-blur-md"
       >
-        <SheetHeader className="px-6 pt-6 pb-4 border-b border-[#FFFFFF1A] shrink-0">
-          <SheetTitle className="text-2xl font-normal text-white font-mono uppercase">
+        <SheetHeader className="px-4 md:px-6 pt-5 pb-3 md:pt-6 md:pb-4 border-b border-[#FFFFFF1A] shrink-0 pr-14">
+          <SheetTitle className="text-lg md:text-2xl font-normal text-white font-mono uppercase leading-tight">
             {titulo}
           </SheetTitle>
           {cliente && (
-            <p className="text-[#FFFFFFB2] font-mono text-base tracking-wider">{cliente}</p>
+            <p className="text-[#FFFFFFB2] font-mono text-sm md:text-base tracking-wider">{cliente}</p>
           )}
         </SheetHeader>
 
         {/* Carousel */}
-        <div className="flex-1 overflow-y-auto p-4 xl:p-6 xl:pt-16">
+        <div className="flex-1 overflow-y-auto p-3 md:p-4 xl:p-6 xl:pt-12">
           {validRecursos.length > 0 ? (
-            <div className="flex items-center gap-4">
-              <div className="custom-prev-drawer cursor-pointer shrink-0 hidden xl:block group">
-                <div className="p-3 border border-white/20 transition-all duration-300 hover:bg-white/10 hover:border-white/40">
-                  <Image
-                    src="/assets/icons/arrow.svg"
-                    alt="prev"
-                    width={12}
-                    height={12}
-                    className="transition-transform duration-300 group-hover:scale-110"
-                  />
+            <>
+              <div className="flex items-center gap-2 xl:gap-4">
+                {/* Flechas solo en desktop */}
+                <div className="custom-prev-drawer cursor-pointer shrink-0 hidden xl:block group">
+                  <div className="p-3 border border-white/20 transition-all duration-300 hover:bg-white/10 hover:border-white/40">
+                    <Image
+                      src="/assets/icons/arrow.svg"
+                      alt="prev"
+                      width={12}
+                      height={12}
+                      className="transition-transform duration-300 group-hover:scale-110"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex-1 min-w-0 xl:max-w-4xl xl:mx-auto">
+                  <Swiper
+                    modules={[Navigation, Pagination, A11y]}
+                    slidesPerView={1}
+                    loop={validRecursos.length > 1}
+                    spaceBetween={16}
+                    navigation={{
+                      nextEl: ".custom-next-drawer",
+                      prevEl: ".custom-prev-drawer",
+                    }}
+                    pagination={{
+                      clickable: true,
+                      el: ".swiper-pagination-drawer",
+                    }}
+                    onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+                    className="w-full"
+                  >
+                    {validRecursos.map((recurso) => (
+                      <SwiperSlide key={recurso._key}>
+                        <RecursoSlide recurso={recurso} />
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </div>
+
+                <div className="custom-next-drawer cursor-pointer shrink-0 hidden xl:block group">
+                  <div className="p-3 border border-white/20 transition-all duration-300 hover:bg-white/10 hover:border-white/40">
+                    <Image
+                      src="/assets/icons/arrow.svg"
+                      alt="next"
+                      width={12}
+                      height={12}
+                      className="rotate-180 transition-transform duration-300 group-hover:scale-110"
+                    />
+                  </div>
                 </div>
               </div>
 
-              <div className="max-w-4xl mx-auto">
-                <Swiper
-                  modules={[Navigation, A11y]}
-                  slidesPerView={1}
-                  loop={validRecursos.length > 1}
-                  spaceBetween={20}
-                  navigation={{
-                    nextEl: ".custom-next-drawer",
-                    prevEl: ".custom-prev-drawer",
-                  }}
-                  onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-                  className="w-full"
-                >
-                  {validRecursos.map((recurso) => (
-                    <SwiperSlide key={recurso._key}>
-                      <RecursoSlide recurso={recurso} />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
+              {/* Dots en mobile / Contador en desktop */}
+              <div className="mt-4 flex justify-center items-center">
+                <div className="swiper-pagination-drawer xl:hidden" />
+                <p className="hidden xl:block text-center text-[#FFFFFF66] font-mono text-sm">
+                  {activeIndex + 1} / {validRecursos.length}
+                </p>
               </div>
-
-              <div className="custom-next-drawer cursor-pointer shrink-0 hidden xl:block group">
-                <div className="p-3 border border-white/20 transition-all duration-300 hover:bg-white/10 hover:border-white/40">
-                  <Image
-                    src="/assets/icons/arrow.svg"
-                    alt="next"
-                    width={12}
-                    height={12}
-                    className="rotate-180 transition-transform duration-300 group-hover:scale-110 group-hover:"
-                  />
-                </div>
-              </div>
-            </div>
+            </>
           ) : (
             <div className="text-white text-center py-12">
-              <p className="text-lg font-mono">No hay recursos disponibles</p>
+              <p className="text-base md:text-lg font-mono">No hay recursos disponibles</p>
             </div>
-          )}
-
-          {/* Slide counter */}
-          {validRecursos.length > 1 && (
-            <p className="text-center text-[#FFFFFF66] font-mono text-sm mt-4">
-              {activeIndex + 1} / {validRecursos.length}
-            </p>
           )}
         </div>
       </SheetContent>
