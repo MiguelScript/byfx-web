@@ -5,7 +5,7 @@ import { recurso } from "@/types/trabajo";
 import { A11y, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "../ui/sheet";
+import { Sheet, SheetContent } from "../ui/sheet";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -88,13 +88,13 @@ const RecursoSlide = ({ recurso }: { recurso: recurso }) => {
 
   const heightClass =
     fileType === "img"
-      ? "h-[260px] sm:h-[320px] md:h-[500px]"
+      ? "h-[260px] sm:h-[320px] md:h-[80vh]"
       : "h-[220px] sm:h-[300px] md:h-[420px]";
 
   return (
     <div className="px-1 py-2 xl:py-3 xl:px-4 flex justify-center">
       <div
-        className={`relative w-full ${heightClass} overflow-hidden flex justify-center items-center rounded-[16px]`}
+        className={`relative w-full ${heightClass} overflow-hidden flex justify-center items-center`}
       >
         {/* Skeleton shimmer */}
         {!isLoaded && (
@@ -147,8 +147,8 @@ export const RecursosDrawer = ({
   isOpen,
   onClose,
   recursos,
-  titulo,
-  cliente,
+  // titulo,
+  // cliente,
 }: RecursosDrawerProps) => {
   console.log(recursos);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -164,14 +164,14 @@ export const RecursosDrawer = ({
         side="bottom"
         className="h-[100dvh] p-0 bg-black/90 border-t border-[#FFFFFF1A] flex flex-col backdrop-blur-md"
       >
-        <SheetHeader className="px-4 md:px-6 pt-5 pb-3 md:pt-6 md:pb-4 border-b border-[#FFFFFF1A] shrink-0 pr-14">
+        {/*    <SheetHeader className="px-4 md:px-6 pt-5 pb-3 md:pt-6 md:pb-4 border-b border-[#FFFFFF1A] shrink-0 pr-14">
           <SheetTitle className="text-lg md:text-2xl font-normal text-white font-mono uppercase leading-tight">
             {titulo}
           </SheetTitle>
           {cliente && (
             <p className="text-[#FFFFFFB2] font-mono text-sm md:text-base tracking-wider">{cliente}</p>
           )}
-        </SheetHeader>
+        </SheetHeader> */}
 
         {/* Carousel */}
         <div className="flex-1 overflow-y-auto p-3 md:p-4 xl:p-6 xl:pt-12">
@@ -191,7 +191,7 @@ export const RecursosDrawer = ({
                   </div>
                 </div>
 
-                <div className="flex-1 min-w-0 xl:max-w-4xl xl:mx-auto">
+                <div className="flex-1 min-w-0 xl:max-w-7xl xl:mx-auto">
                   <Swiper
                     modules={[Navigation, Pagination, A11y]}
                     slidesPerView={1}
@@ -239,7 +239,9 @@ export const RecursosDrawer = ({
             </>
           ) : (
             <div className="text-white text-center py-12">
-              <p className="text-base md:text-lg font-mono">No hay recursos disponibles</p>
+              <p className="text-base md:text-lg font-mono">
+                No hay recursos disponibles
+              </p>
             </div>
           )}
         </div>

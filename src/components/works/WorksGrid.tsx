@@ -3,8 +3,7 @@
 import { useState } from "react";
 import trabajo from "@/types/trabajo";
 import Image from "next/image";
-// import { RecursosModal } from "../modals/RecursosModal";
-import { RecursosDrawer } from "../modals/RecursosDrawer";
+import { RecursosModal } from "../modals/RecursosModal";
 
 interface WorksGridProps {
   trabajos: trabajo[];
@@ -67,7 +66,7 @@ export function WorksGrid({ trabajos }: WorksGridProps) {
       </div>
 
       {/* Recursos Modal */}
-      <RecursosDrawer
+      <RecursosModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         recursos={selectedTrabajo?.recursos || []}

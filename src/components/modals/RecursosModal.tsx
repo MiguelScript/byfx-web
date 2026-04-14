@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import { recurso } from "@/types/trabajo";
-import { A11y, Navigation } from "swiper/modules";
+import { A11y, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
+import { Dialog, DialogContent, DialogHeader } from "../ui/dialog";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import { DialogTitle } from "@radix-ui/react-dialog";
 
 interface RecursosModalProps {
   isOpen: boolean;
@@ -21,7 +22,11 @@ interface RecursosModalProps {
 const imgExtensions = ["jpg", "jpeg", "png", "gif", "bmp"];
 const svgExtensions = ["svg"];
 
+const isStreamingUrl = (link: string): boolean =>
+  /youtube\.com|youtu\.be|vimeo\.com/.test(link);
+
 const getFileType = (link: string): "img" | "video" | "svg" => {
+  if (isStreamingUrl(link)) return "video";
   const parts = link.split(".");
   const ext = parts[parts.length - 1].toLowerCase();
   if (imgExtensions.includes(ext)) return "img";
@@ -29,15 +34,7 @@ const getFileType = (link: string): "img" | "video" | "svg" => {
   return "video";
 };
 
-const RecursoSlide = ({ recurso }: { recurso: recurso }) => {
-  const link =
-    recurso.resourceType === "file" ? recurso.file?.asset.url : recurso.link;
-
-  if (!link) return null;
-
-  const fileType = getFileType(link);
-
-  const toEmbedUrl = (link: string): string => {
+const toEmbedUrl = (link: string): string => {
   try {
     const url = new URL(link);
 
@@ -79,11 +76,34 @@ const RecursoSlide = ({ recurso }: { recurso: recurso }) => {
   return link;
 };
 
+const RecursoSlide = ({ recurso }: { recurso: recurso }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const link =
+    recurso.resourceType === "file" ? recurso.file?.asset.url : recurso.link;
+
+  if (!link) return null;
+
+  const fileType = getFileType(link);
+
+  const heightClass =
+    fileType === "img"
+      ? "h-[260px] sm:h-[320px] md:h-[80vh]"
+      : "h-[220px] sm:h-[300px] md:h-[420px]";
+
   return (
-    <div className="px-2 py-2 xl:py-3 xl:px-4 bg-[#F2F2F21A] rounded-[20px] flex justify-center">
+    <div className="px-1 py-2 xl:py-3 xl:px-4 flex justify-center">
       <div
-        className={`w-full ${fileType === "img" ? "h-[200px]" : "h-[400px]"} md:h-[500px] 2xl:w-[1100px] 2xl:h-[600px] overflow-hidden flex justify-center items-center`}
+        className={`relative w-full ${heightClass} overflow-hidden flex justify-center items-center`}
       >
+        {/* Skeleton shimmer */}
+        {!isLoaded && (
+          <div className="absolute inset-0 rounded-[16px] overflow-hidden">
+            <div className="w-full h-full bg-[#2a2a2a] animate-pulse" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent skeleton-shimmer" />
+          </div>
+        )}
+
         {fileType === "video" && (
           <iframe
             width="100%"
@@ -94,16 +114,18 @@ const RecursoSlide = ({ recurso }: { recurso: recurso }) => {
             allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
-            className="rounded-[20px]"
+            onLoad={() => setIsLoaded(true)}
+            className={`transition-opacity duration-500 ${isLoaded ? "opacity-100" : "opacity-0"}`}
           />
         )}
         {fileType === "img" && (
           <Image
-            width={800}
-            height={700}
+            width={900}
+            height={1000}
             src={link}
             alt={recurso._key}
-            className="rounded-[20px] object-contain w-full h-full"
+            className={`object-contain w-full h-full transition-opacity duration-500 ${isLoaded ? "opacity-100" : "opacity-0"}`}
+            onLoad={() => setIsLoaded(true)}
           />
         )}
         {fileType === "svg" && (
@@ -112,7 +134,8 @@ const RecursoSlide = ({ recurso }: { recurso: recurso }) => {
             height={400}
             src={link}
             alt={recurso._key}
-            className="rounded-[20px] bg-contain"
+            className={`bg-contain transition-opacity duration-500 ${isLoaded ? "opacity-100" : "opacity-0"}`}
+            onLoad={() => setIsLoaded(true)}
           />
         )}
       </div>
@@ -124,8 +147,8 @@ export const RecursosModal = ({
   isOpen,
   onClose,
   recursos,
-  titulo,
-  cliente,
+  /* titulo,
+  cliente, */
 }: RecursosModalProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -136,70 +159,89 @@ export const RecursosModal = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-5xl w-full p-0 bg-[#1A1A1A] border-[#FFFFFF1A] rounded-[20px] overflow-hidden">
-        <DialogHeader className="p-6 border-b border-[#FFFFFF1A]">
+      <DialogContent className="w-full max-w-full p-0 overflow-hidden border-0 rounded-none">
+        <DialogHeader>
+          <DialogTitle></DialogTitle>
+        </DialogHeader>
+        {/*  <DialogHeader className="p-6">
           <DialogTitle className="text-xl font-bold text-white font-mono uppercase tracking-wider">
             {titulo}
           </DialogTitle>
           {cliente && (
             <p className="text-[#FFFFFFB2] font-mono text-sm mt-1">{cliente}</p>
           )}
-        </DialogHeader>
+        </DialogHeader> */}
 
         {/* Carousel */}
-        <div className="p-4 xl:p-6">
+        <div className="flex-1 overflow-y-auto p-3 md:p-4 xl:p-6 xl:pt-12">
           {validRecursos.length > 0 ? (
-            <div className="flex items-center gap-4">
-              <div className="custom-prev-rec cursor-pointer shrink-0 hidden xl:block">
-                <Image
-                  src="/assets/icons/arrow.svg"
-                  alt="prev"
-                  width={12}
-                  height={12}
-                  className="rotate-180"
-                />
-              </div>
-              <div className="max-w-4xl">
-                <Swiper
-                  modules={[Navigation, A11y]}
-                  slidesPerView={1}
-                  loop={validRecursos.length > 1}
-                  spaceBetween={20}
-                  navigation={{
-                    nextEl: ".custom-next-rec",
-                    prevEl: ".custom-prev-rec",
-                  }}
-                  onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-                  className="w-full"
-                >
-                  {validRecursos.map((recurso) => (
-                    <SwiperSlide key={recurso._key}>
-                      <RecursoSlide recurso={recurso} />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
+            <>
+              <div className="flex items-center gap-2 xl:gap-4">
+                {/* Flechas solo en desktop */}
+                <div className="custom-prev-drawer cursor-pointer shrink-0 hidden xl:block group">
+                  <div className="p-3 border border-white/20 transition-all duration-300 hover:bg-white/10 hover:border-white/40">
+                    <Image
+                      src="/assets/icons/arrow.svg"
+                      alt="prev"
+                      width={12}
+                      height={12}
+                      className="transition-transform duration-300 group-hover:scale-110"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex-1 min-w-0 xl:max-w-7xl xl:mx-auto">
+                  <Swiper
+                    modules={[Navigation, Pagination, A11y]}
+                    slidesPerView={1}
+                    loop={validRecursos.length > 1}
+                    spaceBetween={16}
+                    navigation={{
+                      nextEl: ".custom-next-drawer",
+                      prevEl: ".custom-prev-drawer",
+                    }}
+                    pagination={{
+                      clickable: true,
+                      el: ".swiper-pagination-drawer",
+                    }}
+                    onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+                    className="w-full"
+                  >
+                    {validRecursos.map((recurso) => (
+                      <SwiperSlide key={recurso._key}>
+                        <RecursoSlide recurso={recurso} />
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </div>
+
+                <div className="custom-next-drawer cursor-pointer shrink-0 hidden xl:block group">
+                  <div className="p-3 border border-white/20 transition-all duration-300 hover:bg-white/10 hover:border-white/40">
+                    <Image
+                      src="/assets/icons/arrow.svg"
+                      alt="next"
+                      width={12}
+                      height={12}
+                      className="rotate-180 transition-transform duration-300 group-hover:scale-110"
+                    />
+                  </div>
+                </div>
               </div>
 
-              <div className="custom-next-rec cursor-pointer shrink-0 hidden xl:block">
-                <Image
-                  src="/assets/icons/arrow.svg"
-                  alt="next"
-                  width={12}
-                  height={12}
-                />
+              {/* Dots en mobile / Contador en desktop */}
+              <div className="mt-4 flex justify-center items-center">
+                <div className="swiper-pagination-drawer xl:hidden" />
+                <p className="hidden xl:block text-center text-[#FFFFFF66] font-mono text-sm">
+                  {activeIndex + 1} / {validRecursos.length}
+                </p>
               </div>
-            </div>
+            </>
           ) : (
             <div className="text-white text-center py-12">
-              <p className="text-lg font-mono">No hay recursos disponibles</p>
+              <p className="text-base md:text-lg font-mono">
+                No hay recursos disponibles
+              </p>
             </div>
-          )}
-
-          {/* Slide counter */}
-          {validRecursos.length > 1 && (
-            <p className="text-center text-[#FFFFFF66] font-mono text-sm mt-4">
-              {activeIndex + 1} / {validRecursos.length}
-            </p>
           )}
         </div>
       </DialogContent>
