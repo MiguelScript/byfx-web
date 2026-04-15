@@ -120,7 +120,7 @@ export default function RootLayout({
 			lang="es"
 			className={`${montserrat.variable} ${bebas_neue.variable} ${amaticSc.variable} ${alumniSans.variable} ${aguafinaScript.variable} ${inter.variable}`}
 		>
-			<body className={`h-[100dvh] bg-[#1B1B1B] text-[#F3F3F3] font-sans`}>
+			<body className={`min-h-screen bg-[#1B1B1B] text-[#F3F3F3] font-sans`}>
 				<GoogleAnalytics />
 				{children}
 			</body>
