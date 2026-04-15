@@ -13,8 +13,9 @@ export const Navbar = async () => {
   ]);
 
   return (
-    <nav id="main-navbar" className="flex sticky top-0 z-50 px-4 xl:px-16 xl:pt-6 xl:pb-6 pb-4 pt-4 lg:pt-0 lg:border-b lg:border-[#FFFFFF1A] bg-[#18181833] backdrop-blur-3xl transition-colors duration-300">
-      <div className="app-container  mx-auto w-full flex justify-between items-center">
+    <nav id="main-navbar" className="flex sticky top-0 z-50 px-4 xl:px-16 xl:pt-6 xl:pb-6 pb-4 pt-4 lg:pt-0 lg:border-b lg:border-[#FFFFFF1A] transition-colors duration-300">
+      <div className="absolute inset-0 bg-[#18181833] backdrop-blur-3xl" aria-hidden="true" />
+      <div className="app-container  mx-auto w-full flex justify-between items-center relative">
         <div className="">
           <Link href={"/"} className="">
             <Image
