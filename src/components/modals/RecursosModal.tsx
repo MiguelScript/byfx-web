@@ -88,7 +88,7 @@ const RecursoSlide = ({ recurso }: { recurso: recurso }) => {
 
   const heightClass =
     fileType === "img"
-      ? "h-[260px] sm:h-[320px] md:h-[80vh]"
+      ? "h-[260px] sm:h-[320px] md:h-[80dvh]"
       : "h-[220px] sm:h-[300px] md:h-[420px]";
 
   return (
@@ -159,7 +159,7 @@ export const RecursosModal = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="w-full max-w-full p-0 overflow-hidden border-0 rounded-none">
+      <DialogContent className="w-full max-w-full p-0 overflow-hidden border-0 rounded-none min-h-[100dvh]">
         <DialogHeader>
           <DialogTitle></DialogTitle>
         </DialogHeader>
