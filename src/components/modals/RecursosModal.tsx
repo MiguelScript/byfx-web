@@ -159,7 +159,7 @@ export const RecursosModal = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="w-full max-w-full p-0 overflow-hidden border-0 rounded-none min-h-[100dvh]">
+      <DialogContent className="w-full max-w-full p-0 overflow-hidden border-0 rounded-none h-[100dvh]">
         <DialogHeader>
           <DialogTitle></DialogTitle>
         </DialogHeader>
