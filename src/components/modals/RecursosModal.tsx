@@ -78,6 +78,7 @@ const toEmbedUrl = (link: string): string => {
 
 const RecursoSlide = ({ recurso }: { recurso: recurso }) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isLandscape, setIsLandscape] = useState(true);
 
   const link =
     recurso.resourceType === "file" ? recurso.file?.asset.url : recurso.link;
@@ -120,12 +121,16 @@ const RecursoSlide = ({ recurso }: { recurso: recurso }) => {
         )}
         {fileType === "img" && (
           <Image
-            width={900}
-            height={1000}
+            width={isLandscape ? 900 : 600}
+            height={isLandscape ? 1000 : 1400}
             src={link}
             alt={recurso._key}
             className={`object-contain w-full h-full transition-opacity duration-500 ${isLoaded ? "opacity-100" : "opacity-0"}`}
-            onLoad={() => setIsLoaded(true)}
+            onLoad={(e) => {
+              const img = e.currentTarget;
+              setIsLandscape(img.naturalWidth >= img.naturalHeight);
+              setIsLoaded(true);
+            }}
           />
         )}
         {fileType === "svg" && (
