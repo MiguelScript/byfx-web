@@ -21,7 +21,7 @@ export function PartnersProgramSection({ countries }: { countries: string }) {
             marketing, gestión de redes o producción audiovisual; con BYFX
             puedes vender servicios profesionales, usar cámaras, luces y
             recursos de marca, aprender producción en proyectos reales y{" "}
-            <strong>ganar por comisiones</strong>
+            <strong>ganar por comisiones </strong>
             mientras haces crecer tu portafolio.
           </p>
           <ContactDrawer countries={countries}>
